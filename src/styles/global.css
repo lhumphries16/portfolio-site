@@ -212,6 +212,10 @@ textarea {
   border-bottom: 1px solid rgba(216, 221, 224, 0.1);
 }
 
+.nav-link--active {
+  color: var(--color-white);
+}
+
 .nav-menu a:last-child {
   border-bottom: 0;
 }
@@ -557,6 +561,181 @@ textarea {
 
 .feature-list {
   margin-top: 2.35rem;
+}
+
+.page-hero__layout,
+.route-card-grid,
+.offer-list,
+.offer-card__grid,
+.project-card-grid,
+.status-row,
+.page-hero__panel,
+.meta-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.page-hero__layout {
+  align-items: start;
+}
+
+.page-hero__heading {
+  max-width: 11ch;
+}
+
+.page-hero__panel,
+.offer-card,
+.project-card,
+.route-card {
+  border: 1px solid rgba(41, 49, 57, 0.14);
+  border-radius: var(--radius-panel);
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: var(--shadow-card);
+}
+
+.page-hero__panel,
+.offer-card,
+.project-card,
+.route-card {
+  padding: 1.35rem;
+}
+
+.page-panel__copy,
+.offer-card p,
+.project-card p,
+.route-card p,
+.meta-list li {
+  margin: 0;
+}
+
+.page-panel__action {
+  margin-top: 0.25rem;
+}
+
+.meta-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.meta-list li {
+  display: grid;
+  gap: 0.35rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid rgba(41, 49, 57, 0.14);
+}
+
+.meta-list li:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.meta-label,
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  min-height: 1.9rem;
+  padding: 0 0.7rem;
+  border: 1px solid rgba(41, 49, 57, 0.16);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.78);
+  color: var(--color-graphite);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.meta-label {
+  color: var(--color-blue);
+}
+
+.status-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.status-chip--accent {
+  border-color: rgba(77, 141, 255, 0.24);
+  background: rgba(77, 141, 255, 0.1);
+  color: var(--color-blue);
+}
+
+.route-card-grid {
+  gap: 1rem;
+}
+
+.route-card,
+.offer-card,
+.project-card {
+  display: grid;
+  gap: 1rem;
+}
+
+.route-card__body,
+.offer-card__header,
+.project-card__body,
+.project-card__section {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.route-card h3,
+.offer-card h2,
+.project-card h2 {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(1.9rem, 5vw, 2.5rem);
+  line-height: 0.96;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.offer-card__grid {
+  gap: 1rem;
+}
+
+.offer-card__section {
+  display: grid;
+  gap: 0.7rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(41, 49, 57, 0.14);
+}
+
+.offer-card__section:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.project-card__footer {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.section--dark .page-hero__panel,
+.section--dark .offer-card,
+.section--dark .route-card {
+  border-color: rgba(216, 221, 224, 0.12);
+  background: rgba(16, 24, 32, 0.98);
+  color: var(--color-paper);
+}
+
+.section--dark .meta-list li,
+.section--dark .offer-card__section {
+  border-top-color: rgba(216, 221, 224, 0.12);
+}
+
+.section--dark .meta-label,
+.section--dark .status-chip {
+  border-color: rgba(216, 221, 224, 0.16);
+  background: rgba(16, 24, 32, 0.72);
+  color: var(--color-paper);
+}
+
+.section--dark .meta-label {
+  color: var(--color-blue);
 }
 
 .feature-project {
@@ -992,7 +1171,11 @@ textarea:focus-visible {
     color: rgba(240, 238, 232, 0.82);
   }
 
-   .nav-menu__social {
+  .nav-link--active {
+    color: var(--color-white);
+  }
+
+  .nav-menu__social {
     margin-top: 0;
     padding: 0.7rem 0.95rem;
   }
@@ -1026,6 +1209,11 @@ textarea:focus-visible {
     grid-template-columns: minmax(0, 4.8fr) minmax(0, 7.2fr);
     gap: 3.9rem;
     align-items: start;
+  }
+
+  .page-hero__layout {
+    grid-template-columns: minmax(0, 6.3fr) minmax(0, 4.7fr);
+    gap: 3.4rem;
   }
 
   .section-sidecar {
@@ -1077,6 +1265,20 @@ textarea:focus-visible {
 
   .feature-project h3 {
     font-size: clamp(2.2rem, 2.7vw, 2.9rem);
+  }
+
+  .route-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .offer-card__grid,
+  .project-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .project-card__footer {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
   }
 
   .ledger-grid {
@@ -1132,6 +1334,12 @@ textarea:focus-visible {
   .split-section--contact,
   .site-footer__inner {
     gap: 2rem;
+  }
+
+  .page-hero__panel .button,
+  .route-card .button,
+  .project-card .button {
+    width: 100%;
   }
 }
 

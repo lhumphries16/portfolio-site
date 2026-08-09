@@ -6,7 +6,7 @@ import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
   {
-    ignores: ['dist', 'coverage'],
+    ignores: ['dist', 'coverage', '*.timestamp-*'],
   },
   {
     extends: [js.configs.recommended, ...tseslint.configs.recommended],

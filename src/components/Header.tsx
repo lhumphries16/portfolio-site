@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import type { NavItem } from '../data/siteContent';
 
 type HeaderProps = {
@@ -15,8 +16,16 @@ type HeaderProps = {
 
 export function Header({ brand, navItems, socialLink }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
 
   const closeMenu = () => setIsOpen(false);
+  const resolveAnchorHref = (href: string) => {
+    if (href.startsWith('/#') && location.pathname === '/') {
+      return href.slice(1);
+    }
+
+    return href;
+  };
 
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
@@ -42,13 +51,17 @@ export function Header({ brand, navItems, socialLink }: HeaderProps) {
     return () => mediaQuery.removeEventListener('change', handleChange);
   }, []);
 
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location.hash, location.pathname]);
+
   return (
     <header className="site-header">
       <div className="site-frame site-header__inner">
-        <a className="site-brand" href="#top" onClick={closeMenu}>
+        <Link className="site-brand" to="/" onClick={closeMenu}>
           <span className="site-brand__name">{brand.name}</span>
           <span className="site-brand__role">{brand.role}</span>
-        </a>
+        </Link>
         <nav className="site-nav" aria-label="Primary">
           <button
             type="button"
@@ -66,11 +79,22 @@ export function Header({ brand, navItems, socialLink }: HeaderProps) {
             <span className="nav-toggle__label">Menu</span>
           </button>
           <div className={`nav-menu${isOpen ? ' nav-menu--open' : ''}`} id="primary-menu">
-            {navItems.map((item) => (
-              <a key={item.href} href={item.href} onClick={closeMenu}>
-                {item.label}
-              </a>
-            ))}
+            {navItems.map((item) =>
+              item.href.startsWith('/#') ? (
+                <a key={item.href} className="nav-link" href={resolveAnchorHref(item.href)} onClick={closeMenu}>
+                  {item.label}
+                </a>
+              ) : (
+                <NavLink
+                  key={item.href}
+                  className={({ isActive }) => `nav-link${isActive ? ' nav-link--active' : ''}`}
+                  to={item.href}
+                  onClick={closeMenu}
+                >
+                  {item.label}
+                </NavLink>
+              )
+            )}
             <a
               className="nav-menu__social"
               href={socialLink.href}

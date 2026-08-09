@@ -22,23 +22,22 @@ export const siteContent = {
     label: 'LinkedIn',
   },
   navigation: [
-    { href: '#about', label: 'About' },
-    { href: '#experience', label: 'Experience' },
-    { href: '#work', label: 'Work' },
-    { href: '#problems', label: 'Problems' },
-    { href: '#approach', label: 'Approach' },
-    { href: '#contact', label: 'Contact' },
+    { href: '/#about', label: 'About' },
+    { href: '/#work', label: 'Work' },
+    { href: '/consulting', label: 'Consulting' },
+    { href: '/projects', label: 'Projects' },
+    { href: '/#contact', label: 'Contact' },
   ] satisfies NavItem[],
   hero: {
     label: 'Engineer & Systems Builder',
     title: 'I build the systems between the machine and the business.',
     paragraphs: [
-      'I work across industrial equipment, controls, embedded systems, manufacturing, and internal software.',
-      "I'm most useful when the problem crosses those boundaries and nobody fully owns the whole system.",
+      'I work across mechanical engineering, controls, industrial automation, embedded systems, software, commissioning, troubleshooting, and operational workflows.',
+      'I am most useful when the problem crosses those boundaries, the scope can be defined clearly, and the result needs to hold up after handoff.',
     ],
     credibility:
       'Mechanical engineer. Field-tested controls experience. Software shaped around real operations.',
-    primaryAction: { href: '#contact', label: 'Talk through a problem' },
+    primaryAction: { href: '#contact', label: 'Start a scoped conversation' },
     secondaryAction: { href: '#work', label: 'View selected work' },
     photo: {
       src: '/images/tre-work-contact-normalized.jpg',
@@ -285,13 +284,39 @@ export const siteContent = {
       },
     ],
   },
+  pathways: {
+    label: 'Consulting and projects',
+    title: 'Professional work, consulting, and independent projects each have a different role here.',
+    intro: [
+      'The work above is professional evidence.',
+      'Consulting is bounded engineering work clients can hire me for. Projects are independent engineering efforts I am actively building and occasionally want overlapping expertise, spaces, venues, or other support around.',
+    ],
+    cards: [
+      {
+        label: 'Consulting',
+        title: 'Fixed-scope engineering work with clear deliverables and clean handoff.',
+        body:
+          'Two defined offers: controls audit and design-for-hire, plus process and information-flow audit work.',
+        href: '/consulting',
+        actionLabel: 'View consulting',
+      },
+      {
+        label: 'Projects',
+        title: 'Independent engineering work I am actively building now.',
+        body:
+          'Experimental systems, field notes, current questions, and places where the right collaborators or venues could matter.',
+        href: '/projects',
+        actionLabel: 'View projects',
+      },
+    ],
+  },
   problems: {
     id: 'problems',
     label: 'Where I fit best',
     title: 'Bring me the problems that sit between roles.',
     intro: [
-      'The best fit is usually not a neatly isolated software project or a clearly defined controls task.',
-      'It is a real operational problem touching several systems at once.',
+      'The best fit is usually a real operational problem touching several systems at once.',
+      'The important part is that we can draw a boundary around it, define a useful output, and hand it back cleanly.',
     ],
     items: [
       'A product is difficult to configure, test, or commission',
@@ -333,8 +358,8 @@ export const siteContent = {
       },
       {
         index: '05',
-        title: 'Improve and make it maintainable',
-        body: 'Document the important logic, respond to real use, and reduce unnecessary dependence on the builder.',
+        title: 'Document it and hand it off',
+        body: 'Capture the important logic, respond to real use, and leave the client with something they can own without indefinite dependence on the builder.',
       },
     ],
   },
@@ -344,15 +369,16 @@ export const siteContent = {
     title: 'You do not need a polished brief.',
     intro: [
       'Send me the messy version.',
-      'Tell me what the equipment or team is trying to do, how the process works today, where it becomes difficult, and what you wish were easier.',
+      'If the problem is real, the scope can be defined, and there is a useful deliverable on the other side, that is enough to start the conversation.',
+      'Tell me what the equipment or team is trying to do, how the process works today, where it becomes difficult, and what a better result or handoff would look like.',
       'I can usually tell fairly quickly whether my background is useful to the problem.',
     ],
     helper:
-      'Helpful context: how you handle it today, what makes it difficult, and what a better result would look like.',
+      'Helpful context: how you handle it today, what makes it difficult, and what decision, deliverable, or handoff would help.',
     success:
       'Required details are in place. Sending opens an email draft so we can continue the conversation.',
     error: 'Please fill in the required fields before sending the note.',
-    submitLabel: 'Start the conversation',
+    submitLabel: 'Start the scoped conversation',
     image: {
       src: '/images/tre-work-contact-normalized.jpg',
       alt: 'Tre standing beside industrial road-treatment equipment',
