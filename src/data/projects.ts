@@ -1,32 +1,46 @@
-import type { ImageAsset } from './siteContent';
-
-export type ProjectLink = {
-  href: string;
-  label: string;
-};
-
-export type Project = {
-  slug: string;
-  title: string;
-  status: string;
-  seekingSupport?: string;
-  summary: string;
-  tags: readonly string[];
-  currentStage: string;
-  overview: readonly string[];
-  currentWork: readonly string[];
-  questions: readonly string[];
-  lookingFor: readonly string[];
-  lastUpdated: string;
-  hero?: ImageAsset;
-  externalLink?: ProjectLink;
-};
+import type { Project } from './types';
 
 export const projects = [
   {
+    slug: 'garage-horticulture',
+    number: '000',
+    title: 'Garage Horticulture System',
+    timelineLabel: '2023',
+    status: 'Archive',
+    summary:
+      'A controlled indoor horticulture system used to explore repeatable environmental control, logging, forecasting, and lightweight operational tooling.',
+    tags: ['Environmental control', 'Logging', 'Forecasting', 'Physical systems'],
+    currentStage:
+      'The system is not the primary active R&D focus now, but it remains representative of how I approach instrumentation, repeatability, and operations around a physical process.',
+    overview: [
+      'This project grew out of controlled indoor growing and turned into a useful testbed for system behavior, logging, operational routines, and physical iteration.',
+      'It matters less as a hobby label than as evidence of how I work: a physical setup, a process to observe, a set of constraints, and the need to build simple systems around it.',
+    ],
+    currentWork: [
+      'Documenting the system as a representative R&D record',
+      'Keeping the data model ready for future experimental builds',
+    ],
+    questions: [
+      'What operational structure actually helps a small physical process stay repeatable?',
+      'When does logging become useful instead of decorative?',
+    ],
+    lookingFor: [
+      'Useful overlap with environmental control, sensing, or operational logging',
+    ],
+    lastUpdated: 'August 9, 2026',
+    hero: {
+      src: '/images/hydro_basil_rack_photo_my_garage.jpg',
+      alt: 'Indoor horticulture rack used for controlled growing and operational logging experiments',
+      caption: 'Garage horticulture rack used as a physical systems testbed.',
+    },
+  },
+  {
     slug: 'flying-creatures',
+    number: '001',
     title: 'Programmable Flying Creatures',
+    timelineLabel: '2026',
     status: 'Active',
+    statusTone: 'active',
     seekingSupport: 'Seeking Support',
     summary:
       'Experimental R&D around controllable bio-inspired flying systems for indoor performance and interactive environments.',
@@ -63,6 +77,7 @@ export const projects = [
       'Embedded and controls people whose expertise overlaps',
     ],
     lastUpdated: 'August 9, 2026',
+    featured: true,
   },
 ] as const satisfies readonly Project[];
 

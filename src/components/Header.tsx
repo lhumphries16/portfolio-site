@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import type { NavItem } from '../data/siteContent';
+import type { NavItem } from '../data/types';
 
 type HeaderProps = {
   brand: {
@@ -8,13 +8,9 @@ type HeaderProps = {
     role: string;
   };
   navItems: NavItem[];
-  socialLink: {
-    href: string;
-    label: string;
-  };
 };
 
-export function Header({ brand, navItems, socialLink }: HeaderProps) {
+export function Header({ brand, navItems }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 
@@ -80,7 +76,18 @@ export function Header({ brand, navItems, socialLink }: HeaderProps) {
           </button>
           <div className={`nav-menu${isOpen ? ' nav-menu--open' : ''}`} id="primary-menu">
             {navItems.map((item) =>
-              item.href.startsWith('/#') ? (
+              item.external ? (
+                <a
+                  key={item.href}
+                  className="nav-link"
+                  href={item.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={closeMenu}
+                >
+                  {item.label}
+                </a>
+              ) : item.href.startsWith('/#') ? (
                 <a key={item.href} className="nav-link" href={resolveAnchorHref(item.href)} onClick={closeMenu}>
                   {item.label}
                 </a>
@@ -95,15 +102,6 @@ export function Header({ brand, navItems, socialLink }: HeaderProps) {
                 </NavLink>
               )
             )}
-            <a
-              className="nav-menu__social"
-              href={socialLink.href}
-              target="_blank"
-              rel="noreferrer"
-              onClick={closeMenu}
-            >
-              {socialLink.label}
-            </a>
           </div>
         </nav>
       </div>

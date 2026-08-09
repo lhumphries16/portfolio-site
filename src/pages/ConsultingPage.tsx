@@ -3,17 +3,17 @@ import { consultingContent } from '../data/consultingContent';
 import { SectionIntro } from '../components/SectionIntro';
 
 export function ConsultingPage() {
-  const { adjacent, controls, hero, process } = consultingContent;
+  const { adjacent, hero, offers } = consultingContent;
 
   return (
     <>
-      <section className="section section--paper section--hero page-hero" id="top">
-        <div className="site-frame page-hero__layout">
-          <div className="hero-copy">
+      <section className="section section--hero" id="top">
+        <div className="site-frame page-hero">
+          <div className="page-hero__copy">
             <p className="section-label section-label--hero">
               <span className="section-label__text">{hero.label}</span>
             </p>
-            <h1 className="hero-heading page-hero__heading">{hero.title}</h1>
+            <h1 className="display-title display-title--page">{hero.title}</h1>
             <div className="hero-body">
               {hero.paragraphs.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
@@ -26,7 +26,6 @@ export function ConsultingPage() {
             <ul className="meta-list" role="list">
               {hero.notes.map((note) => (
                 <li key={note}>
-                  <span className="meta-label">Note</span>
                   <span>{note}</span>
                 </li>
               ))}
@@ -35,151 +34,60 @@ export function ConsultingPage() {
         </div>
       </section>
 
-      <section className="section section--paper">
+      <section className="section">
         <div className="site-frame">
           <div className="offer-list">
-            <article className="offer-card">
-              <div className="offer-card__header">
-                <p className="section-label">
-                  <span className="section-label__index">01</span>
-                  <span className="section-label__text">{controls.label}</span>
-                </p>
-                <h2>{controls.title}</h2>
-                <p>{controls.summary}</p>
-              </div>
-              <div className="offer-card__meta">
-                <div className="offer-stat">
-                  <p className="meta-label">Typical scope</p>
-                  <p>One machine, panel, system, or project</p>
+            {offers.map((offer) => (
+              <article key={offer.id} className="offer-card">
+                <div className="offer-card__header">
+                  <p className="section-label">
+                    <span className="section-label__index">{offer.index}</span>
+                    <span className="section-label__text">{offer.label}</span>
+                  </p>
+                  <h2>{offer.title}</h2>
+                  <p>{offer.summary}</p>
                 </div>
-                <div className="offer-stat">
-                  <p className="meta-label">Duration</p>
-                  <p>3 to 10 business days</p>
+                <div className="offer-card__meta">
+                  {offer.meta.map((item) => (
+                    <div key={item.label} className="offer-stat">
+                      <p className="meta-label">{item.label}</p>
+                      <p>{item.value}</p>
+                    </div>
+                  ))}
                 </div>
-                <div className="offer-stat">
-                  <p className="meta-label">Fee</p>
-                  <p>$3k to $15k fixed scope</p>
+                <div className="offer-card__grid">
+                  {offer.sections.map((section) => (
+                    <div
+                      key={section.title}
+                      className={`offer-card__section${section.tone === 'boundary' ? ' offer-card__section--boundary' : ''}`}
+                    >
+                      <p className="project-block__label">{section.title}</p>
+                      {section.body ? <p>{section.body}</p> : null}
+                      {section.items ? (
+                        section.ordered ? (
+                          <ol className="project-list">
+                            {section.items.map((item) => (
+                              <li key={item}>{item}</li>
+                            ))}
+                          </ol>
+                        ) : (
+                          <ul className="project-list">
+                            {section.items.map((item) => (
+                              <li key={item}>{item}</li>
+                            ))}
+                          </ul>
+                        )
+                      ) : null}
+                    </div>
+                  ))}
                 </div>
-                <div className="offer-stat">
-                  <p className="meta-label">Handoff</p>
-                  <p>Written findings or a defined design package</p>
-                </div>
-              </div>
-              <div className="offer-card__grid">
-                <div className="offer-card__section">
-                  <p className="project-block__label">Controls systems audit</p>
-                  <ul className="project-list">
-                    {controls.auditFocus.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="offer-card__section">
-                  <p className="project-block__label">Outcome</p>
-                  <p>{controls.outcome}</p>
-                </div>
-                <div className="offer-card__section">
-                  <p className="project-block__label">Controls design-for-hire</p>
-                  <ul className="project-list">
-                    {controls.designDeliverables.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="offer-card__section">
-                  <p className="project-block__label">Typical engagement</p>
-                  <ul className="project-list">
-                    {controls.typicalEngagement.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="offer-card__section offer-card__section--boundary">
-                  <p className="project-block__label">Boundaries</p>
-                  <ul className="project-list">
-                    {controls.boundaries.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </article>
-
-            <article className="offer-card offer-card--dark">
-              <div className="offer-card__header">
-                <p className="section-label">
-                  <span className="section-label__index">02</span>
-                  <span className="section-label__text">{process.label}</span>
-                </p>
-                <h2>{process.title}</h2>
-                <p>{process.summary}</p>
-              </div>
-              <div className="offer-card__meta">
-                <div className="offer-stat">
-                  <p className="meta-label">Typical scope</p>
-                  <p>One workflow</p>
-                </div>
-                <div className="offer-stat">
-                  <p className="meta-label">Duration</p>
-                  <p>2 to 3 weeks</p>
-                </div>
-                <div className="offer-stat">
-                  <p className="meta-label">Fee</p>
-                  <p>$5k to $10k fixed fee</p>
-                </div>
-                <div className="offer-stat">
-                  <p className="meta-label">Handoff</p>
-                  <p>One implemented improvement plus documentation</p>
-                </div>
-              </div>
-              <div className="offer-card__grid">
-                <div className="offer-card__section">
-                  <p className="project-block__label">Examples</p>
-                  <ul className="project-list">
-                    {process.examples.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="offer-card__section">
-                  <p className="project-block__label">Focus</p>
-                  <ul className="project-list">
-                    {process.focus.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="offer-card__section">
-                  <p className="project-block__label">Typical process</p>
-                  <ol className="project-list">
-                    {process.processSteps.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ol>
-                </div>
-                <div className="offer-card__section">
-                  <p className="project-block__label">Possible improvements</p>
-                  <ul className="project-list">
-                    {process.improvements.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="offer-card__section">
-                  <p className="project-block__label">Typical engagement</p>
-                  <ul className="project-list">
-                    {process.typicalEngagement.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </article>
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="section section--paper">
+      <section className="section">
         <div className="site-frame split-section">
           <SectionIntro
             index="03"

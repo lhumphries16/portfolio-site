@@ -6,20 +6,19 @@ export function ProjectsPage() {
 
   return (
     <>
-      <section className="section section--paper section--hero page-hero" id="top">
-        <div className="site-frame page-hero__layout">
-          <div className="hero-copy">
+      <section className="section section--hero" id="top">
+        <div className="site-frame page-hero">
+          <div className="page-hero__copy">
             <p className="section-label section-label--hero">
               <span className="section-label__text">Projects</span>
             </p>
-            <h1 className="hero-heading page-hero__heading">Independent engineering work I am actively building now.</h1>
+            <h1 className="display-title display-title--page">Independent technical work built out of curiosity.</h1>
             <div className="hero-body">
               <p>
-                This is separate from professional work and separate from consulting.
+                Projects are separate from professional employment and separate from client work.
               </p>
               <p>
-                These pages are for experiments, active builds, field notes, and useful
-                overlaps with collaborators, spaces, venues, or adjacent expertise.
+                They are where experiments, active builds, field notes, and useful overlaps with collaborators or spaces can live without being mistaken for consulting offers.
               </p>
             </div>
           </div>
@@ -27,32 +26,30 @@ export function ProjectsPage() {
           <aside className="page-hero__panel" aria-label="Projects framing">
             <ul className="meta-list" role="list">
               <li>
-                <span className="meta-label">Work</span>
-                <span>Professional evidence and delivered systems live on the homepage.</span>
+                <span>Independent R&amp;D, not client delivery.</span>
               </li>
               <li>
-                <span className="meta-label">Projects</span>
-                <span>Independent builds, investigations, and active technical questions live here.</span>
+                <span>Useful detail goes on dedicated project pages, not into the homepage at rest.</span>
               </li>
             </ul>
           </aside>
         </div>
       </section>
 
-      <section className="section section--paper">
+      <section className="section">
         <div className="site-frame">
           <article className="project-feature">
             <div className="project-feature__intro">
               <p className="project-status-line">
                 <span>{featuredProject.status}</span>
-                <span>Project 001</span>
+                <span>Project {featuredProject.number}</span>
                 {featuredProject.seekingSupport ? <span>{featuredProject.seekingSupport}</span> : null}
               </p>
-              <h2 className="project-feature__title">Programmable{'\n'}Flying Creatures</h2>
+              <h2 className="project-feature__title">{featuredProject.title}</h2>
               <p className="project-feature__summary">{featuredProject.summary}</p>
             </div>
 
-            <div className="project-placeholder" aria-label="Programmable Flying Creatures project placeholder">
+            <div className="project-placeholder" aria-label={`${featuredProject.title} project placeholder`}>
               <div className="project-placeholder__field" aria-hidden="true" />
               <div className="project-placeholder__meta">
                 <div>
@@ -78,7 +75,7 @@ export function ProjectsPage() {
               <div className="project-feature__detail">
                 <p className="project-caption">Last updated {featuredProject.lastUpdated}</p>
                 <Link className="text-link" to={`/projects/${featuredProject.slug}`}>
-                  Read project
+                  Open project
                 </Link>
               </div>
             </div>
@@ -86,10 +83,10 @@ export function ProjectsPage() {
 
           {otherProjects.length > 0 ? (
             <div className="project-archive">
-              {otherProjects.map((project, index) => (
+              {otherProjects.map((project) => (
                 <article key={project.slug} className="project-archive__item">
                   <p className="project-status-line">
-                    <span>{String(index + 2).padStart(3, '0')}</span>
+                    <span>{project.number}</span>
                     <span>{project.status}</span>
                   </p>
                   <div>

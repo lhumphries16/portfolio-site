@@ -1,4 +1,4 @@
-import type { ImageAsset } from '../data/siteContent';
+import type { ImageAsset } from '../data/types';
 
 type ImageFigureProps = {
   image: ImageAsset;

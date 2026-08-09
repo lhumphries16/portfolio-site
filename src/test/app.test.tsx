@@ -12,15 +12,37 @@ describe('App', () => {
 
     expect(
       screen.getByRole('heading', {
-        name: /i build the systems between the machine and the business/i,
+        name: /tre humphries/i,
       })
     ).toBeInTheDocument();
 
     expect(
-      screen.getByRole('link', {
-        name: /view consulting/i,
+      screen.getByText(/i design and build physical systems, controls, and the software around them/i)
+    ).toBeInTheDocument();
+  });
+
+  it('renders the experience page', () => {
+    renderRoute('/experience');
+
+    expect(
+      screen.getByRole('heading', {
+        name: /corporate engineering/i,
       })
     ).toBeInTheDocument();
+
+    expect(screen.getByText(/gaf roads \/ standard industries/i)).toBeInTheDocument();
+  });
+
+  it('renders the client work page', () => {
+    renderRoute('/client-work');
+
+    expect(
+      screen.getByRole('heading', {
+        name: /independent delivery for paying clients/i,
+      })
+    ).toBeInTheDocument();
+
+    expect(screen.getByText(/website \+ lead \/ service-area system/i)).toBeInTheDocument();
   });
 
   it('renders the consulting page', () => {
@@ -32,7 +54,7 @@ describe('App', () => {
       })
     ).toBeInTheDocument();
 
-    expect(screen.getByText(/controls audit and design-for-hire/i)).toBeInTheDocument();
+    expect(screen.getByText(/controls audit & design-for-hire/i)).toBeInTheDocument();
   });
 
   it('renders the projects index page', () => {
@@ -40,7 +62,7 @@ describe('App', () => {
 
     expect(
       screen.getByRole('heading', {
-        name: /independent engineering work i am actively building now/i,
+        name: /independent technical work built out of curiosity/i,
       })
     ).toBeInTheDocument();
 

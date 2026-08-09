@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom';
-import { siteContent } from '../data/siteContent';
+import { profile } from '../data/profile';
 import { Footer } from './Footer';
 import { Header } from './Header';
 
@@ -10,14 +10,25 @@ export function AppLayout() {
         Skip to content
       </a>
       <Header
-        brand={siteContent.brand}
-        navItems={siteContent.navigation}
-        socialLink={siteContent.socialLink}
+        brand={{
+          name: profile.brand.name,
+          role: profile.brand.role,
+        }}
+        navItems={profile.navigation}
       />
       <main id="main-content">
         <Outlet />
       </main>
-      <Footer brand={siteContent.brand} socialLink={siteContent.socialLink} />
+      <Footer
+        brand={{
+          name: profile.brand.fullName,
+          role: profile.brand.role,
+          location: profile.brand.location,
+          email: profile.brand.email,
+        }}
+        socialLinks={profile.socialLinks}
+        note={profile.footerNote}
+      />
     </div>
   );
 }

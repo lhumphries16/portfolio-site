@@ -32,15 +32,15 @@ export function ProjectDetailPage() {
 
   return (
     <>
-      <section className="section section--paper section--hero page-hero" id="top">
+      <section className="section section--hero" id="top">
         <div className="site-frame project-detail-hero">
           <div className="project-detail-hero__copy">
             <p className="project-status-line">
               <span>{project.status}</span>
-              <span>Project 001</span>
+              <span>Project {project.number}</span>
               {project.seekingSupport ? <span>{project.seekingSupport}</span> : null}
             </p>
-            <h1 className="hero-heading page-hero__heading">{project.title}</h1>
+            <h1 className="display-title display-title--page">{project.title}</h1>
             <div className="hero-body">
               <p>{project.summary}</p>
             </div>
@@ -68,7 +68,7 @@ export function ProjectDetailPage() {
         </div>
       </section>
 
-      <section className="section section--paper">
+      <section className="section">
         <div className="site-frame project-detail-grid">
           <aside className="project-rail">
             <div className="project-rail__group">
