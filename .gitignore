@@ -9,3 +9,9 @@ reference/screenshots/*
 output/
 .playwright-cli
 .env*
+.agents/
+skills-lock.json
+tmp_orientation_fix/
+reference/
+Desktop.ini
+desktop.ini

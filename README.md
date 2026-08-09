@@ -1,51 +1,42 @@
-# humphries-portfolio
+# Tre Humphries — Portfolio
 
-Static React rebuild of Larry "Tre" Humphries' portfolio, based on the existing Webflow site and local reference captures.
+Personal portfolio and living technical profile for a mechanical, controls, software, and systems engineer.
 
 ## Stack
 
 - React
-- Vite
 - TypeScript
-- Global CSS
-- Vitest + Testing Library
+- Vite
+- React Router
+- Cloudflare Pages
 
-## Getting started
+## Content
+
+- Corporate Engineering
+- Client Work
+- R&D / Projects
+
+## Development
 
 ```bash
 npm install
-npm run prepare:assets
 npm run dev
 ```
 
-## Available scripts
+## Validation
 
-- `npm run prepare:assets` copies the local reference images and captures into the app-friendly structure.
-- `npm run dev` starts the Vite dev server.
-- `npm run build` creates the production static build in `dist/`.
-- `npm run preview` serves the production build locally.
-- `npm run lint` runs ESLint.
-- `npm run test` runs the Vitest suite.
-
-## Project structure
-
-```text
-src/
-  components/
-  sections/
-  data/
-  styles/
-  assets/
-public/
-  images/
-reference/
-  screenshots/
-  webflow-capture.pdf
-scripts/
-  normalize-images.mjs
+```bash
+npm run lint
+npm run test -- --run
+npm run build
 ```
 
-## Notes
+## Deployment
 
-- The app is fully static. The contact form validates locally and opens the user's email client with a drafted message.
-- Reference materials are preserved and copied into `reference/` by `npm run prepare:assets`.
+The site is a static Vite build deployed to Cloudflare Pages.
+
+- Build command: `npm run build`
+- Output directory: `dist`
+- SPA routing fallback: `public/_redirects`
+
+Public portfolio media and content in this repository are intentionally included for the site itself, not published as unrestricted reuse assets.

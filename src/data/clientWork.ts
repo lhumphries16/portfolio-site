@@ -24,7 +24,7 @@ export const clientWork = [
       lines: ['public site', 'content ownership', 'handoff'],
       caption: 'Preview slot ready for a client-safe capture.',
     },
-    liveUrl: 'https://allseasonsmo.com',
+    liveUrl: 'https://allseasonsmo.com/home/',
   },
   {
     id: 'homeems',
@@ -49,7 +49,7 @@ export const clientWork = [
       lines: ['service areas', 'lead intake', 'project imagery', 'content updates'],
       caption: 'BrowserPreview is ready for image, video, or iframe when approved media is available.',
     },
-    liveUrl: 'https://home-ems.net',
+    liveUrl: 'https://www.home-ems.net/',
     featured: true,
   },
   {

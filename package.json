@@ -4,9 +4,8 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "prepare:assets": "node scripts/normalize-images.mjs",
     "dev": "vite",
-    "build": "npm run prepare:assets && vite build",
+    "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint .",
     "test": "vitest"

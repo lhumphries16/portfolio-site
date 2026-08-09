@@ -24,6 +24,7 @@ describe('App', () => {
     expect(document.querySelector('meta[name="description"]')?.getAttribute('content')).toMatch(
       /mechanical engineer and systems builder/i
     );
+    expect(document.querySelector('link[rel="canonical"]')?.getAttribute('href')).toBe('https://trehumphries.com/');
   });
 
   it('renders the experience page', () => {
@@ -52,8 +53,8 @@ describe('App', () => {
 
     const liveSiteLinks = screen.getAllByRole('link', { name: /open live site/i });
     expect(liveSiteLinks).toHaveLength(2);
-    expect(liveSiteLinks[0]).toHaveAttribute('href', 'https://allseasonsmo.com');
-    expect(liveSiteLinks[1]).toHaveAttribute('href', 'https://home-ems.net');
+    expect(liveSiteLinks[0]).toHaveAttribute('href', 'https://allseasonsmo.com/home/');
+    expect(liveSiteLinks[1]).toHaveAttribute('href', 'https://www.home-ems.net/');
   });
 
   it('renders the consulting page', () => {
