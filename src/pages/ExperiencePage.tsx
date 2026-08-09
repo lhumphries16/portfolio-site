@@ -1,9 +1,15 @@
 import { ImageFigure } from '../components/ImageFigure';
+import { RouteMeta } from '../components/RouteMeta';
 import { experience } from '../data/experience';
 
 export function ExperiencePage() {
   return (
     <>
+      <RouteMeta
+        title="Engineering Experience | Tre Humphries"
+        description="Corporate engineering experience across industrial equipment, automation, controls, telemetry, and field delivery."
+      />
+
       <section className="section section--hero" id="top">
         <div className="site-frame page-hero">
           <div className="page-hero__copy">

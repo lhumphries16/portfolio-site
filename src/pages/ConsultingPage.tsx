@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { RouteMeta } from '../components/RouteMeta';
 import { consultingContent } from '../data/consultingContent';
 import { SectionIntro } from '../components/SectionIntro';
 
@@ -7,6 +8,11 @@ export function ConsultingPage() {
 
   return (
     <>
+      <RouteMeta
+        title="Engineering Consulting | Tre Humphries"
+        description="Scoped engineering consulting for controls systems and process or information-flow audits with clear deliverables and clean handoff."
+      />
+
       <section className="section section--hero" id="top">
         <div className="site-frame page-hero">
           <div className="page-hero__copy">

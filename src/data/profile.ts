@@ -15,7 +15,7 @@ export const profile = {
     { label: 'Projects', href: '/projects' },
     { label: 'Consulting', href: '/consulting' },
     { label: 'About', href: '/#about' },
-    { label: 'CV', href: 'mailto:trehumphries16@gmail.com?subject=CV%20request', external: true },
+    { label: 'CV', href: '/cv' },
   ] satisfies readonly NavItem[],
   socialLinks: [
     {
@@ -23,6 +23,10 @@ export const profile = {
       href: 'https://www.linkedin.com/in/lhumphr',
     },
   ],
+  site: {
+    domain: 'trehumphries.com',
+    cvUrl: '/cv/tre-humphries-cv.pdf',
+  },
   hero: {
     eyebrow: 'Overview',
     name: 'Tre Humphries',

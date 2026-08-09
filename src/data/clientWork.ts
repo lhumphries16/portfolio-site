@@ -12,13 +12,19 @@ export const clientWork = [
       'This record stays intentionally compact because there is no approved public media in the repo yet, but it marks the early client-work stream that later expanded into broader digital and systems work.',
     domains: ['Website delivery', 'Client handoff', 'Content management'],
     technologies: ['Static site delivery', 'Client-controlled content'],
-    media: {
-      type: 'placeholder',
+    preview: {
+      previewMode: 'iframe',
+      previewSrc: 'https://allseasonsmo.com/home/',
+      previewTitle: 'All Seasons live site preview',
+      previewCaption: 'Live site preview loaded from the public website.',
+    },
+    previewPlaceholder: {
       title: 'Client preview reserved',
       note: 'No approved browser capture is stored in this repo yet.',
       lines: ['public site', 'content ownership', 'handoff'],
       caption: 'Preview slot ready for a client-safe capture.',
     },
+    liveUrl: 'https://allseasonsmo.com',
   },
   {
     id: 'homeems',
@@ -31,13 +37,19 @@ export const clientWork = [
       'The interesting part here was not only the public site. It was the system around it: content ownership, lead intake, geography, media management, and the business logic required for a small operator to keep using it after launch.',
     domains: ['Webflow', 'CMS', 'GIS', 'Analytics', 'Lead intake'],
     technologies: ['Webflow', 'Forms', 'Mapping logic', 'Client-controlled content'],
-    media: {
-      type: 'placeholder',
-      title: 'Browser preview ready',
-      note: 'Live preview can be enabled when a client-safe capture or known embeddable URL is added.',
-      lines: ['service areas', 'lead intake', 'project imagery', 'content updates'],
-      caption: 'BrowserPreview component supports image, video, iframe, or placeholder modes.',
+    preview: {
+      previewMode: 'iframe',
+      previewSrc: 'https://www.home-ems.net/',
+      previewTitle: 'HomeEMS live site preview',
+      previewCaption: 'Live site preview loaded from the public website.',
     },
+    previewPlaceholder: {
+      title: 'Browser preview ready',
+      note: 'No approved site capture is stored in the repo yet, so the live link is wired while preview media stays deliberate.',
+      lines: ['service areas', 'lead intake', 'project imagery', 'content updates'],
+      caption: 'BrowserPreview is ready for image, video, or iframe when approved media is available.',
+    },
+    liveUrl: 'https://home-ems.net',
     featured: true,
   },
   {
@@ -51,12 +63,11 @@ export const clientWork = [
       'This work sits between consulting and delivery: one defined problem, one usable output, and no assumption that I become the default owner afterward.',
     domains: ['Controls', 'Operations', 'Workflows', 'Handoffs'],
     technologies: ['Audit delivery', 'Design packages', 'Process notes'],
-    media: {
-      type: 'placeholder',
+    previewPlaceholder: {
       title: 'Client work in progress',
       note: 'Representative artifacts will be added record by record as they can be shared.',
       lines: ['fixed scope', 'clear deliverable', 'clean handoff'],
     },
-    caseStudyHref: '/consulting',
+    caseStudyUrl: '/consulting',
   },
 ] as const satisfies readonly ClientWorkRecord[];

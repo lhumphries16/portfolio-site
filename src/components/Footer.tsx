@@ -26,7 +26,7 @@ export function Footer({ brand, socialLinks, note }: FooterProps) {
           <p>&copy; {new Date().getFullYear()} {brand.name}</p>
           <a href={`mailto:${brand.email}`}>{brand.email}</a>
           {socialLinks.map((link) => (
-            <a key={link.href} href={link.href} target="_blank" rel="noreferrer">
+            <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer">
               {link.label}
             </a>
           ))}

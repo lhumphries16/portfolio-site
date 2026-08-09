@@ -1,11 +1,19 @@
 import { Link } from 'react-router-dom';
+import { ProjectHeroMedia } from '../components/ProjectHeroMedia';
+import { RouteMeta } from '../components/RouteMeta';
 import { projects } from '../data/projects';
 
 export function ProjectsPage() {
-  const [featuredProject, ...otherProjects] = projects;
+  const featuredProject = projects.find((project) => project.featured) ?? projects[0];
+  const otherProjects = projects.filter((project) => project.slug !== featuredProject.slug);
 
   return (
     <>
+      <RouteMeta
+        title="Engineering Projects | Tre Humphries"
+        description="Independent engineering projects and experimental R&D across embedded systems, flight, and physical process tooling."
+      />
+
       <section className="section section--hero" id="top">
         <div className="site-frame page-hero">
           <div className="page-hero__copy">
@@ -49,19 +57,24 @@ export function ProjectsPage() {
               <p className="project-feature__summary">{featuredProject.summary}</p>
             </div>
 
-            <div className="project-placeholder" aria-label={`${featuredProject.title} project placeholder`}>
-              <div className="project-placeholder__field" aria-hidden="true" />
-              <div className="project-placeholder__meta">
-                <div>
-                  <p className="meta-label">Current stage</p>
-                  <p>Prototype flying / active tuning</p>
-                </div>
-                <div>
-                  <p className="meta-label">Seeking</p>
-                  <p>Venues / event-production collaborators / technical overlap</p>
+            {featuredProject.heroMediaType ? (
+              <ProjectHeroMedia project={featuredProject} loading="eager" />
+            ) : (
+              <div
+                className="project-placeholder"
+                aria-label={featuredProject.heroPlaceholder?.ariaLabel ?? `${featuredProject.title} project placeholder`}
+              >
+                <div className="project-placeholder__field" aria-hidden="true" />
+                <div className="project-placeholder__meta">
+                  {featuredProject.heroPlaceholder?.meta.map((item) => (
+                    <div key={item.label}>
+                      <p className="meta-label">{item.label}</p>
+                      <p>{item.value}</p>
+                    </div>
+                  ))}
                 </div>
               </div>
-            </div>
+            )}
 
             <div className="project-feature__details">
               <div className="project-feature__detail">

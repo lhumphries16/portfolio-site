@@ -15,13 +15,6 @@ export function Header({ brand, navItems }: HeaderProps) {
   const location = useLocation();
 
   const closeMenu = () => setIsOpen(false);
-  const resolveAnchorHref = (href: string) => {
-    if (href.startsWith('/#') && location.pathname === '/') {
-      return href.slice(1);
-    }
-
-    return href;
-  };
 
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
@@ -82,15 +75,20 @@ export function Header({ brand, navItems }: HeaderProps) {
                   className="nav-link"
                   href={item.href}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   onClick={closeMenu}
                 >
                   {item.label}
                 </a>
               ) : item.href.startsWith('/#') ? (
-                <a key={item.href} className="nav-link" href={resolveAnchorHref(item.href)} onClick={closeMenu}>
+                <Link
+                  key={item.href}
+                  className={`nav-link${location.pathname === '/' && location.hash === item.href.slice(1) ? ' nav-link--active' : ''}`}
+                  to={item.href}
+                  onClick={closeMenu}
+                >
                   {item.label}
-                </a>
+                </Link>
               ) : (
                 <NavLink
                   key={item.href}

@@ -1,10 +1,16 @@
 import { Link } from 'react-router-dom';
 import { BrowserPreview } from '../components/BrowserPreview';
+import { RouteMeta } from '../components/RouteMeta';
 import { clientWork } from '../data/clientWork';
 
 export function ClientWorkPage() {
   return (
     <>
+      <RouteMeta
+        title="Client Work | Tre Humphries"
+        description="Independent client work across web delivery, operational tooling, and scoped technical engagements."
+      />
+
       <section className="section section--hero" id="top">
         <div className="site-frame page-hero">
           <div className="page-hero__copy">
@@ -29,7 +35,11 @@ export function ClientWorkPage() {
           {clientWork.map((record, index) => (
             <article key={record.id} className={`record-block${index % 2 === 1 ? ' record-block--reverse' : ''}`} id={record.id}>
               <div className="record-block__media">
-                <BrowserPreview media={record.media} loading={index === 0 ? 'eager' : 'lazy'} />
+                <BrowserPreview
+                  preview={record.preview}
+                  fallback={record.previewPlaceholder}
+                  loading={index === 0 ? 'eager' : 'lazy'}
+                />
               </div>
               <div className="record-block__copy">
                 <p className="section-label">
@@ -42,12 +52,17 @@ export function ClientWorkPage() {
                 <p className="project-caption">{record.technologies.join(' / ')}</p>
                 <div className="feature-record__actions">
                   {record.liveUrl ? (
-                    <a className="text-link" href={record.liveUrl} target="_blank" rel="noreferrer">
+                    <a
+                      className="text-link text-link--external"
+                      href={record.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       Open live site
                     </a>
                   ) : null}
-                  {record.caseStudyHref ? (
-                    <Link className="text-link" to={record.caseStudyHref}>
+                  {record.caseStudyUrl ? (
+                    <Link className="text-link" to={record.caseStudyUrl}>
                       View related page
                     </Link>
                   ) : null}

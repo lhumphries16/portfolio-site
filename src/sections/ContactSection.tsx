@@ -41,7 +41,7 @@ export function ContactSection({ content, brand, socialLink }: ContactSectionPro
               <p>{brand.role}</p>
               <p>{brand.location}</p>
               <a href={`mailto:${brand.email}`}>{brand.email}</a>
-              <a href={socialLink.href} target="_blank" rel="noreferrer">
+              <a href={socialLink.href} target="_blank" rel="noopener noreferrer">
                 {socialLink.label}
               </a>
             </div>

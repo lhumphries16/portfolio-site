@@ -3,6 +3,7 @@ import { AppLayout } from './components/AppLayout';
 import { ScrollManager } from './components/ScrollManager';
 import { ClientWorkPage } from './pages/ClientWorkPage';
 import { ConsultingPage } from './pages/ConsultingPage';
+import { CvPage } from './pages/CvPage';
 import { ExperiencePage } from './pages/ExperiencePage';
 import { HomePage } from './pages/HomePage';
 import { NotFoundPage } from './pages/NotFoundPage';
@@ -19,6 +20,7 @@ function App() {
           <Route path="/experience" element={<ExperiencePage />} />
           <Route path="/client-work" element={<ClientWorkPage />} />
           <Route path="/consulting" element={<ConsultingPage />} />
+          <Route path="/cv" element={<CvPage />} />
           <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/projects/:slug" element={<ProjectDetailPage />} />
           <Route path="*" element={<NotFoundPage />} />

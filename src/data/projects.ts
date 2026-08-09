@@ -28,11 +28,11 @@ export const projects = [
       'Useful overlap with environmental control, sensing, or operational logging',
     ],
     lastUpdated: 'August 9, 2026',
-    hero: {
-      src: '/images/hydro_basil_rack_photo_my_garage.jpg',
-      alt: 'Indoor horticulture rack used for controlled growing and operational logging experiments',
-      caption: 'Garage horticulture rack used as a physical systems testbed.',
-    },
+    heroMediaType: 'image',
+    heroMediaSrc: '/images/hydro_basil_rack_photo_my_garage.jpg',
+    heroMediaAlt:
+      'Indoor horticulture rack used for controlled growing and operational logging experiments',
+    heroMediaCaption: 'Garage horticulture rack used as a physical systems testbed.',
   },
   {
     slug: 'flying-creatures',
@@ -77,6 +77,19 @@ export const projects = [
       'Embedded and controls people whose expertise overlaps',
     ],
     lastUpdated: 'August 9, 2026',
+    heroPlaceholder: {
+      ariaLabel: 'Programmable Flying Creatures media placeholder',
+      meta: [
+        {
+          label: 'Current stage',
+          value: 'Prototype flying / active tuning',
+        },
+        {
+          label: 'Seeking',
+          value: 'Venues / event-production collaborators / technical overlap',
+        },
+      ],
+    },
     featured: true,
   },
 ] as const satisfies readonly Project[];

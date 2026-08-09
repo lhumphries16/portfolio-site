@@ -1,5 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
-import { ImageFigure } from '../components/ImageFigure';
+import { ProjectHeroMedia } from '../components/ProjectHeroMedia';
+import { RouteMeta } from '../components/RouteMeta';
 import { getProjectBySlug } from '../data/projects';
 
 export function ProjectDetailPage() {
@@ -8,30 +9,39 @@ export function ProjectDetailPage() {
 
   if (!project) {
     return (
-      <section className="section section--paper">
-        <div className="site-frame split-section">
-          <div className="section-copy">
-            <p className="section-label">
-              <span className="section-label__text">Projects</span>
-            </p>
-            <h2 className="section-heading">That project page does not exist.</h2>
-            <div className="section-intro">
-              <p>The route is valid, but there is no matching project entry in the data source.</p>
+      <>
+        <RouteMeta
+          title="Project Not Found | Tre Humphries"
+          description="The requested project route does not match a published project entry."
+        />
+
+        <section className="section section--paper">
+          <div className="site-frame split-section">
+            <div className="section-copy">
+              <p className="section-label">
+                <span className="section-label__text">Projects</span>
+              </p>
+              <h2 className="section-heading">That project page does not exist.</h2>
+              <div className="section-intro">
+                <p>The route is valid, but there is no matching project entry in the data source.</p>
+              </div>
+            </div>
+            <div className="page-hero__panel">
+              <p className="project-block__label">Next step</p>
+              <Link className="text-link page-panel__action" to="/projects">
+                Back to projects
+              </Link>
             </div>
           </div>
-          <div className="page-hero__panel">
-            <p className="project-block__label">Next step</p>
-            <Link className="text-link page-panel__action" to="/projects">
-              Back to projects
-            </Link>
-          </div>
-        </div>
-      </section>
+        </section>
+      </>
     );
   }
 
   return (
     <>
+      <RouteMeta title={`${project.title} | Tre Humphries`} description={project.summary} />
+
       <section className="section section--hero" id="top">
         <div className="site-frame project-detail-hero">
           <div className="project-detail-hero__copy">
@@ -46,22 +56,23 @@ export function ProjectDetailPage() {
             </div>
           </div>
 
-          {project.hero ? (
+          {project.heroMediaType ? (
             <div className="project-detail-hero__media">
-              <ImageFigure image={project.hero} loading="eager" />
+              <ProjectHeroMedia project={project} loading="eager" />
             </div>
           ) : (
-            <div className="project-placeholder project-placeholder--detail" aria-label={`${project.title} project placeholder`}>
+            <div
+              className="project-placeholder project-placeholder--detail"
+              aria-label={project.heroPlaceholder?.ariaLabel ?? `${project.title} project placeholder`}
+            >
               <div className="project-placeholder__field" aria-hidden="true" />
               <div className="project-placeholder__meta">
-                <div>
-                  <p className="meta-label">Current stage</p>
-                  <p>Prototype flying / active tuning</p>
-                </div>
-                <div>
-                  <p className="meta-label">Seeking</p>
-                  <p>Venues / event-production collaborators / technical overlap</p>
-                </div>
+                {project.heroPlaceholder?.meta.map((item) => (
+                  <div key={item.label}>
+                    <p className="meta-label">{item.label}</p>
+                    <p>{item.value}</p>
+                  </div>
+                ))}
               </div>
             </div>
           )}
@@ -83,18 +94,18 @@ export function ProjectDetailPage() {
               <p className="meta-label">Last updated</p>
               <p>{project.lastUpdated}</p>
             </div>
-            {project.externalLink ? (
-              <div className="project-rail__group">
+            {project.externalLinks?.map((link) => (
+              <div key={`${link.type}-${link.url}`} className="project-rail__group">
                 <a
-                  className="text-link"
-                  href={project.externalLink.href}
-                  rel="noreferrer"
+                  className="text-link text-link--external"
+                  href={link.url}
+                  rel="noopener noreferrer"
                   target="_blank"
                 >
-                  {project.externalLink.label}
+                  {link.label}
                 </a>
               </div>
-            ) : null}
+            ))}
           </aside>
 
           <div className="detail-stack">

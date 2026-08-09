@@ -11,32 +11,26 @@ export type ImageAsset = {
   className?: string;
 };
 
-export type BrowserPreviewMedia =
-  | {
-      type: 'image';
-      image: ImageAsset;
-      caption?: string;
-    }
-  | {
-      type: 'video';
-      src: string;
-      title: string;
-      poster?: string;
-      caption?: string;
-    }
-  | {
-      type: 'iframe';
-      src: string;
-      title: string;
-      caption?: string;
-    }
-  | {
-      type: 'placeholder';
-      title: string;
-      note: string;
-      lines: readonly string[];
-      caption?: string;
-    };
+export type MediaPlaceholder = {
+  title: string;
+  note: string;
+  lines?: readonly string[];
+  caption?: string;
+};
+
+export type BrowserPreviewMode = 'image' | 'video' | 'iframe';
+
+export type BrowserPreviewRecord = {
+  previewMode: BrowserPreviewMode;
+  previewSrc: string;
+  previewTitle: string;
+  previewAlt?: string;
+  previewCaption?: string;
+  previewPosterSrc?: string;
+  previewAutoplay?: boolean;
+  previewLoop?: boolean;
+  previewMuted?: boolean;
+};
 
 export type ExperienceRecord = {
   id: string;
@@ -62,15 +56,32 @@ export type ClientWorkRecord = {
   detail: string;
   domains: readonly string[];
   technologies: readonly string[];
-  media: BrowserPreviewMedia;
+  preview?: BrowserPreviewRecord;
+  previewPlaceholder: MediaPlaceholder;
   liveUrl?: string;
-  caseStudyHref?: string;
+  caseStudyUrl?: string;
   featured?: boolean;
 };
 
-export type ProjectLink = {
-  href: string;
+export type ProjectExternalLink = {
   label: string;
+  url: string;
+  type: string;
+};
+
+export type ProjectHeroMediaType = 'image' | 'video';
+
+export type ProjectHeroPlaceholder = {
+  ariaLabel: string;
+  meta: readonly {
+    label: string;
+    value: string;
+  }[];
+};
+
+export type ProjectLink = {
+  label: string;
+  href: string;
 };
 
 export type Project = {
@@ -89,8 +100,14 @@ export type Project = {
   questions: readonly string[];
   lookingFor: readonly string[];
   lastUpdated: string;
-  hero?: ImageAsset;
-  externalLink?: ProjectLink;
+  heroMediaType?: ProjectHeroMediaType;
+  heroMediaSrc?: string;
+  heroMediaAlt?: string;
+  heroMediaTitle?: string;
+  heroMediaCaption?: string;
+  posterSrc?: string;
+  heroPlaceholder?: ProjectHeroPlaceholder;
+  externalLinks?: readonly ProjectExternalLink[];
   featured?: boolean;
 };
 

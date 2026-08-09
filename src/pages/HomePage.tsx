@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { BrowserPreview } from '../components/BrowserPreview';
 import { ContactForm } from '../components/ContactForm';
 import { ImageFigure } from '../components/ImageFigure';
+import { RouteMeta } from '../components/RouteMeta';
 import { careerStreams } from '../data/careerIndex';
 import { clientWork } from '../data/clientWork';
 import { experience } from '../data/experience';
@@ -24,6 +25,11 @@ export function HomePage() {
 
   return (
     <>
+      <RouteMeta
+        title="Tre Humphries | Mechanical Engineer & Systems Builder"
+        description="Mechanical engineer and systems builder working across physical systems, industrial controls, embedded systems, software, commissioning, and operational workflows."
+      />
+
       <section className="section section--hero" id="top">
         <div className="site-frame hero-grid" id="overview">
           <div className="hero-copy">
@@ -166,7 +172,11 @@ export function HomePage() {
 
             <article className="feature-record feature-record--reverse">
               <div className="feature-record__media">
-                <BrowserPreview media={featuredClient.media} loading="eager" />
+                <BrowserPreview
+                  preview={featuredClient.preview}
+                  fallback={featuredClient.previewPlaceholder}
+                  loading="eager"
+                />
               </div>
               <div className="feature-record__copy">
                 <p className="section-label">
@@ -178,7 +188,12 @@ export function HomePage() {
                 <p className="tag-line">{featuredClient.domains.join(' / ')}</p>
                 <div className="feature-record__actions">
                   {featuredClient.liveUrl ? (
-                    <a className="text-link" href={featuredClient.liveUrl} target="_blank" rel="noreferrer">
+                    <a
+                      className="text-link text-link--external"
+                      href={featuredClient.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       Open live site
                     </a>
                   ) : null}
@@ -191,14 +206,18 @@ export function HomePage() {
 
             <article className="feature-record">
               <div className="feature-record__media">
-                <div className="project-placeholder" aria-label="Programmable Flying Creatures media placeholder">
+                <div
+                  className="project-placeholder"
+                  aria-label={featuredProject.heroPlaceholder?.ariaLabel ?? 'Programmable Flying Creatures media placeholder'}
+                >
                   <div className="project-placeholder__field" aria-hidden="true" />
                   <div className="project-placeholder__meta">
-                    <p className="project-status-line">
-                      <span>{featuredProject.status}</span>
-                      <span>Flight testing</span>
-                    </p>
-                    <p>Large media area reserved for real flight footage.</p>
+                    {featuredProject.heroPlaceholder?.meta.map((item) => (
+                      <div key={item.label}>
+                        <p className="meta-label">{item.label}</p>
+                        <p>{item.value}</p>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -270,9 +289,9 @@ export function HomePage() {
               <Link className="text-link" to="/consulting">
                 View consulting
               </Link>
-              <a className="text-link" href="#contact">
+              <Link className="text-link" to="/#contact">
                 Contact
-              </a>
+              </Link>
             </div>
 
             <div className="about-copy">

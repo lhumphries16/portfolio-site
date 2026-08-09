@@ -37,7 +37,7 @@ export const careerStreams = [
       subtitle: record.title,
       detail: record.summary,
       domains: record.domains,
-      href: record.caseStudyHref ?? `/client-work#${record.id}`,
+      href: record.caseStudyUrl ?? `/client-work#${record.id}`,
     })),
   },
   {
