@@ -10,8 +10,8 @@ type BrowserPreviewProps = {
 const IFRAME_DESKTOP_WIDTH = 1440;
 const IFRAME_DESKTOP_HEIGHT = 3200;
 const IFRAME_PREVIEW_HEIGHT = {
-  min: 220,
-  max: 560,
+  min: 240,
+  max: 620,
 };
 
 export function BrowserPreview({ preview, fallback, loading = 'lazy' }: BrowserPreviewProps) {

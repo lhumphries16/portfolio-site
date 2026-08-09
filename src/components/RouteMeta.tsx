@@ -11,8 +11,10 @@ export function RouteMeta({ title, description }: RouteMetaProps) {
   const location = useLocation();
 
   useEffect(() => {
-    const siteOrigin = `https://${profile.site.domain}`;
-    const canonicalUrl = new URL(`${location.pathname}${location.search}`, siteOrigin).toString();
+    const canonicalUrl = new URL(location.pathname, profile.site.origin).toString();
+    const socialImageUrl = profile.site.socialImagePath
+      ? new URL(profile.site.socialImagePath, profile.site.origin).toString()
+      : null;
 
     document.title = title;
 
@@ -44,8 +46,24 @@ export function RouteMeta({ title, description }: RouteMetaProps) {
     ensureMeta('meta[property="og:title"]', 'property', 'og:title').setAttribute('content', title);
     ensureMeta('meta[property="og:description"]', 'property', 'og:description').setAttribute('content', description);
     ensureMeta('meta[property="og:url"]', 'property', 'og:url').setAttribute('content', canonicalUrl);
+    ensureMeta('meta[name="twitter:title"]', 'name', 'twitter:title').setAttribute('content', title);
+    ensureMeta('meta[name="twitter:description"]', 'name', 'twitter:description').setAttribute(
+      'content',
+      description
+    );
     ensureCanonical().setAttribute('href', canonicalUrl);
-  }, [description, location.pathname, location.search, title]);
+
+    const ogImage = document.head.querySelector<HTMLMetaElement>('meta[property="og:image"]');
+    const twitterImage = document.head.querySelector<HTMLMetaElement>('meta[name="twitter:image"]');
+
+    if (socialImageUrl) {
+      ensureMeta('meta[property="og:image"]', 'property', 'og:image').setAttribute('content', socialImageUrl);
+      ensureMeta('meta[name="twitter:image"]', 'name', 'twitter:image').setAttribute('content', socialImageUrl);
+    } else {
+      ogImage?.remove();
+      twitterImage?.remove();
+    }
+  }, [description, location.pathname, title]);
 
   return null;
 }

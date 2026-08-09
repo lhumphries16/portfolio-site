@@ -1,14 +1,38 @@
+import { Suspense, lazy } from 'react';
+import type { ReactElement } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { AppLayout } from './components/AppLayout';
+import { RouteLoading } from './components/RouteLoading';
 import { ScrollManager } from './components/ScrollManager';
-import { ClientWorkPage } from './pages/ClientWorkPage';
-import { ConsultingPage } from './pages/ConsultingPage';
-import { CvPage } from './pages/CvPage';
-import { ExperiencePage } from './pages/ExperiencePage';
 import { HomePage } from './pages/HomePage';
-import { NotFoundPage } from './pages/NotFoundPage';
-import { ProjectDetailPage } from './pages/ProjectDetailPage';
-import { ProjectsPage } from './pages/ProjectsPage';
+
+const ExperiencePage = lazy(async () => ({
+  default: (await import('./pages/ExperiencePage')).ExperiencePage,
+}));
+const ClientWorkPage = lazy(async () => ({
+  default: (await import('./pages/ClientWorkPage')).ClientWorkPage,
+}));
+const ConsultingPage = lazy(async () => ({
+  default: (await import('./pages/ConsultingPage')).ConsultingPage,
+}));
+const CvPage = lazy(async () => ({
+  default: (await import('./pages/CvPage')).CvPage,
+}));
+const ProjectsPage = lazy(async () => ({
+  default: (await import('./pages/ProjectsPage')).ProjectsPage,
+}));
+const ProjectDetailPage = lazy(async () => ({
+  default: (await import('./pages/ProjectDetailPage')).ProjectDetailPage,
+}));
+const NotFoundPage = lazy(async () => ({
+  default: (await import('./pages/NotFoundPage')).NotFoundPage,
+}));
+
+const routeFallback = <RouteLoading />;
+
+function withRouteSuspense(element: ReactElement) {
+  return <Suspense fallback={routeFallback}>{element}</Suspense>;
+}
 
 function App() {
   return (
@@ -17,13 +41,13 @@ function App() {
       <Routes>
         <Route element={<AppLayout />}>
           <Route index element={<HomePage />} />
-          <Route path="/experience" element={<ExperiencePage />} />
-          <Route path="/client-work" element={<ClientWorkPage />} />
-          <Route path="/consulting" element={<ConsultingPage />} />
-          <Route path="/cv" element={<CvPage />} />
-          <Route path="/projects" element={<ProjectsPage />} />
-          <Route path="/projects/:slug" element={<ProjectDetailPage />} />
-          <Route path="*" element={<NotFoundPage />} />
+          <Route path="/experience" element={withRouteSuspense(<ExperiencePage />)} />
+          <Route path="/client-work" element={withRouteSuspense(<ClientWorkPage />)} />
+          <Route path="/consulting" element={withRouteSuspense(<ConsultingPage />)} />
+          <Route path="/cv" element={withRouteSuspense(<CvPage />)} />
+          <Route path="/projects" element={withRouteSuspense(<ProjectsPage />)} />
+          <Route path="/projects/:slug" element={withRouteSuspense(<ProjectDetailPage />)} />
+          <Route path="*" element={withRouteSuspense(<NotFoundPage />)} />
         </Route>
       </Routes>
     </BrowserRouter>

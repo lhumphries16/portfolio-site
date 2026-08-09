@@ -24,8 +24,10 @@ export const profile = {
     },
   ],
   site: {
+    origin: 'https://trehumphries.com',
     domain: 'trehumphries.com',
     cvUrl: '/cv/tre-humphries-cv.pdf',
+    socialImagePath: undefined as string | undefined,
   },
   hero: {
     eyebrow: 'Overview',

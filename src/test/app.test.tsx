@@ -7,11 +7,11 @@ function renderRoute(route: string) {
 }
 
 describe('App', () => {
-  it('renders the core homepage messaging', () => {
-    renderRoute('/');
+  it('renders the core homepage messaging and strips query params from the canonical url', async () => {
+    renderRoute('/?utm_source=instagram');
 
     expect(
-      screen.getByRole('heading', {
+      await screen.findByRole('heading', {
         name: /tre humphries/i,
       })
     ).toBeInTheDocument();
@@ -24,14 +24,16 @@ describe('App', () => {
     expect(document.querySelector('meta[name="description"]')?.getAttribute('content')).toMatch(
       /mechanical engineer and systems builder/i
     );
-    expect(document.querySelector('link[rel="canonical"]')?.getAttribute('href')).toBe('https://trehumphries.com/');
+    expect(document.querySelector('link[rel="canonical"]')?.getAttribute('href')).toBe(
+      'https://trehumphries.com/'
+    );
   });
 
-  it('renders the experience page', () => {
+  it('renders the experience page', async () => {
     renderRoute('/experience');
 
     expect(
-      screen.getByRole('heading', {
+      await screen.findByRole('heading', {
         name: /corporate engineering/i,
       })
     ).toBeInTheDocument();
@@ -39,11 +41,11 @@ describe('App', () => {
     expect(screen.getByText(/gaf roads \/ standard industries/i)).toBeInTheDocument();
   });
 
-  it('renders the client work page', () => {
+  it('renders the client work page', async () => {
     renderRoute('/client-work');
 
     expect(
-      screen.getByRole('heading', {
+      await screen.findByRole('heading', {
         name: /independent delivery for paying clients/i,
       })
     ).toBeInTheDocument();
@@ -57,11 +59,11 @@ describe('App', () => {
     expect(liveSiteLinks[1]).toHaveAttribute('href', 'https://www.home-ems.net/');
   });
 
-  it('renders the consulting page', () => {
+  it('renders the consulting page', async () => {
     renderRoute('/consulting');
 
     expect(
-      screen.getByRole('heading', {
+      await screen.findByRole('heading', {
         name: /scoped engineering work with clear deliverables and a clean handoff/i,
       })
     ).toBeInTheDocument();
@@ -69,11 +71,11 @@ describe('App', () => {
     expect(screen.getByText(/controls audit & design-for-hire/i)).toBeInTheDocument();
   });
 
-  it('renders the projects index page', () => {
+  it('renders the projects index page', async () => {
     renderRoute('/projects');
 
     expect(
-      screen.getByRole('heading', {
+      await screen.findByRole('heading', {
         name: /independent technical work built out of curiosity/i,
       })
     ).toBeInTheDocument();
@@ -82,11 +84,11 @@ describe('App', () => {
     expect(document.title).toBe('Engineering Projects | Tre Humphries');
   });
 
-  it('renders a project detail page from the slug route', () => {
+  it('renders a project detail page from the slug route', async () => {
     renderRoute('/projects/flying-creatures');
 
     expect(
-      screen.getByRole('heading', {
+      await screen.findByRole('heading', {
         level: 1,
         name: /programmable flying creatures/i,
       })
@@ -96,11 +98,11 @@ describe('App', () => {
     expect(document.title).toBe('Programmable Flying Creatures | Tre Humphries');
   });
 
-  it('renders the cv page with embedded pdf controls', () => {
+  it('renders the cv page with embedded pdf controls', async () => {
     renderRoute('/cv');
 
     expect(
-      screen.getByRole('heading', {
+      await screen.findByRole('heading', {
         level: 1,
         name: /current cv/i,
       })
@@ -119,10 +121,10 @@ describe('App', () => {
     expect(document.title).toBe('CV | Tre Humphries');
   });
 
-  it('fails gracefully for an invalid project slug', () => {
+  it('fails gracefully for an invalid project slug', async () => {
     renderRoute('/projects/not-a-real-project');
 
-    expect(screen.getByText(/that project page does not exist/i)).toBeInTheDocument();
+    expect(await screen.findByText(/that project page does not exist/i)).toBeInTheDocument();
     expect(document.title).toBe('Project Not Found | Tre Humphries');
   });
 

@@ -154,7 +154,7 @@ export function HomePage() {
           <div className="feature-records">
             <article className="feature-record">
               <div className="feature-record__media">
-                {featuredCorporate.image ? <ImageFigure image={featuredCorporate.image} loading="eager" /> : null}
+                {featuredCorporate.image ? <ImageFigure image={featuredCorporate.image} loading="lazy" /> : null}
               </div>
               <div className="feature-record__copy">
                 <p className="section-label">
@@ -175,7 +175,7 @@ export function HomePage() {
                 <BrowserPreview
                   preview={featuredClient.preview}
                   fallback={featuredClient.previewPlaceholder}
-                  loading="eager"
+                  loading="lazy"
                 />
               </div>
               <div className="feature-record__copy">
