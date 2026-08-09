@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">Tre Humphries favicon</title>
+  <desc id="desc">A control-panel inspired monogram on a dark background.</desc>
+  <defs>
+    <pattern id="grid" width="8" height="8" patternUnits="userSpaceOnUse">
+      <path d="M8 0H0V8" fill="none" stroke="rgba(216,221,224,0.12)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#101820"/>
+  <rect x="4" y="4" width="56" height="56" rx="12" fill="url(#grid)" stroke="rgba(216,221,224,0.18)"/>
+  <rect x="15" y="17" width="22" height="6" rx="2" fill="#f0eee8"/>
+  <rect x="23" y="17" width="6" height="30" rx="2" fill="#f0eee8"/>
+  <rect x="37" y="17" width="6" height="30" rx="2" fill="#4d8dff"/>
+  <rect x="46" y="17" width="6" height="30" rx="2" fill="#4d8dff"/>
+  <rect x="37" y="29" width="15" height="6" rx="2" fill="#4d8dff"/>
+  <circle cx="16" cy="49" r="3" fill="#4d8dff"/>
+  <circle cx="24" cy="49" r="3" fill="#f0eee8"/>
+  <circle cx="32" cy="49" r="3" fill="#4d8dff"/>
+</svg>
