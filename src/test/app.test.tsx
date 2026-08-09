@@ -57,6 +57,6 @@ describe('App', () => {
       })
     ).toBeInTheDocument();
 
-    expect(screen.getByText(/questions i'm exploring/i)).toBeInTheDocument();
+    expect(screen.getByText(/^Questions$/i)).toBeInTheDocument();
   });
 });

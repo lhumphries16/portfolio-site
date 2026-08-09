@@ -34,7 +34,7 @@ export function ContactSection({ content, brand, socialLink }: ContactSectionPro
     <section className="section section--paper" id={content.id}>
       <div className="site-frame split-section split-section--contact">
         <div className="section-sidecar">
-          <SectionIntro label={content.label} title={content.title} paragraphs={content.intro} />
+          <SectionIntro index="07" label={content.label} title={content.title} paragraphs={content.intro} />
           <div className="contact-card">
             <div className="contact-card__details">
               <p className="contact-card__name">{brand.name}</p>

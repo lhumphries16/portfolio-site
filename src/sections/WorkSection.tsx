@@ -43,7 +43,7 @@ export function WorkSection({ content }: WorkSectionProps) {
     <>
       <section className="section section--paper" id={content.id}>
         <div className="site-frame">
-          <SectionIntro label={content.label} title={content.title} paragraphs={content.intro} />
+          <SectionIntro index="03" label={content.label} title={content.title} paragraphs={content.intro} />
           <div className="feature-list">
             {content.featured.map((project) => (
               <article

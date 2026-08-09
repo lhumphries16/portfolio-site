@@ -21,7 +21,7 @@ export function PathwaysSection({ content }: PathwaysSectionProps) {
     <section className="section section--dark">
       <div className="site-frame split-section split-section--dark">
         <div className="section-sidecar">
-          <SectionIntro dark label={content.label} title={content.title} paragraphs={content.intro} />
+          <SectionIntro index="04" dark label={content.label} title={content.title} paragraphs={content.intro} />
         </div>
         <div className="route-card-grid">
           {content.cards.map((card) => (
@@ -31,7 +31,7 @@ export function PathwaysSection({ content }: PathwaysSectionProps) {
                 <h3>{card.title}</h3>
                 <p>{card.body}</p>
               </div>
-              <Link className="button button--primary" to={card.href}>
+              <Link className="text-link" to={card.href}>
                 {card.actionLabel}
               </Link>
             </article>

@@ -40,6 +40,7 @@ export function CareerSection({ content }: CareerSectionProps) {
       <div className="site-frame split-section split-section--dark">
         <div className="section-sidecar">
           <SectionIntro
+            index="02"
             label={content.label}
             title={content.title}
             paragraphs={content.intro}

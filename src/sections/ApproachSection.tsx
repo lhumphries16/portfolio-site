@@ -18,7 +18,7 @@ export function ApproachSection({ content }: ApproachSectionProps) {
   return (
     <section className="section section--paper" id={content.id}>
       <div className="site-frame split-section">
-        <SectionIntro label={content.label} title={content.title} paragraphs={content.intro} />
+        <SectionIntro index="06" label={content.label} title={content.title} paragraphs={content.intro} />
         <ol className="process-list">
           {content.steps.map((step) => (
             <li key={step.index} className="process-card">
