@@ -1,8 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
 import { RouteMeta } from '../components/RouteMeta';
+import { SystemRail } from '../components/SystemRail';
 
 const cvPdfUrl = '/cv/tre-humphries-cv.pdf';
+const display = 'font-display uppercase leading-[0.9] tracking-[0.04em]';
+const mono = 'font-mono text-[0.66rem] uppercase tracking-[0.22em]';
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   'pdfjs-dist/build/pdf.worker.min.mjs',
@@ -41,26 +44,26 @@ export function CvPage() {
         description="View or download the current CV for Tre Humphries."
       />
 
-      <section className="section section--hero" id="top">
-        <div className="site-frame page-hero">
-          <div className="page-hero__copy">
-            <p className="section-label">
-              <span className="section-label__text">CV</span>
+      <section id="top" className="bg-carbon px-4 py-14 text-bone md:px-6 lg:px-8 xl:px-12 xl:py-18">
+        <div className="mx-auto grid max-w-[1700px] gap-8 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)] lg:items-end">
+          <div className="grid gap-5">
+            <SystemRail label="CV" index="01" labelClassName="text-steel" />
+            <h1 className={`${display} max-w-[8ch] text-[clamp(3rem,8vw,6.2rem)] text-bone`}>Current CV</h1>
+          </div>
+          <div className="grid gap-4 lg:max-w-[40rem]">
+            <p className="m-0 text-base leading-relaxed text-steel">
+              A direct in-page view of the current PDF, with open and download options below.
             </p>
-            <h1 className="display-title display-title--page">Current CV</h1>
-            <div className="hero-body">
-              <p>A direct in-page view of the current PDF, with open and download options below.</p>
-            </div>
-            <div className="feature-record__actions">
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
               <a
-                className="text-link text-link--external"
+                className={`${mono} text-bone transition-colors duration-200 hover:text-cobalt`}
                 href={cvPdfUrl}
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 Open PDF
               </a>
-              <a className="text-link" href={cvPdfUrl} download="tre-humphries-cv.pdf">
+              <a className={`${mono} text-steel transition-colors duration-200 hover:text-bone`} href={cvPdfUrl} download="tre-humphries-cv.pdf">
                 Download PDF
               </a>
             </div>
@@ -68,36 +71,38 @@ export function CvPage() {
         </div>
       </section>
 
-      <section className="section">
-        <div className="site-frame">
-          <div className="cv-viewer" ref={sheetRef}>
+      <section className="bg-[#d8dde3] px-4 py-12 text-carbon md:px-6 lg:px-8 xl:px-12 xl:py-16">
+        <div className="mx-auto max-w-[1700px]">
+          <div className="mx-auto max-w-[980px]" ref={sheetRef}>
             {loadError ? (
-              <div className="cv-viewer__fallback">
-                <p>The CV preview could not be rendered in this browser.</p>
-                <div className="feature-record__actions">
+              <div className="grid gap-4 border border-carbon/12 bg-bone px-5 py-6 md:px-7 md:py-8">
+                <p className="m-0 text-base leading-relaxed text-carbon/74">
+                  The CV preview could not be rendered in this browser.
+                </p>
+                <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
                   <a
-                    className="text-link text-link--external"
+                    className={`${mono} text-carbon transition-colors duration-200 hover:text-cobalt`}
                     href={cvPdfUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     Open PDF
                   </a>
-                  <a className="text-link" href={cvPdfUrl} download="tre-humphries-cv.pdf">
+                  <a className={`${mono} text-carbon/60 transition-colors duration-200 hover:text-carbon`} href={cvPdfUrl} download="tre-humphries-cv.pdf">
                     Download PDF
                   </a>
                 </div>
               </div>
             ) : (
               <div
-                className="cv-viewer__sheet"
+                className="grid justify-items-center border border-carbon/12 bg-bone/92 p-[clamp(0.9rem,2.2vw,2rem)]"
                 data-testid="cv-pdf-viewer"
                 data-pdf-url={cvPdfUrl}
                 aria-label="Tre Humphries CV PDF"
               >
                 <Document
                   file={cvPdfUrl}
-                  loading={<p className="project-caption">Loading CV...</p>}
+                  loading={<p className={`${mono} text-carbon/58`}>Loading CV...</p>}
                   onLoadError={() => setLoadError(true)}
                   onSourceError={() => setLoadError(true)}
                 >

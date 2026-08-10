@@ -11,19 +11,19 @@ export function ProjectHeroMedia({ project, loading = 'lazy' }: ProjectHeroMedia
   }
 
   return (
-    <figure className="project-figure">
-      <div className="image-frame">
+    <figure className="grid gap-3">
+      <div className="overflow-hidden bg-carbon">
         {project.heroMediaType === 'image' ? (
           <img
             src={project.heroMediaSrc}
             alt={project.heroMediaAlt ?? ''}
             loading={loading}
-            className="project-image"
+            className="h-full w-full object-cover"
             sizes="(max-width: 767px) 100vw, (max-width: 1279px) 80vw, 720px"
           />
         ) : (
           <video
-            className="project-image"
+            className="h-full w-full object-cover"
             controls
             playsInline
             preload="metadata"
@@ -36,9 +36,10 @@ export function ProjectHeroMedia({ project, loading = 'lazy' }: ProjectHeroMedia
         )}
       </div>
       {project.heroMediaCaption ? (
-        <figcaption className="project-caption">{project.heroMediaCaption}</figcaption>
+        <figcaption className="font-mono text-[0.63rem] uppercase tracking-[0.2em] text-steel">
+          {project.heroMediaCaption}
+        </figcaption>
       ) : null}
     </figure>
   );
 }
-

@@ -77,12 +77,17 @@ export function ContactForm({
 
   return (
     <form
-      className={`contact-form${touched ? ' is-touched' : ''}${showInvalid ? ' is-invalid' : ''}${showValid ? ' is-valid' : ''}`}
+      className="grid gap-5"
       noValidate
       onSubmit={openDraft}
     >
-      <div className="contact-form__field">
-        <label htmlFor="contact-name">Name</label>
+      <div className="grid gap-2.5">
+        <label
+          className="font-mono text-[0.65rem] uppercase tracking-[0.22em] text-cobalt"
+          htmlFor="contact-name"
+        >
+          Name
+        </label>
         <input
           id="contact-name"
           name="name"
@@ -90,6 +95,7 @@ export function ContactForm({
           required
           aria-invalid={touched && values.name.trim().length === 0}
           placeholder="Your name"
+          className="min-h-12 border-0 border-b border-carbon/18 bg-transparent px-0 py-3 text-base text-carbon placeholder:text-carbon/48"
           value={values.name}
           onBlur={() => setTouched(true)}
           onChange={(event) =>
@@ -98,15 +104,19 @@ export function ContactForm({
         />
       </div>
 
-      <div className="contact-form__field">
-        <label htmlFor="contact-company">
-          Company or team <span>optional</span>
+      <div className="grid gap-2.5">
+        <label
+          className="font-mono text-[0.65rem] uppercase tracking-[0.22em] text-cobalt"
+          htmlFor="contact-company"
+        >
+          Company or team <span className="text-carbon/52">optional</span>
         </label>
         <input
           id="contact-company"
           name="company"
           type="text"
           placeholder="Company, plant, or team"
+          className="min-h-12 border-0 border-b border-carbon/18 bg-transparent px-0 py-3 text-base text-carbon placeholder:text-carbon/48"
           value={values.company}
           onChange={(event) =>
             setValues((current) => ({ ...current, company: event.target.value }))
@@ -114,8 +124,13 @@ export function ContactForm({
         />
       </div>
 
-      <div className="contact-form__field">
-        <label htmlFor="contact-email">Email</label>
+      <div className="grid gap-2.5">
+        <label
+          className="font-mono text-[0.65rem] uppercase tracking-[0.22em] text-cobalt"
+          htmlFor="contact-email"
+        >
+          Email
+        </label>
         <input
           id="contact-email"
           name="email"
@@ -123,6 +138,7 @@ export function ContactForm({
           required
           aria-invalid={touched && (!values.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email))}
           placeholder="you@company.com"
+          className="min-h-12 border-0 border-b border-carbon/18 bg-transparent px-0 py-3 text-base text-carbon placeholder:text-carbon/48"
           value={values.email}
           onBlur={() => setTouched(true)}
           onChange={(event) =>
@@ -131,14 +147,20 @@ export function ContactForm({
         />
       </div>
 
-      <div className="contact-form__field">
-        <label htmlFor="contact-problem">Tell me about the problem</label>
+      <div className="grid gap-2.5">
+        <label
+          className="font-mono text-[0.65rem] uppercase tracking-[0.22em] text-cobalt"
+          htmlFor="contact-problem"
+        >
+          Tell me about the problem
+        </label>
         <textarea
           id="contact-problem"
           name="problem"
           required
           aria-invalid={touched && values.problem.trim().length === 0}
           placeholder="What is happening today, where does it break down, and what would better look like?"
+          className="min-h-36 border-0 border-b border-carbon/18 bg-transparent px-0 py-3 text-base text-carbon placeholder:text-carbon/48"
           value={values.problem}
           onBlur={() => setTouched(true)}
           onChange={(event) =>
@@ -147,12 +169,23 @@ export function ContactForm({
         />
       </div>
 
-      <p className="contact-form__helper">{helper}</p>
-      <div className="contact-form__status" aria-live="polite">
-        <p className="form-state form-state--success">{success}</p>
-        <p className="form-state form-state--error">{error}</p>
+      <p className="m-0 max-w-[34rem] text-sm leading-relaxed text-carbon/68">{helper}</p>
+      <div aria-live="polite">
+        {showValid ? (
+          <p className="border-t border-carbon/12 pt-3 font-mono text-[0.68rem] uppercase tracking-[0.18em] text-active">
+            {success}
+          </p>
+        ) : null}
+        {showInvalid ? (
+          <p className="border-t border-carbon/12 pt-3 font-mono text-[0.68rem] uppercase tracking-[0.18em] text-orange">
+            {error}
+          </p>
+        ) : null}
       </div>
-      <button className="button button--primary button--submit" type="submit">
+      <button
+        className="inline-flex min-h-12 w-full items-center justify-center bg-orange px-5 font-mono text-[0.68rem] uppercase tracking-[0.22em] text-carbon transition-colors duration-200 hover:bg-carbon hover:text-bone md:w-fit"
+        type="submit"
+      >
         {submitLabel}
       </button>
     </form>
