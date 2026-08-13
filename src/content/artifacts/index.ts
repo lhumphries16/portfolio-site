@@ -5,6 +5,9 @@ import type {
   ArtifactDomain,
   ArtifactDomainFilter,
   ArtifactFilters,
+  ArtifactYearBounds,
+  ArtifactYearRange,
+  ArtifactSurface,
   ArtifactType,
   ArtifactTypeFilter,
 } from './types';
@@ -70,6 +73,12 @@ export const artifacts = [
     display: {
       weight: 'feature',
     },
+    placement: {
+      web: true,
+    },
+    order: {
+      web: 4,
+    },
     detail: {
       enabled: false,
       template: 'archive',
@@ -119,6 +128,9 @@ export const artifacts = [
       'This is archived as early physical-systems thinking rather than as a polished artifact. Future media will likely be a slideshow, PDF, or build photos.',
     display: {
       weight: 'card',
+    },
+    placement: {
+      industrial: true,
     },
     detail: {
       enabled: false,
@@ -227,6 +239,56 @@ export const artifacts = [
     },
   },
   {
+    id: 'all-seasons',
+    slug: 'all-seasons',
+    title: 'All Seasons',
+    subtitle: 'Website delivery and client-managed web presence',
+    date: {
+      start: '2021-01-01',
+      precision: 'year',
+    },
+    sortDate: '2021-01-01',
+    type: 'project',
+    domains: ['web'],
+    era: 'independent-work',
+    summary:
+      'Independent website delivery work around a client site that needed to be practical, editable, and usable by the business after handoff.',
+    story:
+      'This record stays intentionally compact because there is no approved public capture in the repo yet, but it marks the early web-delivery stream that later expanded into broader digital systems work.',
+    links: [
+      {
+        label: 'Open live site',
+        href: 'https://allseasonsmo.com/home/',
+        external: true,
+      },
+    ],
+    display: {
+      weight: 'card',
+    },
+    media: [
+      {
+        type: 'iframe',
+        src: 'https://allseasonsmo.com/home/',
+        title: 'All Seasons live site preview',
+        caption: 'Live site preview loaded from the public website.',
+        featured: true,
+        display: {
+          variant: 'wide',
+        },
+      },
+    ],
+    placement: {
+      web: true,
+    },
+    order: {
+      web: 3,
+    },
+    detail: {
+      enabled: false,
+      template: 'case-study',
+    },
+  },
+  {
     id: 'innerspec',
     slug: '2021-innerspec',
     title: 'Innerspec',
@@ -247,6 +309,21 @@ export const artifacts = [
     highlights: ['robotics', 'KUKA', 'Beckhoff', 'ultrasonic inspection'],
     display: {
       weight: 'card',
+    },
+    media: [
+      {
+        type: 'image',
+        src: '/images/rollmate-inspection-system_innerspec.jpg',
+        alt: 'Robotic ultrasonic inspection system operating on a large metal component',
+        caption: 'Robotic ultrasonic inspection system context from Innerspec work.',
+        featured: true,
+      },
+    ],
+    placement: {
+      industrial: true,
+    },
+    order: {
+      industrial: 4,
     },
     detail: {
       enabled: false,
@@ -275,6 +352,24 @@ export const artifacts = [
     display: {
       weight: 'feature',
     },
+    media: [
+      {
+        type: 'image',
+        src: '/images/mainstream_rooftop_ahu_public.jpg',
+        alt: 'Commercial HVAC equipment during installation and controls work',
+        caption: 'Commercial HVAC equipment where controls and commissioning had to hold up.',
+        featured: true,
+        display: {
+          variant: 'wide',
+        },
+      },
+    ],
+    placement: {
+      industrial: true,
+    },
+    order: {
+      industrial: 3,
+    },
     detail: {
       enabled: false,
       template: 'experience',
@@ -302,6 +397,12 @@ export const artifacts = [
     display: {
       weight: 'feature',
       featured: true,
+    },
+    placement: {
+      industrial: true,
+    },
+    order: {
+      industrial: 5,
     },
     media: [
       {
@@ -361,6 +462,14 @@ export const artifacts = [
         },
       },
     ],
+    placement: {
+      home: true,
+      web: true,
+    },
+    order: {
+      home: 2,
+      web: 1,
+    },
     detail: {
       enabled: false,
       template: 'case-study',
@@ -387,6 +496,26 @@ export const artifacts = [
     display: {
       weight: 'feature',
       featured: true,
+    },
+    media: [
+      {
+        type: 'image',
+        src: '/images/feature_road-application-1.jpg',
+        alt: 'Electric road-application sprayer platform in an engineering context',
+        caption: 'Electric sprayer platform work spanning controls, telemetry, and field integration.',
+        featured: true,
+        display: {
+          variant: 'wide',
+        },
+      },
+    ],
+    placement: {
+      home: true,
+      industrial: true,
+    },
+    order: {
+      home: 3,
+      industrial: 2,
     },
     detail: {
       enabled: false,
@@ -465,6 +594,14 @@ export const artifacts = [
       featured: true,
       current: true,
     },
+    placement: {
+      home: true,
+      industrial: true,
+    },
+    order: {
+      home: 1,
+      industrial: 1,
+    },
     detail: {
       enabled: false,
       template: 'case-study',
@@ -491,6 +628,14 @@ export const artifacts = [
       weight: 'feature',
       featured: true,
       current: true,
+    },
+    placement: {
+      home: true,
+      web: true,
+    },
+    order: {
+      home: 4,
+      web: 2,
     },
     detail: {
       enabled: false,
@@ -592,6 +737,66 @@ export function normalizeArtifactDomainFilter(value: string | null | undefined):
   return 'all';
 }
 
+function parseArtifactYear(value: string) {
+  const match = value.match(/^(\d{4})/);
+
+  if (!match) {
+    throw new Error(`Unable to extract year from artifact date value: ${value}`);
+  }
+
+  return Number(match[1]);
+}
+
+export function getArtifactYearRange(date: Artifact['date']): ArtifactYearRange {
+  const start = parseArtifactYear(date.start);
+  const end = parseArtifactYear(date.end ?? date.start);
+
+  return {
+    start: Math.min(start, end),
+    end: Math.max(start, end),
+  };
+}
+
+export function getArtifactYearBounds(items: readonly Artifact[]): ArtifactYearBounds {
+  const publishedItems = items.filter(isArtifactPublished);
+
+  if (!publishedItems.length) {
+    throw new Error('Artifact year bounds require at least one published artifact.');
+  }
+
+  return publishedItems.reduce<ArtifactYearBounds>((bounds, artifact) => {
+    const years = getArtifactYearRange(artifact.date);
+
+    return {
+      min: Math.min(bounds.min, years.start),
+      max: Math.max(bounds.max, years.end),
+    };
+  }, {
+    min: Number.POSITIVE_INFINITY,
+    max: Number.NEGATIVE_INFINITY,
+  });
+}
+
+function clampYear(year: number, bounds: ArtifactYearBounds) {
+  return Math.min(bounds.max, Math.max(bounds.min, year));
+}
+
+export function normalizeArtifactYearRange(
+  fromValue: string | null | undefined,
+  toValue: string | null | undefined,
+  bounds: ArtifactYearBounds
+): ArtifactYearRange {
+  const parsedFrom = Number.parseInt(fromValue ?? '', 10);
+  const parsedTo = Number.parseInt(toValue ?? '', 10);
+  const from = Number.isFinite(parsedFrom) ? clampYear(parsedFrom, bounds) : bounds.min;
+  const to = Number.isFinite(parsedTo) ? clampYear(parsedTo, bounds) : bounds.max;
+
+  return {
+    start: Math.min(from, to),
+    end: Math.max(from, to),
+  };
+}
+
 export function isArtifactPublished(artifact: Artifact) {
   return artifact.visibility?.published !== false;
 }
@@ -611,6 +816,12 @@ export function filterArtifacts(items: readonly Artifact[], filters: ArtifactFil
     }
 
     if (filters.domain !== 'all' && !artifact.domains.includes(filters.domain)) {
+      return false;
+    }
+
+    const artifactYears = getArtifactYearRange(artifact.date);
+
+    if (artifactYears.start > filters.years.end || artifactYears.end < filters.years.start) {
       return false;
     }
 
@@ -665,4 +876,73 @@ export function getCurrentHighlights(items: readonly Artifact[], limit = 4) {
     .sort((left, right) => right.sortDate.localeCompare(left.sortDate));
 
   return highlighted.slice(0, limit);
+}
+
+const industrialDomains: readonly ArtifactDomain[] = [
+  'controls',
+  'embedded',
+  'physical',
+  'operations',
+  'aerospace',
+];
+
+function compareSurfaceOrder(surface: ArtifactSurface, left: Artifact, right: Artifact) {
+  const leftOrder = left.order?.[surface] ?? Number.MAX_SAFE_INTEGER;
+  const rightOrder = right.order?.[surface] ?? Number.MAX_SAFE_INTEGER;
+
+  if (leftOrder !== rightOrder) {
+    return leftOrder - rightOrder;
+  }
+
+  return right.sortDate.localeCompare(left.sortDate);
+}
+
+function isArtifactInSurface(artifact: Artifact, surface: ArtifactSurface) {
+  if (!isArtifactPublished(artifact)) {
+    return false;
+  }
+
+  if (surface === 'home') {
+    return artifact.placement?.home === true;
+  }
+
+  if (surface === 'web') {
+    if (artifact.placement?.web === false) {
+      return false;
+    }
+
+    return artifact.placement?.web === true || artifact.domains.includes('web');
+  }
+
+  if (artifact.placement?.industrial === false) {
+    return false;
+  }
+
+  if (artifact.placement?.industrial === true) {
+    return true;
+  }
+
+  if (artifact.domains.includes('web')) {
+    return false;
+  }
+
+  return artifact.domains.some((domain) => industrialDomains.includes(domain));
+}
+
+export function getArtifactsForSurface(
+  items: readonly Artifact[],
+  surface: ArtifactSurface,
+  options?: {
+    limit?: number;
+  }
+) {
+  const selected = [...items]
+    .filter((artifact) => isArtifactInSurface(artifact, surface))
+    .sort((left, right) => compareSurfaceOrder(surface, left, right));
+
+  if (!options?.limit) {
+    return selected;
+  }
+
+  return selected.slice(0, options.limit);
 }

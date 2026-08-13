@@ -34,6 +34,7 @@ export type ArtifactDetailTemplate =
   | 'case-study'
   | 'experience'
   | 'paper';
+export type ArtifactSurface = 'home' | 'industrial' | 'web';
 
 export type ArtifactLink = {
   label: string;
@@ -79,6 +80,8 @@ export type Artifact = {
     current?: boolean;
   };
   media?: readonly ArtifactMedia[];
+  placement?: Partial<Record<ArtifactSurface, boolean>>;
+  order?: Partial<Record<ArtifactSurface, number>>;
   detail?: {
     enabled: boolean;
     template?: ArtifactDetailTemplate;
@@ -91,8 +94,17 @@ export type Artifact = {
 
 export type ArtifactTypeFilter = 'all' | ArtifactType;
 export type ArtifactDomainFilter = 'all' | ArtifactDomain;
+export type ArtifactYearRange = {
+  start: number;
+  end: number;
+};
+export type ArtifactYearBounds = {
+  min: number;
+  max: number;
+};
 
 export type ArtifactFilters = {
   type: ArtifactTypeFilter;
   domain: ArtifactDomainFilter;
+  years: ArtifactYearRange;
 };

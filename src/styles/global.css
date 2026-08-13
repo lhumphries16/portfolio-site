@@ -15,8 +15,8 @@
 }
 
 :root {
-  color: var(--color-bone);
-  background: var(--color-carbon);
+  color: var(--color-carbon);
+  background: var(--color-bone);
 }
 
 @layer base {
@@ -32,7 +32,7 @@
   }
 
   body {
-    @apply m-0 min-w-80 bg-carbon font-body text-[17px] leading-[1.65] text-bone antialiased;
+    @apply m-0 min-w-80 bg-bone font-body text-[17px] leading-[1.65] text-carbon antialiased;
     text-rendering: optimizeLegibility;
   }
 
@@ -76,6 +76,63 @@
 
 .react-pdf__Page__canvas {
   height: auto !important;
+}
+
+.timeline-range-slider {
+  pointer-events: none;
+}
+
+.timeline-range-slider::-webkit-slider-runnable-track {
+  height: 0;
+}
+
+.timeline-range-slider::-webkit-slider-thumb {
+  pointer-events: auto;
+  appearance: none;
+  width: 1rem;
+  height: 1rem;
+  margin-top: -0.5rem;
+  border: 1px solid rgb(16 19 23 / 0.18);
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgb(242 238 229 / 0.9);
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.timeline-range-slider::-moz-range-track {
+  height: 0;
+  border: 0;
+  background: transparent;
+}
+
+.timeline-range-slider::-moz-range-thumb {
+  pointer-events: auto;
+  width: 1rem;
+  height: 1rem;
+  border: 1px solid rgb(16 19 23 / 0.18);
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgb(242 238 229 / 0.9);
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.timeline-range-slider:hover::-webkit-slider-thumb,
+.timeline-range-slider:hover::-moz-range-thumb {
+  border-color: rgb(21 94 239 / 0.36);
+}
+
+.timeline-range-slider:focus-visible::-webkit-slider-thumb,
+.timeline-range-slider:focus-visible::-moz-range-thumb {
+  border-color: rgb(21 94 239 / 0.6);
+  box-shadow:
+    0 0 0 3px rgb(242 238 229 / 0.95),
+    0 0 0 5px rgb(21 94 239 / 0.16);
 }
 
 @media (max-width: 767px) {

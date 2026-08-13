@@ -183,7 +183,7 @@ export function ContactForm({
         ) : null}
       </div>
       <button
-        className="inline-flex min-h-12 w-full items-center justify-center bg-orange px-5 font-mono text-[0.68rem] uppercase tracking-[0.22em] text-carbon transition-colors duration-200 hover:bg-carbon hover:text-bone md:w-fit"
+        className="inline-flex min-h-12 w-full items-center justify-center bg-cobalt px-5 font-mono text-[0.68rem] uppercase tracking-[0.22em] text-bone transition-colors duration-200 hover:bg-carbon hover:text-bone md:w-fit"
         type="submit"
       >
         {submitLabel}

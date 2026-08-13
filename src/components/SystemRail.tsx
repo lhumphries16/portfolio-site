@@ -18,12 +18,15 @@ export function SystemRail({
   return (
     <div className={`flex items-center gap-3 ${className}`.trim()}>
       {index ? (
-        <span className="font-mono text-[0.62rem] uppercase tracking-[0.24em] text-steel/78">
+        <span className="font-mono text-[0.62rem] uppercase tracking-[0.24em] text-steel/60">
           {index}
         </span>
       ) : null}
-      <span className={`h-1.5 w-11 bg-cobalt ${lineClassName}`.trim()} aria-hidden="true" />
-      <span className={`h-2.5 w-2.5 bg-orange ${markerClassName}`.trim()} aria-hidden="true" />
+      <span className={`h-px w-11 bg-cobalt/60 ${lineClassName}`.trim()} aria-hidden="true" />
+      <span
+        className={`h-1.5 w-1.5 rounded-full bg-cobalt/30 ${markerClassName}`.trim()}
+        aria-hidden="true"
+      />
       <span
         className={`font-mono text-[0.66rem] uppercase tracking-[0.24em] ${labelClassName}`.trim()}
       >

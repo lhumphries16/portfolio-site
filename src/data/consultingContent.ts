@@ -17,17 +17,17 @@ export const consultingContent = {
   },
   offers: [
     {
-      id: 'controls-audit-design',
+      id: 'controls-systems-audit',
       index: '01',
       label: 'Offer 01',
-      title: 'Controls Audit & Design-for-Hire',
+      title: 'Controls Systems Audit',
       summary:
-        'A short, fixed-scope controls engagement for clarity, risk reduction, and clean handoff.',
+        'A short, fixed-scope controls review for clarity, risk reduction, and clean handoff.',
       meta: [
         { label: 'Typical scope', value: 'One machine, panel, system, or project' },
         { label: 'Duration', value: '3 to 10 business days' },
         { label: 'Fee', value: '$3k to $15k fixed scope' },
-        { label: 'Handoff', value: 'Written findings or a defined design package' },
+        { label: 'Handoff', value: 'Written findings and corrective recommendations' },
       ],
       sections: [
         {
@@ -43,8 +43,43 @@ export const consultingContent = {
         },
         {
           title: 'Outcome',
-          body: 'A prioritized written set of findings and corrective recommendations, or a defined controls design package ready for implementation by the client or integrator.',
+          body: 'A prioritized written set of findings and corrective recommendations ready for the client, integrator, or internal team to implement.',
         },
+        {
+          title: 'Typical engagement',
+          items: [
+            'One machine, panel, system, or project',
+            'Fixed deliverables',
+            'Roughly 3 to 10 business days',
+            'Typically $3k to $15k',
+          ],
+        },
+        {
+          title: 'What I do not own',
+          items: [
+            'No open-ended on-call support',
+            'No indefinite ownership',
+            'No assumed maintenance responsibility',
+            'Implementation separately scoped if needed',
+          ],
+          tone: 'boundary',
+        },
+      ],
+    },
+    {
+      id: 'controls-design-for-hire',
+      index: '02',
+      label: 'Offer 02',
+      title: 'Controls Design-for-Hire',
+      summary:
+        'A defined controls design package for one machine, panel, system, or project.',
+      meta: [
+        { label: 'Typical scope', value: 'One machine, panel, system, or project' },
+        { label: 'Duration', value: '3 to 10 business days' },
+        { label: 'Fee', value: '$3k to $15k fixed scope' },
+        { label: 'Handoff', value: 'Defined controls design package' },
+      ],
+      sections: [
         {
           title: 'Controls design-for-hire',
           items: [
@@ -80,8 +115,8 @@ export const consultingContent = {
     },
     {
       id: 'process-information-flow',
-      index: '02',
-      label: 'Offer 02',
+      index: '03',
+      label: 'Offer 03',
       title: 'Process & Information Flow Audit',
       summary:
         'A fixed-scope review of one real workflow where information, decisions, or ownership break down.',

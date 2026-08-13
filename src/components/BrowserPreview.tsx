@@ -107,26 +107,26 @@ export function BrowserPreview({
             <span className="size-1.5 rounded-full border border-carbon/24 bg-carbon/10" />
             <span className="size-1.5 rounded-full border border-carbon/24 bg-carbon/10" />
           </div>
-          <div className={`${viewportClassName} bg-carbon text-bone`}>
+          <div className={`${viewportClassName} bg-bone text-carbon`}>
             <div
               className="absolute inset-0"
               aria-hidden="true"
               style={{
                 background:
-                  'linear-gradient(180deg, rgb(255 255 255 / 0.06), transparent 42%), repeating-linear-gradient(90deg, transparent 0, transparent calc(20% - 1px), rgb(255 255 255 / 0.04) calc(20% - 1px), rgb(255 255 255 / 0.04) 20%)',
+                  'linear-gradient(180deg, rgb(21 94 239 / 0.06), transparent 40%), repeating-linear-gradient(90deg, transparent 0, transparent calc(20% - 1px), rgb(16 19 23 / 0.04) calc(20% - 1px), rgb(16 19 23 / 0.04) 20%)',
               }}
             />
             <div className="absolute top-0 left-0 h-1 w-full bg-cobalt" aria-hidden="true" />
             <div className="relative z-10 grid h-full content-end gap-4 p-5 md:p-6" aria-label={fallback?.title ?? 'Preview unavailable'}>
-              <p className="font-mono text-[0.64rem] uppercase tracking-[0.2em] text-orange">Preview</p>
+              <p className="font-mono text-[0.64rem] uppercase tracking-[0.2em] text-cobalt">Preview</p>
               <h3 className={`m-0 max-w-[10ch] font-semibold tracking-[-0.03em] ${config.fallbackHeading}`}>
                 {fallback?.title ?? 'Preview unavailable'}
               </h3>
-              <p className="m-0 max-w-[28rem] text-sm leading-relaxed text-bone/72">
+              <p className="m-0 max-w-[28rem] text-sm leading-relaxed text-carbon/70">
                 {fallback?.note ?? 'Preview unavailable in this browser.'}
               </p>
               {fallback?.lines?.length ? (
-                <div className="flex flex-wrap gap-x-3 gap-y-2 font-mono text-[0.63rem] uppercase tracking-[0.18em] text-bone/64" aria-hidden="true">
+                <div className="flex flex-wrap gap-x-3 gap-y-2 font-mono text-[0.63rem] uppercase tracking-[0.18em] text-carbon/54" aria-hidden="true">
                   {fallback.lines.map((line) => (
                     <span key={line}>{line}</span>
                   ))}
