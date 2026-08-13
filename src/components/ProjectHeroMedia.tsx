@@ -12,7 +12,7 @@ export function ProjectHeroMedia({ project, loading = 'lazy' }: ProjectHeroMedia
 
   return (
     <figure className="grid gap-3">
-      <div className="overflow-hidden bg-carbon">
+      <div className="aspect-[4/3] overflow-hidden border border-carbon/12 bg-carbon/6">
         {project.heroMediaType === 'image' ? (
           <img
             src={project.heroMediaSrc}
@@ -36,7 +36,7 @@ export function ProjectHeroMedia({ project, loading = 'lazy' }: ProjectHeroMedia
         )}
       </div>
       {project.heroMediaCaption ? (
-        <figcaption className="font-mono text-[0.63rem] uppercase tracking-[0.2em] text-steel">
+        <figcaption className="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-steel">
           {project.heroMediaCaption}
         </figcaption>
       ) : null}

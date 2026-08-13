@@ -4,8 +4,9 @@ import { RouteMeta } from '../components/RouteMeta';
 import { SystemRail } from '../components/SystemRail';
 
 const cvPdfUrl = '/cv/tre-humphries-cv.pdf';
-const display = 'font-display uppercase leading-[0.9] tracking-[0.04em]';
-const mono = 'font-mono text-[0.66rem] uppercase tracking-[0.22em]';
+const pageWrap = 'mx-auto max-w-[1440px]';
+const display = 'font-display leading-[0.92] tracking-[-0.03em]';
+const mono = 'font-mono text-[0.68rem] uppercase tracking-[0.18em]';
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   'pdfjs-dist/build/pdf.worker.min.mjs',
@@ -44,11 +45,11 @@ export function CvPage() {
         description="View or download the current CV for Tre Humphries."
       />
 
-      <section id="top" className="bg-carbon px-4 py-14 text-bone md:px-6 lg:px-8 xl:px-12 xl:py-18">
-        <div className="mx-auto grid max-w-[1700px] gap-8 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)] lg:items-end">
-          <div className="grid gap-5">
+      <section id="top" className="bg-carbon px-4 py-14 text-bone md:px-6 lg:px-8 xl:px-12 xl:py-16">
+        <div className={`${pageWrap} grid gap-8 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)] lg:items-end`}>
+          <div className="grid gap-4">
             <SystemRail label="CV" index="01" labelClassName="text-steel" />
-            <h1 className={`${display} max-w-[8ch] text-[clamp(3rem,8vw,6.2rem)] text-bone`}>Current CV</h1>
+            <h1 className={`${display} max-w-[8ch] text-[clamp(3rem,7vw,5.2rem)] text-bone`}>Current CV</h1>
           </div>
           <div className="grid gap-4 lg:max-w-[40rem]">
             <p className="m-0 text-base leading-relaxed text-steel">
@@ -72,7 +73,7 @@ export function CvPage() {
       </section>
 
       <section className="bg-[#d8dde3] px-4 py-12 text-carbon md:px-6 lg:px-8 xl:px-12 xl:py-16">
-        <div className="mx-auto max-w-[1700px]">
+        <div className={pageWrap}>
           <div className="mx-auto max-w-[980px]" ref={sheetRef}>
             {loadError ? (
               <div className="grid gap-4 border border-carbon/12 bg-bone px-5 py-6 md:px-7 md:py-8">

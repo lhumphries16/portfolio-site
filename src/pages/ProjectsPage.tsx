@@ -4,8 +4,11 @@ import { RouteMeta } from '../components/RouteMeta';
 import { SystemRail } from '../components/SystemRail';
 import { projects } from '../data/projects';
 
-const mono = 'font-mono text-[0.66rem] uppercase tracking-[0.22em]';
-const display = 'font-display uppercase leading-[0.9] tracking-[0.04em]';
+const pageWrap = 'mx-auto max-w-[1440px]';
+const contentWrap = 'mx-auto max-w-[1320px]';
+const mono = 'font-mono text-[0.68rem] uppercase tracking-[0.18em]';
+const heroDisplay = 'font-display leading-[0.92] tracking-[-0.03em]';
+const recordTitle = 'text-[clamp(1.9rem,3.4vw,2.7rem)] font-semibold tracking-[-0.03em]';
 
 export function ProjectsPage() {
   const featuredProject = projects.find((project) => project.featured) ?? projects[0];
@@ -18,11 +21,11 @@ export function ProjectsPage() {
         description="Independent engineering projects and experimental R&D across embedded systems, flight, and physical process tooling."
       />
 
-      <section id="top" className="bg-carbon px-4 py-14 text-bone md:px-6 lg:px-8 xl:px-12 xl:py-18">
-        <div className="mx-auto grid max-w-[1700px] gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-end">
-          <div className="grid gap-5">
+      <section id="top" className="bg-carbon px-4 py-14 text-bone md:px-6 lg:px-8 xl:px-12 xl:py-16">
+        <div className={`${pageWrap} grid gap-8 lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1fr)] lg:items-end`}>
+          <div className="grid gap-4">
             <SystemRail label="Projects" index="01" labelClassName="text-steel" />
-            <h1 className={`${display} max-w-[10ch] text-[clamp(3.3rem,9vw,6.8rem)] text-bone`}>
+            <h1 className={`${heroDisplay} max-w-[10ch] text-[clamp(3rem,7vw,5.4rem)] text-bone`}>
               Independent technical work built out of curiosity.
             </h1>
           </div>
@@ -38,28 +41,29 @@ export function ProjectsPage() {
         </div>
       </section>
 
-      <section className="bg-carbon px-4 pb-14 text-bone md:px-6 lg:px-8 xl:px-12 xl:pb-18">
-        <div className="mx-auto grid max-w-[1700px] gap-8 border-t border-active/24 pt-8 lg:grid-cols-[minmax(0,1.18fr)_minmax(22rem,0.82fr)] lg:items-start">
-          <div className="grid gap-6">
-            <p className={`${mono} text-active`}>
-              {featuredProject.status} / Project {featuredProject.number} / {featuredProject.seekingSupport}
-            </p>
-            <h2 className={`${display} max-w-[10ch] text-[clamp(3rem,8vw,6.2rem)] text-bone`}>
-              {featuredProject.title}
-            </h2>
-            <p className="m-0 max-w-[44rem] text-[1.05rem] leading-relaxed text-steel">
+      <section className="bg-carbon px-4 pb-14 text-bone md:px-6 lg:px-8 xl:px-12 xl:pb-16">
+        <div className={`${contentWrap} grid gap-8 border-t border-bone/10 pt-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(20rem,0.9fr)] lg:items-start`}>
+          <div className="grid gap-4">
+            <SystemRail
+              label={`${featuredProject.status} / Project ${featuredProject.number}`}
+              labelClassName="text-active"
+              lineClassName="bg-active"
+            />
+            <p className={`${mono} text-active`}>{featuredProject.seekingSupport}</p>
+            <h2 className={`${recordTitle} text-bone`}>{featuredProject.title}</h2>
+            <p className="m-0 max-w-[40rem] text-base leading-relaxed text-steel">
               {featuredProject.summary}
             </p>
-            <div className="grid gap-3 border-l-4 border-l-active pl-5">
-              <p className="m-0 text-base leading-relaxed text-steel">{featuredProject.currentStage}</p>
-              <p className={`${mono} text-cobalt`}>{featuredProject.tags.join(' / ')}</p>
-            </div>
+            <p className="m-0 max-w-[40rem] text-sm leading-relaxed text-steel">
+              {featuredProject.currentStage}
+            </p>
+            <p className={`${mono} text-cobalt`}>{featuredProject.tags.join(' / ')}</p>
             <Link className={`${mono} text-bone transition-colors duration-200 hover:text-active`} to={`/projects/${featuredProject.slug}`}>
               Open project
             </Link>
           </div>
 
-          <div className="grid gap-5 border-t border-bone/10 pt-5 lg:border-t-0 lg:border-l lg:pl-8 lg:pt-0">
+          <div className="grid gap-4 border border-bone/10 bg-bone/5 px-5 py-6 md:px-7 md:py-7">
             <p className={`${mono} text-active`}>Current engineering focus</p>
             {featuredProject.currentWork.map((item) => (
               <p key={item} className="m-0 text-sm leading-relaxed text-steel">
@@ -79,18 +83,16 @@ export function ProjectsPage() {
       </section>
 
       {otherProjects.length > 0 ? (
-        <section className="bg-bone px-4 py-12 text-carbon md:px-6 lg:px-8 xl:px-12 xl:py-16">
-          <div className="mx-auto grid max-w-[1700px] gap-8">
+        <section className="bg-bone px-4 py-14 text-carbon md:px-6 lg:px-8 xl:px-12 xl:py-16">
+          <div className={`${contentWrap} grid gap-8`}>
             {otherProjects.map((project, index) => (
               <article
                 key={project.slug}
-                className="grid gap-8 border-t border-carbon/12 pt-8 lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1.22fr)] lg:items-start"
+                className="grid gap-8 border-t border-carbon/12 pt-8 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)] lg:items-start"
               >
                 <div className="grid gap-4">
-                  <SystemRail label={`${project.status} / Project ${project.number}`} index={`0${index + 2}`} labelClassName="text-carbon/66" />
-                  <h2 className={`${display} max-w-[10ch] text-[clamp(2.5rem,6vw,4.8rem)] text-carbon`}>
-                    {project.title}
-                  </h2>
+                  <SystemRail label={`${project.status} / Project ${project.number}`} index={`0${index + 2}`} labelClassName="text-carbon/62" />
+                  <h2 className={`${recordTitle} text-carbon`}>{project.title}</h2>
                   <p className="m-0 max-w-[30rem] text-base leading-relaxed text-carbon/74">{project.summary}</p>
                   <p className={`${mono} text-carbon/50`}>Archive / quieter record</p>
                 </div>
@@ -100,7 +102,7 @@ export function ProjectsPage() {
                     <ProjectHeroMedia project={project} loading="lazy" />
                   ) : null}
                   <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
-                    <p className="m-0 text-sm leading-relaxed text-carbon/72">{project.currentStage}</p>
+                    <p className="m-0 max-w-[34rem] text-sm leading-relaxed text-carbon/72">{project.currentStage}</p>
                     <Link className={`${mono} text-carbon transition-colors duration-200 hover:text-cobalt`} to={`/projects/${project.slug}`}>
                       Read project
                     </Link>

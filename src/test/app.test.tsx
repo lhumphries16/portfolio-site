@@ -1,4 +1,5 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { within } from '@testing-library/react';
 import App from '../App';
 
 function renderRoute(route: string) {
@@ -82,6 +83,25 @@ describe('App', () => {
 
     expect(screen.getByText(/programmable flying creatures/i)).toBeInTheDocument();
     expect(document.title).toBe('Engineering Projects | Tre Humphries');
+  });
+
+  it('renders the living cv route and honors filter search params', async () => {
+    renderRoute('/living-cv?type=experiment&domain=embedded');
+
+    expect(
+      await screen.findByRole('heading', {
+        level: 1,
+        name: /living cv/i,
+      })
+    ).toBeInTheDocument();
+
+    const timelineRegion = screen.getByRole('region', { name: /archive timeline/i });
+
+    expect(within(timelineRegion).getAllByText(/servo spider/i).length).toBeGreaterThan(0);
+    expect(within(timelineRegion).queryByText(/homeems/i)).not.toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /experiments/i })).toHaveAttribute('aria-pressed', 'true');
+    expect(screen.getByRole('button', { name: /embedded/i })).toHaveAttribute('aria-pressed', 'true');
+    expect(document.title).toBe('Living CV | Tre Humphries');
   });
 
   it('renders a project detail page from the slug route', async () => {

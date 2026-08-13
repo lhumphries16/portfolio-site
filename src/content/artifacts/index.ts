@@ -1,0 +1,668 @@
+import type { Era, EraId } from '../eras/types';
+import { erasById } from '../eras';
+import type {
+  Artifact,
+  ArtifactDomain,
+  ArtifactDomainFilter,
+  ArtifactFilters,
+  ArtifactType,
+  ArtifactTypeFilter,
+} from './types';
+
+export const artifactTypeLabels: Record<ArtifactType, string> = {
+  project: 'Project',
+  experiment: 'Experiment',
+  experience: 'Experience',
+  writing: 'Writing',
+};
+
+export const artifactTypeFilterLabels: Record<ArtifactTypeFilter, string> = {
+  all: 'All',
+  project: 'Projects',
+  experiment: 'Experiments',
+  experience: 'Experience',
+  writing: 'Writing',
+};
+
+export const artifactDomainLabels: Record<ArtifactDomain, string> = {
+  physical: 'Physical',
+  controls: 'Controls',
+  embedded: 'Embedded',
+  software: 'Software',
+  web: 'Web',
+  operations: 'Operations',
+  data: 'Data',
+  media: 'Media',
+  design: 'Design',
+  aerospace: 'Aerospace',
+};
+
+export const livingCvDomainFilters = [
+  'all',
+  'controls',
+  'software',
+  'web',
+  'embedded',
+  'physical',
+  'data',
+  'operations',
+] as const satisfies readonly ArtifactDomainFilter[];
+
+export const artifacts = [
+  {
+    id: 'space-exploration-website',
+    slug: '2014-space-exploration',
+    title: 'Space Exploration Website',
+    subtitle: 'First website built for a high-school class',
+    date: {
+      start: '2014-01-01',
+      precision: 'year',
+    },
+    sortDate: '2014-01-01',
+    type: 'project',
+    domains: ['web'],
+    era: 'high-school',
+    summary:
+      'A multi-page HTML/XHTML site about space exploration with iframe navigation, custom graphics, an animated Earth, resource pages, and an email/newsletter form.',
+    story:
+      'This was the first full website build: messy in the useful way, but it established the pattern of learning by building a whole thing end to end.',
+    highlights: ['multi-page HTML/XHTML', 'iframe navigation', 'custom graphics'],
+    display: {
+      weight: 'feature',
+    },
+    detail: {
+      enabled: false,
+      template: 'archive',
+    },
+  },
+  {
+    id: 'sierpinski-ti84',
+    slug: '2015-sierpinski-ti84',
+    title: 'Sierpinski Triangle on TI-84',
+    date: {
+      start: '2015-01-01',
+      precision: 'approximate',
+    },
+    sortDate: '2015-01-01',
+    type: 'experiment',
+    domains: ['software', 'data'],
+    era: 'high-school',
+    summary:
+      'A TI-84 program that generated Sierpinski’s triangle point by point on the calculator screen.',
+    story:
+      'The original calculator code is lost, so this record stays honest about what survives: the idea, the experiment, and the memory of building it.',
+    status: 'Original code lost',
+    display: {
+      weight: 'marker',
+    },
+    detail: {
+      enabled: false,
+      template: 'archive',
+    },
+  },
+  {
+    id: 'bridge-engineering',
+    slug: '2016-bridge-engineering',
+    title: 'Bridge Engineering',
+    subtitle: 'High-school structural design work',
+    date: {
+      start: '2016-01-01',
+      precision: 'year',
+    },
+    sortDate: '2016-01-01',
+    type: 'project',
+    domains: ['physical'],
+    era: 'high-school',
+    summary:
+      'School engineering work focused on bridge structures and structural design approaches.',
+    story:
+      'This is archived as early physical-systems thinking rather than as a polished artifact. Future media will likely be a slideshow, PDF, or build photos.',
+    display: {
+      weight: 'card',
+    },
+    detail: {
+      enabled: false,
+      template: 'archive',
+    },
+  },
+  {
+    id: 'drone-videography',
+    slug: '2018-drone-videography',
+    title: 'Drone Videography',
+    subtitle: 'One client project and a useful aerospace side path',
+    date: {
+      start: '2018-01-01',
+      end: '2019-12-31',
+      precision: 'year',
+    },
+    sortDate: '2018-01-01',
+    type: 'project',
+    domains: ['media', 'aerospace'],
+    era: 'purdue',
+    summary:
+      'Experimented with real-estate drone videography and completed one client project during college.',
+    story:
+      'This is not presented as a formal business. It was a real client-facing experiment that sharpened comfort with flight, capture, and delivering something usable.',
+    display: {
+      weight: 'card',
+    },
+    detail: {
+      enabled: false,
+      template: 'archive',
+    },
+  },
+  {
+    id: 'servo-spider',
+    slug: '2019-servo-spider',
+    title: 'Servo Spider',
+    date: {
+      start: '2019-02-01',
+      precision: 'month',
+    },
+    sortDate: '2019-02-01',
+    type: 'experiment',
+    domains: ['embedded', 'controls', 'physical'],
+    era: 'purdue',
+    summary: 'A homemade servo-driven walking robot built because it seemed cool and worth figuring out.',
+    story:
+      'No formal objective, no sanitized business case. It belongs here because building strange machines is part of the through-line.',
+    display: {
+      weight: 'card',
+    },
+    detail: {
+      enabled: false,
+      template: 'archive',
+    },
+  },
+  {
+    id: 'jumper-robot',
+    slug: '2019-jumper-robot',
+    title: 'Jumper Robot',
+    date: {
+      start: '2019-08-01',
+      precision: 'month',
+    },
+    sortDate: '2019-08-01',
+    type: 'experiment',
+    domains: ['embedded', 'physical'],
+    era: 'purdue',
+    summary: 'A small homemade jumping robot experiment.',
+    display: {
+      weight: 'marker',
+    },
+    detail: {
+      enabled: false,
+      template: 'archive',
+    },
+  },
+  {
+    id: 'avion-uas',
+    slug: '2020-avion-uas',
+    title: 'Avion Solutions UAS',
+    subtitle: 'Summer 2020 in Huntsville, Alabama',
+    date: {
+      start: '2020-06-01',
+      end: '2020-08-31',
+      precision: 'month',
+    },
+    sortDate: '2020-06-01',
+    type: 'experience',
+    domains: ['aerospace', 'physical', 'controls', 'embedded'],
+    era: 'purdue',
+    summary:
+      'Worked with drones, fixed-wing aircraft, quadrotors, and experimental UAS, including a scale RC representation of a threat aircraft for a U.S. DoD application.',
+    story:
+      'This public record stays intentionally narrow. The work is worth marking in the timeline, but detailed media and deeper discussion remain under public-safety review.',
+    status: 'Public detail intentionally limited',
+    highlights: ['drones', 'fixed-wing aircraft', 'experimental UAS'],
+    display: {
+      weight: 'feature',
+    },
+    detail: {
+      enabled: false,
+      template: 'experience',
+    },
+    visibility: {
+      safeForPublic: 'pending-review',
+    },
+  },
+  {
+    id: 'innerspec',
+    slug: '2021-innerspec',
+    title: 'Innerspec',
+    subtitle: 'Industrial controls and field integration',
+    date: {
+      start: '2021-01-01',
+      end: '2022-12-31',
+      precision: 'year',
+    },
+    sortDate: '2021-01-01',
+    type: 'experience',
+    domains: ['controls', 'embedded', 'physical', 'operations'],
+    era: 'innerspec',
+    summary:
+      'Industrial controls and robotics work around ultrasonic inspection systems, field integration, and electronics troubleshooting.',
+    story:
+      'Themes here include KUKA, Beckhoff, robotics, field integration, and the kind of troubleshooting that only makes sense near real equipment.',
+    highlights: ['robotics', 'KUKA', 'Beckhoff', 'ultrasonic inspection'],
+    display: {
+      weight: 'card',
+    },
+    detail: {
+      enabled: false,
+      template: 'experience',
+    },
+  },
+  {
+    id: 'mainstream',
+    slug: '2022-mainstream',
+    title: 'Mainstream',
+    subtitle: 'HVAC controls and internal engineering software',
+    date: {
+      start: '2022-01-01',
+      end: '2025-01-31',
+      precision: 'year',
+    },
+    sortDate: '2022-01-01',
+    type: 'experience',
+    domains: ['controls', 'software', 'operations', 'physical'],
+    era: 'mainstream',
+    summary:
+      'Worked across HVAC controls, fan arrays, VFDs, control architecture, and internal software and tooling tied directly to engineering and manufacturing workflows.',
+    story:
+      'The interesting overlap was between equipment behavior and the internal systems needed to quote, configure, and support that equipment without relying on tribal knowledge.',
+    highlights: ['HVAC controls', 'fan arrays', 'VFDs', 'engineering tooling'],
+    display: {
+      weight: 'feature',
+    },
+    detail: {
+      enabled: false,
+      template: 'experience',
+    },
+  },
+  {
+    id: 'garage-basil',
+    slug: 'predictable-basil',
+    title: 'Garage Basil / Predictable Basil',
+    subtitle: 'Garage-scale hydroponic system',
+    date: {
+      start: '2023-01-01',
+      precision: 'year',
+    },
+    sortDate: '2023-01-01',
+    type: 'experiment',
+    domains: ['physical', 'controls', 'embedded', 'software', 'data'],
+    era: 'independent-work',
+    summary:
+      'A hydroponic basil system aimed at growing basil repeatedly and predictably, using canopy coverage as the main harvest-prediction metric.',
+    story:
+      'The research endpoint was straightforward: growing footprint to pounds of basil per month. The data exists, but the analysis, reporting, and whitepaper are still unfinished.',
+    status: 'Research complete',
+    highlights: ['hydroponics', 'canopy coverage', 'harvest prediction'],
+    display: {
+      weight: 'feature',
+      featured: true,
+    },
+    media: [
+      {
+        type: 'image',
+        src: '/images/hydro_basil_rack_photo_my_garage.jpg',
+        alt: 'Garage hydroponic basil rack used as a repeatability and logging testbed',
+        caption: 'Garage-scale hydroponic rack used for instrumentation and repeatability work.',
+        featured: true,
+        display: {
+          variant: 'wide',
+        },
+      },
+    ],
+    detail: {
+      enabled: false,
+      template: 'paper',
+    },
+  },
+  {
+    id: 'homeems',
+    slug: 'homeems',
+    title: 'HomeEMS',
+    subtitle: 'Website + lead / service-area system',
+    date: {
+      start: '2024-01-01',
+      precision: 'year',
+    },
+    sortDate: '2024-01-01',
+    type: 'project',
+    domains: ['web', 'software', 'operations'],
+    era: 'independent-work',
+    summary:
+      'Paid production website work for a restoration contractor focused on credibility, emergency lead flow, service-area logic, analytics, and client handoff.',
+    story:
+      'The system value was not just the public site. It was the surrounding operational logic that let the client own content, geography, media, and lead flow after launch.',
+    highlights: ['service-area logic', 'client-controlled content', 'analytics'],
+    links: [
+      {
+        label: 'Open live site',
+        href: 'https://www.home-ems.net/',
+        external: true,
+      },
+    ],
+    display: {
+      weight: 'feature',
+      featured: true,
+    },
+    media: [
+      {
+        type: 'iframe',
+        src: 'https://www.home-ems.net/',
+        title: 'HomeEMS live site preview',
+        caption: 'Live site preview loaded from the public website.',
+        featured: true,
+        display: {
+          variant: 'wide',
+        },
+      },
+    ],
+    detail: {
+      enabled: false,
+      template: 'case-study',
+    },
+  },
+  {
+    id: 'gaf-roads',
+    slug: 'gaf-roads-standard-industries',
+    title: 'GAF Roads / Standard Industries',
+    subtitle: 'Controls, telemetry, and full-system integration',
+    date: {
+      start: '2025-01-01',
+      precision: 'year',
+    },
+    sortDate: '2025-01-01',
+    type: 'experience',
+    domains: ['controls', 'embedded', 'operations', 'data', 'physical'],
+    era: 'gaf-roads',
+    summary:
+      'Experience work spanning CODESYS controls, edge hardware, EWON, telemetry, BigQuery, operator workflows, and field integration.',
+    story:
+      'This period centers on system behavior across machine, cloud path, field hardware, and the people who have to operate or debug the whole thing.',
+    highlights: ['CODESYS', 'EWON', 'telemetry', 'operator workflows'],
+    display: {
+      weight: 'feature',
+      featured: true,
+    },
+    detail: {
+      enabled: false,
+      template: 'experience',
+    },
+  },
+  {
+    id: 'govgraph',
+    slug: 'govgraph',
+    title: 'GovGraph',
+    date: {
+      start: '2025-03-01',
+      precision: 'month',
+    },
+    sortDate: '2025-03-01',
+    type: 'experiment',
+    domains: ['software', 'data'],
+    era: 'independent-work',
+    summary:
+      'Exploratory software for examining relationships across U.S. public-record datasets including government spending, lobbying, and campaign data.',
+    story:
+      'This stays intentionally conservative in public description. It is an exploration target and software direction, not a claim of complete coverage or finished insight.',
+    display: {
+      weight: 'card',
+    },
+    detail: {
+      enabled: false,
+      template: 'standard',
+    },
+  },
+  {
+    id: 'quant-research',
+    slug: 'quant-research',
+    title: 'Quant Research',
+    date: {
+      start: '2025-08-01',
+      precision: 'month',
+    },
+    sortDate: '2025-08-01',
+    type: 'experiment',
+    domains: ['software', 'data'],
+    era: 'independent-work',
+    summary:
+      'Quantitative market experiments focused on turning hypotheses into testable strategies and checking robustness.',
+    story:
+      'This is not presented as a fund, a product, or proof of profitability. The work is about building better tests and rejecting weak ideas faster.',
+    display: {
+      weight: 'card',
+    },
+    detail: {
+      enabled: false,
+      template: 'paper',
+    },
+  },
+  {
+    id: 'programmable-butterfly-controller',
+    slug: 'programmable-butterfly-controller',
+    title: 'Programmable Butterfly Controller',
+    subtitle: 'Ongoing indoor bionic butterfly control work',
+    date: {
+      start: '2026-01-01',
+      precision: 'year',
+    },
+    sortDate: '2026-01-01',
+    type: 'experiment',
+    domains: ['embedded', 'controls', 'physical', 'software'],
+    era: 'independent-work',
+    summary:
+      'Ongoing control and interface experimentation around a programmable indoor bionic butterfly, including ESP-NOW control, handheld UX, calibration, trim behavior, and flight testing.',
+    story:
+      'The current work is about making a strange physical system more controllable and more understandable to the operator, not pretending it is already solved.',
+    highlights: ['ESP-NOW', 'handheld UX', 'calibration', 'flight testing'],
+    status: 'Ongoing',
+    display: {
+      weight: 'feature',
+      featured: true,
+      current: true,
+    },
+    detail: {
+      enabled: false,
+      template: 'case-study',
+    },
+  },
+  {
+    id: 'mayara-miranda',
+    slug: 'mayara-miranda',
+    title: 'Mayara Miranda',
+    subtitle: 'Minimalist portfolio system for a designer',
+    date: {
+      start: '2026-07-01',
+      precision: 'month',
+    },
+    sortDate: '2026-07-01',
+    type: 'project',
+    domains: ['web', 'design', 'software'],
+    era: 'independent-work',
+    summary:
+      'A minimalist portfolio system for a designer and prepress specialist with strong work presentation and simple long-term content ownership.',
+    story:
+      'The focus here was restraint: a presentation system that stays sharp without trapping the owner in a fragile publishing workflow.',
+    display: {
+      weight: 'feature',
+      featured: true,
+      current: true,
+    },
+    detail: {
+      enabled: false,
+      template: 'case-study',
+    },
+  },
+] as const satisfies readonly Artifact[];
+
+export type TimelineEntry =
+  | {
+      kind: 'year';
+      year: string;
+    }
+  | {
+      kind: 'era';
+      era: Era;
+    }
+  | {
+      kind: 'artifact';
+      artifact: Artifact;
+    };
+
+const yearFormatter = new Intl.DateTimeFormat('en-US', {
+  timeZone: 'UTC',
+  year: 'numeric',
+});
+
+const monthFormatter = new Intl.DateTimeFormat('en-US', {
+  timeZone: 'UTC',
+  month: 'short',
+  year: 'numeric',
+});
+
+const dayFormatter = new Intl.DateTimeFormat('en-US', {
+  timeZone: 'UTC',
+  month: 'short',
+  day: 'numeric',
+  year: 'numeric',
+});
+
+function formatDateValue(value: string, precision: Artifact['date']['precision']) {
+  const date = new Date(`${value}T12:00:00Z`);
+
+  if (precision === 'day') {
+    return dayFormatter.format(date);
+  }
+
+  if (precision === 'month') {
+    return monthFormatter.format(date);
+  }
+
+  return yearFormatter.format(date);
+}
+
+export function formatArtifactDate(date: Artifact['date']) {
+  const precision = date.precision ?? 'year';
+  const prefix = precision === 'approximate' ? '~' : '';
+  const normalizedPrecision = precision === 'approximate' ? 'year' : precision;
+
+  if (!date.end) {
+    return `${prefix}${formatDateValue(date.start, normalizedPrecision)}`;
+  }
+
+  const start = formatDateValue(date.start, normalizedPrecision);
+  const end = formatDateValue(date.end, normalizedPrecision);
+
+  return start === end ? `${prefix}${start}` : `${prefix}${start}-${end}`;
+}
+
+export function normalizeArtifactTypeFilter(value: string | null | undefined): ArtifactTypeFilter {
+  if (
+    value === 'project' ||
+    value === 'experiment' ||
+    value === 'experience' ||
+    value === 'writing'
+  ) {
+    return value;
+  }
+
+  return 'all';
+}
+
+export function normalizeArtifactDomainFilter(value: string | null | undefined): ArtifactDomainFilter {
+  if (
+    value === 'physical' ||
+    value === 'controls' ||
+    value === 'embedded' ||
+    value === 'software' ||
+    value === 'web' ||
+    value === 'operations' ||
+    value === 'data' ||
+    value === 'media' ||
+    value === 'design' ||
+    value === 'aerospace'
+  ) {
+    return value;
+  }
+
+  return 'all';
+}
+
+export function isArtifactPublished(artifact: Artifact) {
+  return artifact.visibility?.published !== false;
+}
+
+export function sortArtifactsChronologically(items: readonly Artifact[]) {
+  return [...items].sort((left, right) => left.sortDate.localeCompare(right.sortDate));
+}
+
+export function filterArtifacts(items: readonly Artifact[], filters: ArtifactFilters) {
+  return sortArtifactsChronologically(items).filter((artifact) => {
+    if (!isArtifactPublished(artifact)) {
+      return false;
+    }
+
+    if (filters.type !== 'all' && artifact.type !== filters.type) {
+      return false;
+    }
+
+    if (filters.domain !== 'all' && !artifact.domains.includes(filters.domain)) {
+      return false;
+    }
+
+    return true;
+  });
+}
+
+export function buildTimelineEntries(
+  items: readonly Artifact[],
+  eraLookup: Partial<Record<EraId, Era>> = erasById
+) {
+  const entries: TimelineEntry[] = [];
+  let previousYear = '';
+  let previousEraId: EraId | undefined;
+
+  for (const artifact of sortArtifactsChronologically(items).filter(isArtifactPublished)) {
+    const year = artifact.sortDate.slice(0, 4);
+
+    if (year !== previousYear) {
+      entries.push({
+        kind: 'year',
+        year,
+      });
+      previousYear = year;
+    }
+
+    if (artifact.era && artifact.era !== previousEraId) {
+      const era = eraLookup[artifact.era];
+
+      if (era) {
+        entries.push({
+          kind: 'era',
+          era,
+        });
+      }
+
+      previousEraId = artifact.era;
+    }
+
+    entries.push({
+      kind: 'artifact',
+      artifact,
+    });
+  }
+
+  return entries;
+}
+
+export function getCurrentHighlights(items: readonly Artifact[], limit = 4) {
+  const highlighted = [...items]
+    .filter((artifact) => isArtifactPublished(artifact) && (artifact.display.current || artifact.display.featured))
+    .sort((left, right) => right.sortDate.localeCompare(left.sortDate));
+
+  return highlighted.slice(0, limit);
+}

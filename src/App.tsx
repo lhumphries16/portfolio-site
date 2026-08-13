@@ -21,6 +21,9 @@ const CvPage = lazy(async () => ({
 const ProjectsPage = lazy(async () => ({
   default: (await import('./pages/ProjectsPage')).ProjectsPage,
 }));
+const LivingCvPage = lazy(async () => ({
+  default: (await import('./pages/LivingCvPage')).LivingCvPage,
+}));
 const ProjectDetailPage = lazy(async () => ({
   default: (await import('./pages/ProjectDetailPage')).ProjectDetailPage,
 }));
@@ -46,6 +49,7 @@ function App() {
           <Route path="/consulting" element={withRouteSuspense(<ConsultingPage />)} />
           <Route path="/cv" element={withRouteSuspense(<CvPage />)} />
           <Route path="/projects" element={withRouteSuspense(<ProjectsPage />)} />
+          <Route path="/living-cv" element={withRouteSuspense(<LivingCvPage />)} />
           <Route path="/projects/:slug" element={withRouteSuspense(<ProjectDetailPage />)} />
           <Route path="*" element={withRouteSuspense(<NotFoundPage />)} />
         </Route>

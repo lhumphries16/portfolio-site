@@ -46,9 +46,9 @@ export function Header({ brand, navItems }: HeaderProps) {
 
   return (
     <header className="sticky top-0 z-50 border-b border-bone/10 bg-carbon/94 backdrop-blur">
-      <div className="mx-auto flex min-h-[4.6rem] max-w-[1700px] items-center justify-between gap-6 px-4 md:px-6 lg:px-8 xl:px-12">
+      <div className="mx-auto flex min-h-[4.6rem] max-w-[1440px] items-center justify-between gap-6 px-4 md:px-6 lg:px-8 xl:px-12">
         <Link className="grid gap-0.5" to="/" onClick={closeMenu}>
-          <span className="font-display text-[1.75rem] uppercase tracking-[0.04em] text-bone md:text-[1.95rem]">
+          <span className="font-display text-[1.55rem] uppercase tracking-[0.04em] text-bone md:text-[1.75rem]">
             {brand.name}
           </span>
           <span className="font-mono text-[0.62rem] uppercase tracking-[0.22em] text-steel">

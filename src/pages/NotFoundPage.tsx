@@ -2,8 +2,9 @@ import { Link } from 'react-router-dom';
 import { RouteMeta } from '../components/RouteMeta';
 import { SystemRail } from '../components/SystemRail';
 
-const display = 'font-display uppercase leading-[0.9] tracking-[0.04em]';
-const mono = 'font-mono text-[0.66rem] uppercase tracking-[0.22em]';
+const pageWrap = 'mx-auto max-w-[1440px]';
+const display = 'font-display leading-[0.92] tracking-[-0.03em]';
+const mono = 'font-mono text-[0.68rem] uppercase tracking-[0.18em]';
 
 export function NotFoundPage() {
   return (
@@ -13,10 +14,10 @@ export function NotFoundPage() {
         description="The requested page is not part of this portfolio."
       />
       <section className="bg-bone px-4 py-16 text-carbon md:px-6 lg:px-8 xl:px-12">
-        <div className="mx-auto grid max-w-[1700px] gap-6 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] lg:items-end">
-          <div className="grid gap-5">
+        <div className={`${pageWrap} grid gap-6 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] lg:items-end`}>
+          <div className="grid gap-4">
             <SystemRail label="Not found" labelClassName="text-carbon/68" />
-            <h1 className={`${display} max-w-[10ch] text-[clamp(2.8rem,7vw,5.4rem)] text-carbon`}>
+            <h1 className={`${display} max-w-[10ch] text-[clamp(2.8rem,6vw,4.8rem)] text-carbon`}>
               That page is not part of the portfolio.
             </h1>
           </div>
