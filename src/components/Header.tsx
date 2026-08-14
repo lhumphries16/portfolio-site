@@ -58,14 +58,14 @@ export function Header({ brand, contact, navItems }: HeaderProps) {
   }, [location.hash, location.pathname]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-carbon/8 bg-bone/94 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-carbon/8 bg-bone/92 backdrop-blur-md">
       <div className="mx-auto max-w-[1440px] px-4 md:px-6 lg:px-8 xl:px-12">
-        <div className="flex min-h-[5rem] items-center justify-between gap-6 py-3 lg:min-h-[5.6rem]">
+        <div className="flex min-h-[4.6rem] items-center justify-between gap-6 py-3 lg:min-h-[5rem]">
           <Link className="grid gap-1 pr-4" to="/" onClick={closeMenu}>
-            <span className="text-[0.88rem] font-semibold uppercase tracking-[0.14em] text-carbon md:text-[0.96rem]">
+            <span className="text-[1rem] font-semibold tracking-[-0.02em] text-carbon md:text-[1.04rem]">
               {brand.name}
             </span>
-            <span className="text-[0.95rem] leading-none tracking-[-0.01em] text-carbon/58 md:text-[1rem]">
+            <span className="text-[0.84rem] leading-none tracking-[0.01em] text-carbon/54 md:text-[0.88rem]">
               {brand.role}
             </span>
           </Link>
@@ -73,7 +73,7 @@ export function Header({ brand, contact, navItems }: HeaderProps) {
           <nav className="relative flex items-center" aria-label="Primary">
             <button
               type="button"
-              className="inline-flex min-h-12 items-center gap-3 rounded-full border border-carbon/10 bg-white/76 px-4 text-[0.78rem] font-semibold uppercase tracking-[0.08em] text-carbon transition-colors duration-200 hover:border-carbon/18 hover:bg-white lg:hidden"
+              className="inline-flex min-h-11 items-center gap-3 rounded-full border border-carbon/10 bg-white/74 px-4 text-[0.9rem] font-medium tracking-[-0.01em] text-carbon transition-colors duration-200 hover:border-carbon/18 hover:bg-white lg:hidden"
               aria-expanded={isOpen}
               aria-controls="primary-menu"
               aria-label="Toggle navigation"
@@ -87,15 +87,15 @@ export function Header({ brand, contact, navItems }: HeaderProps) {
             </button>
 
             <div
-              className={`absolute top-[calc(100%+0.9rem)] right-0 ${isOpen ? 'grid' : 'hidden'} w-[min(24rem,calc(100vw-2rem))] gap-3 rounded-[1.5rem] border border-carbon/10 bg-[#f7f4ee] p-4 shadow-[0_24px_80px_rgba(16,19,23,0.12)] lg:static lg:flex lg:w-auto lg:items-center lg:gap-8 lg:rounded-none lg:border-0 lg:bg-transparent lg:p-0 lg:shadow-none xl:gap-10`}
+              className={`absolute top-[calc(100%+0.8rem)] right-0 ${isOpen ? 'grid' : 'hidden'} w-[min(22rem,calc(100vw-2rem))] gap-3 rounded-[1.25rem] border border-carbon/10 bg-[#f8f4ec] p-4 shadow-[0_24px_80px_rgba(16,19,23,0.1)] lg:static lg:flex lg:w-auto lg:items-center lg:gap-7 lg:rounded-none lg:border-0 lg:bg-transparent lg:p-0 lg:shadow-none xl:gap-8`}
               id="primary-menu"
             >
-              <div className="grid gap-1.5 lg:flex lg:items-center lg:gap-8 xl:gap-10">
+              <div className="grid gap-1 lg:flex lg:items-center lg:gap-7 xl:gap-8">
                 {navItems.map((item) =>
                   item.external ? (
                     <a
                       key={item.href}
-                      className="min-h-12 border-b border-carbon/10 px-0 py-3 text-[0.94rem] font-medium tracking-[-0.01em] text-carbon/62 transition-colors duration-200 hover:text-cobalt lg:min-h-0 lg:border-b-0 lg:px-0 lg:py-0"
+                      className="min-h-11 border-b border-carbon/10 px-0 py-3 text-[0.96rem] font-medium tracking-[-0.01em] text-carbon/58 transition-colors duration-200 hover:text-cobalt lg:min-h-0 lg:border-b-0 lg:px-0 lg:py-0"
                       href={item.href}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -106,10 +106,10 @@ export function Header({ brand, contact, navItems }: HeaderProps) {
                   ) : item.href.includes('#') ? (
                     <Link
                       key={item.href}
-                      className={`min-h-12 border-b border-carbon/10 px-0 py-3 text-[0.94rem] font-medium tracking-[-0.01em] transition-colors duration-200 lg:min-h-0 lg:border-b-0 lg:px-0 lg:py-0 ${
+                      className={`min-h-11 border-b border-carbon/10 px-0 py-3 text-[0.96rem] font-medium tracking-[-0.01em] transition-colors duration-200 lg:min-h-0 lg:border-b-0 lg:px-0 lg:py-0 ${
                         isHashLinkActive(item.href)
                           ? 'text-cobalt'
-                          : 'text-carbon/62 hover:text-cobalt'
+                          : 'text-carbon/58 hover:text-cobalt'
                       }`}
                       to={item.href}
                       onClick={closeMenu}
@@ -120,7 +120,7 @@ export function Header({ brand, contact, navItems }: HeaderProps) {
                     <NavLink
                       key={item.href}
                       className={({ isActive }) =>
-                        `min-h-12 border-b border-carbon/10 px-0 py-3 text-[0.94rem] font-medium tracking-[-0.01em] transition-colors duration-200 lg:min-h-0 lg:border-b-0 lg:px-0 lg:py-0 ${isActive ? 'text-cobalt' : 'text-carbon/62 hover:text-cobalt'}`
+                        `min-h-11 border-b border-carbon/10 px-0 py-3 text-[0.96rem] font-medium tracking-[-0.01em] transition-colors duration-200 lg:min-h-0 lg:border-b-0 lg:px-0 lg:py-0 ${isActive ? 'text-cobalt' : 'text-carbon/58 hover:text-cobalt'}`
                       }
                       to={item.href}
                       onClick={closeMenu}

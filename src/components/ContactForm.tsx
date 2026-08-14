@@ -83,7 +83,7 @@ export function ContactForm({
     >
       <div className="grid gap-2.5">
         <label
-          className="font-mono text-[0.65rem] uppercase tracking-[0.22em] text-cobalt"
+          className="text-[0.82rem] font-medium tracking-[0.01em] text-carbon/64"
           htmlFor="contact-name"
         >
           Name
@@ -106,7 +106,7 @@ export function ContactForm({
 
       <div className="grid gap-2.5">
         <label
-          className="font-mono text-[0.65rem] uppercase tracking-[0.22em] text-cobalt"
+          className="text-[0.82rem] font-medium tracking-[0.01em] text-carbon/64"
           htmlFor="contact-company"
         >
           Company or team <span className="text-carbon/52">optional</span>
@@ -126,7 +126,7 @@ export function ContactForm({
 
       <div className="grid gap-2.5">
         <label
-          className="font-mono text-[0.65rem] uppercase tracking-[0.22em] text-cobalt"
+          className="text-[0.82rem] font-medium tracking-[0.01em] text-carbon/64"
           htmlFor="contact-email"
         >
           Email
@@ -149,7 +149,7 @@ export function ContactForm({
 
       <div className="grid gap-2.5">
         <label
-          className="font-mono text-[0.65rem] uppercase tracking-[0.22em] text-cobalt"
+          className="text-[0.82rem] font-medium tracking-[0.01em] text-carbon/64"
           htmlFor="contact-problem"
         >
           Tell me about the problem
@@ -172,18 +172,18 @@ export function ContactForm({
       <p className="m-0 max-w-[34rem] text-sm leading-relaxed text-carbon/68">{helper}</p>
       <div aria-live="polite">
         {showValid ? (
-          <p className="border-t border-carbon/12 pt-3 font-mono text-[0.68rem] uppercase tracking-[0.18em] text-active">
+          <p className="border-t border-carbon/12 pt-3 text-sm font-medium text-active">
             {success}
           </p>
         ) : null}
         {showInvalid ? (
-          <p className="border-t border-carbon/12 pt-3 font-mono text-[0.68rem] uppercase tracking-[0.18em] text-orange">
+          <p className="border-t border-carbon/12 pt-3 text-sm font-medium text-orange">
             {error}
           </p>
         ) : null}
       </div>
       <button
-        className="inline-flex min-h-12 w-full items-center justify-center bg-cobalt px-5 font-mono text-[0.68rem] uppercase tracking-[0.22em] text-bone transition-colors duration-200 hover:bg-carbon hover:text-bone md:w-fit"
+        className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-cobalt px-5 text-[0.96rem] font-medium tracking-[-0.01em] text-bone transition-colors duration-200 hover:bg-carbon hover:text-bone md:w-fit"
         type="submit"
       >
         {submitLabel}

@@ -22,7 +22,7 @@ type ArtifactFilterProps = {
 };
 
 const filterButtonClassName =
-  'min-h-10 border px-3 py-2 text-left font-mono text-[0.66rem] uppercase tracking-[0.18em] transition-colors duration-200';
+  'min-h-10 rounded-full px-3.5 py-2 text-left text-[0.88rem] font-medium tracking-[-0.01em] transition-colors duration-200';
 
 export function ArtifactFilter({
   typeFilter,
@@ -56,31 +56,26 @@ export function ArtifactFilter({
   };
 
   return (
-    <section
-      aria-labelledby="living-cv-filter-heading"
-      className="grid gap-6 border-t border-b border-carbon/12 py-6"
-    >
+    <section aria-labelledby="living-cv-filter-heading" className="grid gap-5 border-t border-carbon/10 pt-6">
       <div className="grid gap-2 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
         <div className="grid gap-2">
-          <p className="m-0 font-mono text-[0.66rem] uppercase tracking-[0.18em] text-carbon/54">
-            Filter the same archive by lens.
-          </p>
           <h2
             id="living-cv-filter-heading"
-            className="m-0 text-[clamp(1.9rem,4vw,2.8rem)] font-semibold tracking-[-0.03em] text-carbon"
+            className="m-0 text-[clamp(1.9rem,4vw,2.7rem)] font-semibold tracking-[-0.03em] text-carbon"
           >
-            Artifact filters
+            Filter the archive
           </h2>
+          <p className="m-0 text-sm leading-relaxed text-carbon/58">
+            Type, domain, and year range all update the same chronology.
+          </p>
         </div>
-        <p className="m-0 font-mono text-[0.66rem] uppercase tracking-[0.18em] text-carbon/54">
+        <p className="m-0 font-mono text-[0.64rem] uppercase tracking-[0.16em] text-carbon/44">
           {resultCount} visible record{resultCount === 1 ? '' : 's'}
         </p>
       </div>
 
-      <fieldset className="grid gap-3 border-0 p-0">
-        <legend className="p-0 font-mono text-[0.66rem] uppercase tracking-[0.18em] text-carbon/62">
-          Type
-        </legend>
+      <fieldset className="grid gap-2.5 border-0 p-0">
+        <legend className="p-0 text-[0.84rem] font-medium tracking-[0.01em] text-carbon/56">Type</legend>
         <div className="flex flex-wrap gap-2">
           {typeFilters.map((option) => {
             const active = option === typeFilter;
@@ -91,8 +86,8 @@ export function ArtifactFilter({
                 type="button"
                 className={`${filterButtonClassName} ${
                   active
-                    ? 'border-carbon bg-carbon text-bone'
-                    : 'border-carbon/12 bg-bone text-carbon hover:border-carbon/32 hover:text-cobalt'
+                    ? 'bg-cobalt/10 text-cobalt'
+                    : 'bg-carbon/4 text-carbon/68 hover:bg-carbon/7 hover:text-carbon'
                 }`}
                 aria-pressed={active}
                 onClick={() => onTypeChange(option)}
@@ -104,10 +99,8 @@ export function ArtifactFilter({
         </div>
       </fieldset>
 
-      <fieldset className="grid gap-3 border-0 p-0">
-        <legend className="p-0 font-mono text-[0.66rem] uppercase tracking-[0.18em] text-carbon/62">
-          Domain
-        </legend>
+      <fieldset className="grid gap-2.5 border-0 p-0">
+        <legend className="p-0 text-[0.84rem] font-medium tracking-[0.01em] text-carbon/56">Domain</legend>
         <div className="flex flex-wrap gap-2">
           {livingCvDomainFilters.map((option) => {
             const active = option === domainFilter;
@@ -118,8 +111,8 @@ export function ArtifactFilter({
                 type="button"
                 className={`${filterButtonClassName} ${
                   active
-                    ? 'border-carbon bg-carbon text-bone'
-                    : 'border-carbon/12 bg-bone text-carbon hover:border-carbon/32 hover:text-cobalt'
+                    ? 'bg-cobalt/10 text-cobalt'
+                    : 'bg-carbon/4 text-carbon/68 hover:bg-carbon/7 hover:text-carbon'
                 }`}
                 aria-pressed={active}
                 onClick={() => onDomainChange(option)}
@@ -131,15 +124,15 @@ export function ArtifactFilter({
         </div>
       </fieldset>
 
-      <fieldset className="grid gap-4 border border-carbon/10 bg-white/42 px-4 py-4 md:px-5">
+      <fieldset className="grid gap-4 border-0 p-0">
         <div className="flex flex-wrap items-center justify-between gap-3">
-          <legend className="p-0 font-mono text-[0.66rem] uppercase tracking-[0.18em] text-carbon/62">
-            Date range
+          <legend className="p-0 text-[0.84rem] font-medium tracking-[0.01em] text-carbon/56">
+            Year range
           </legend>
           {hasCustomYearRange ? (
             <button
               type="button"
-              className="font-mono text-[0.62rem] uppercase tracking-[0.18em] text-carbon/52 transition-colors duration-200 hover:text-cobalt"
+              className="text-[0.86rem] font-medium tracking-[-0.01em] text-carbon/52 transition-colors duration-200 hover:text-cobalt"
               onClick={() => onYearChange({ start: availableYears.min, end: availableYears.max })}
             >
               Reset
@@ -149,12 +142,12 @@ export function ArtifactFilter({
 
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div className="grid gap-1">
-            <p className="m-0 font-mono text-[0.62rem] uppercase tracking-[0.18em] text-carbon/48">From</p>
-            <p className="m-0 text-[1.05rem] font-semibold tracking-[-0.02em] text-carbon">{yearRange.start}</p>
+            <p className="m-0 text-[0.8rem] font-medium tracking-[0.01em] text-carbon/48">From</p>
+            <p className="m-0 text-[1.02rem] font-semibold tracking-[-0.02em] text-carbon">{yearRange.start}</p>
           </div>
           <div className="grid gap-1 text-right">
-            <p className="m-0 font-mono text-[0.62rem] uppercase tracking-[0.18em] text-carbon/48">To</p>
-            <p className="m-0 text-[1.05rem] font-semibold tracking-[-0.02em] text-carbon">{yearRange.end}</p>
+            <p className="m-0 text-[0.8rem] font-medium tracking-[0.01em] text-carbon/48">To</p>
+            <p className="m-0 text-[1.02rem] font-semibold tracking-[-0.02em] text-carbon">{yearRange.end}</p>
           </div>
         </div>
 
@@ -162,7 +155,7 @@ export function ArtifactFilter({
           <div className="relative h-8">
             <div className="absolute top-1/2 right-0 left-0 h-px -translate-y-1/2 bg-carbon/12" />
             <div
-              className="absolute top-1/2 h-[3px] -translate-y-1/2 rounded-full bg-cobalt/28"
+              className="absolute top-1/2 h-[2px] -translate-y-1/2 rounded-full bg-cobalt/28"
               style={{
                 left: `${startPercent}%`,
                 width: `${Math.max(endPercent - startPercent, 0)}%`,
@@ -192,7 +185,7 @@ export function ArtifactFilter({
             />
           </div>
 
-          <div className="flex items-center justify-between font-mono text-[0.62rem] uppercase tracking-[0.18em] text-carbon/48">
+          <div className="flex items-center justify-between font-mono text-[0.62rem] uppercase tracking-[0.16em] text-carbon/42">
             <span>{availableYears.min}</span>
             <span>{availableYears.max}</span>
           </div>

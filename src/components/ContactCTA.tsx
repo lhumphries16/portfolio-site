@@ -16,9 +16,9 @@ type ContactCTAProps = {
 
 const buttonStyles = {
   header:
-    'min-h-[2.9rem] rounded-full border border-cobalt/18 bg-cobalt/7 px-4 text-[0.76rem] font-semibold uppercase tracking-[0.08em] text-carbon hover:border-cobalt/34 hover:bg-cobalt/12',
+    'min-h-[2.7rem] rounded-full bg-cobalt px-4 text-[0.9rem] font-medium tracking-[-0.01em] text-bone hover:bg-carbon',
   section:
-    'min-h-[3.25rem] rounded-full border border-cobalt/20 bg-cobalt px-6 text-[0.8rem] font-semibold uppercase tracking-[0.1em] text-bone hover:bg-carbon',
+    'min-h-[3.1rem] rounded-full bg-cobalt px-5 text-[0.96rem] font-medium tracking-[-0.01em] text-bone hover:bg-carbon',
 } as const;
 
 export function ContactCTA({
@@ -99,10 +99,10 @@ export function ContactCTA({
             role="dialog"
             aria-modal="true"
             aria-labelledby={titleId}
-            className="absolute right-4 bottom-4 left-4 grid gap-4 rounded-[1.5rem] border border-carbon/12 bg-[#f7f4ee] p-5 shadow-[0_24px_80px_rgba(16,19,23,0.16)] md:relative md:right-auto md:bottom-auto md:left-auto md:w-[21rem] md:rounded-[1.2rem] md:p-4"
+            className="absolute right-4 bottom-4 left-4 grid gap-4 rounded-[1.25rem] border border-carbon/10 bg-[#f8f4ec] p-5 shadow-[0_24px_80px_rgba(16,19,23,0.12)] md:relative md:right-auto md:bottom-auto md:left-auto md:w-[20rem] md:p-4"
           >
-            <div className="grid gap-1">
-              <p id={titleId} className="m-0 text-[1rem] font-semibold tracking-[-0.02em] text-carbon">
+            <div className="grid gap-1.5">
+              <p id={titleId} className="m-0 text-[1.02rem] font-semibold tracking-[-0.02em] text-carbon">
                 {dialogTitle}
               </p>
               <p className="m-0 text-sm leading-relaxed text-carbon/62">
@@ -110,12 +110,12 @@ export function ContactCTA({
               </p>
             </div>
 
-            <div className="grid gap-2.5">
+            <div className="grid gap-0.5 border-t border-carbon/10 pt-2">
               {methods.map((method, index) => (
                 <a
                   key={method.href}
                   ref={index === 0 ? firstLinkRef : null}
-                  className="grid gap-1 rounded-[1rem] border border-carbon/10 bg-white/78 px-4 py-3 transition-colors duration-200 hover:border-cobalt/26 hover:bg-white focus-visible:border-cobalt/40"
+                  className="grid gap-1 border-b border-carbon/10 px-0 py-3 transition-colors duration-200 last:border-b-0 hover:text-cobalt"
                   href={method.href}
                   onClick={() => setIsOpen(false)}
                 >

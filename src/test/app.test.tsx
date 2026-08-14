@@ -38,7 +38,9 @@ describe('App', () => {
     ).toBeInTheDocument();
 
     expect(screen.getByText(/defined packages, not open-ended ownership/i)).toBeInTheDocument();
-    expect(document.title).toBe('Industrial & Controls | Tre Humphries');
+    await waitFor(() => {
+      expect(document.title).toBe('Industrial & Controls | Tre Humphries');
+    });
   });
 
   it('renders the web page', async () => {
@@ -50,9 +52,11 @@ describe('App', () => {
       })
     ).toBeInTheDocument();
 
-    expect(screen.getByText(/website gallery/i)).toBeInTheDocument();
+    expect(screen.getByText(/visual records from the same artifact archive/i)).toBeInTheDocument();
     expect(screen.getAllByText(/homeems/i).length).toBeGreaterThan(0);
-    expect(document.title).toBe('Web & Digital Systems | Tre Humphries');
+    await waitFor(() => {
+      expect(document.title).toBe('Web & Digital Systems | Tre Humphries');
+    });
   });
 
   it('renders the about page', async () => {
