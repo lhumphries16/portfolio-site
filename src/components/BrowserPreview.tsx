@@ -17,19 +17,19 @@ const variantConfig = {
     shell: 'max-w-[900px]',
     media: 'aspect-[16/10]',
     fallbackHeading: 'text-[clamp(1.8rem,4vw,2.6rem)]',
-    maxIframeHeight: 520,
+    maxIframeHeight: 460,
   },
   wide: {
     shell: 'max-w-[1040px]',
     media: 'aspect-[16/10]',
     fallbackHeading: 'text-[clamp(2rem,4.6vw,2.9rem)]',
-    maxIframeHeight: 620,
+    maxIframeHeight: 520,
   },
   compact: {
     shell: 'max-w-[760px]',
     media: 'aspect-[4/3]',
     fallbackHeading: 'text-[clamp(1.7rem,4vw,2.3rem)]',
-    maxIframeHeight: 460,
+    maxIframeHeight: 400,
   },
 } as const;
 

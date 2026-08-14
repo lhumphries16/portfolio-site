@@ -5,7 +5,6 @@ import { profile } from '../data/profile';
 
 const pageWrap = 'page-wrap';
 const contentWrap = 'content-wrap';
-const kicker = 'editorial-kicker';
 const actionLink = 'editorial-link';
 
 export function AboutPage() {
@@ -16,69 +15,48 @@ export function AboutPage() {
         description="Background, current work, and contact information for Tre Humphries, a whole-system engineer working across controls, hardware, software, and operations."
       />
 
-      <section className="border-b border-carbon/10 bg-bone px-4 py-12 text-carbon md:px-6 lg:px-8 lg:py-18 xl:px-12 xl:py-20">
-        <div className={`${pageWrap} grid gap-8 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] lg:items-end`}>
-          <div className="grid gap-4">
-            <p className={kicker}>About</p>
-            <h1 className="page-title max-w-[8ch] text-[clamp(3.8rem,10vw,6.4rem)]">
-              Whole-System Engineer
-            </h1>
-          </div>
-          <div className="grid gap-4">
-            {profile.about.paragraphs.map((paragraph) => (
-              <p key={paragraph} className="body-copy max-w-[42rem]">
-                {paragraph}
-              </p>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-bone px-4 py-14 text-carbon md:px-6 lg:px-8 xl:px-12 xl:py-16">
-        <div className={`${contentWrap} grid gap-8 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)] lg:items-start`}>
-          <div className="grid gap-4">
-            <div className="overflow-hidden bg-carbon/4">
-              <div className="aspect-[4/5]">
-                <img
-                  className="h-full w-full object-cover object-[62%_42%]"
-                  src={profile.contact.image.src}
-                  alt={profile.contact.image.alt}
-                  loading="lazy"
-                />
-              </div>
-            </div>
-            <p className="m-0 text-[0.82rem] leading-relaxed text-carbon/48">
-              Field context and machine-side work.
-            </p>
+      <section className="border-b border-carbon/10 bg-bone px-4 py-10 text-carbon md:px-6 lg:px-8 lg:py-16 xl:px-12 xl:py-18">
+        <div className={`${pageWrap} overflow-hidden border border-carbon/10 bg-paper lg:grid lg:grid-cols-[minmax(0,0.54fr)_minmax(0,0.46fr)]`}>
+          <div className="bg-carbon/4">
+            <img
+              className="aspect-[4/5] h-full w-full object-cover object-[62%_36%]"
+              src={profile.contact.image.src}
+              alt={profile.contact.image.alt}
+              loading="lazy"
+            />
           </div>
 
-          <div className="grid gap-8">
-            <div className="grid gap-3 border-t border-carbon/10 pt-4">
-              <h2 className="m-0 text-[1.3rem] font-semibold tracking-[-0.03em] text-carbon">Background</h2>
-              <p className="m-0 max-w-[42rem] text-base leading-relaxed text-carbon/68">
-                Mechanical engineering is the formal background, but the work kept expanding into controls,
-                software, embedded behavior, field troubleshooting, operator workflows, and the systems
-                around the system.
-              </p>
+          <div className="grid gap-6 bg-carbon px-5 py-6 text-bone md:px-8 md:py-8 xl:px-10 xl:py-10">
+            <div className="grid gap-4">
+              <p className="m-0 text-[0.72rem] font-medium tracking-[0.02em] text-bone/46">About</p>
+              <h1 className="page-title max-w-[8.5ch] text-[clamp(3.25rem,8.6vw,5.5rem)] text-bone">
+                Whole-System Engineer
+              </h1>
             </div>
-            <div className="grid gap-3 border-t border-carbon/10 pt-4">
-              <h2 className="m-0 text-[1.3rem] font-semibold tracking-[-0.03em] text-carbon">Current independent work</h2>
-              <p className="m-0 max-w-[42rem] text-base leading-relaxed text-carbon/68">
-                Current independent work ranges from web delivery to experimental controls and hardware
-                projects. The common thread is still the same: build something real, understand the
-                operating context, and leave behind something usable.
-              </p>
+
+            <div className="grid gap-4">
+              {profile.about.paragraphs.map((paragraph) => (
+                <p key={paragraph} className="m-0 max-w-[34rem] text-[1.04rem] leading-[1.66] text-bone/76">
+                  {paragraph}
+                </p>
+              ))}
             </div>
-            <div className="grid gap-3 border-t border-carbon/10 pt-4">
-              <h2 className="m-0 text-[1.3rem] font-semibold tracking-[-0.03em] text-carbon">Useful links</h2>
+
+            <div className="grid gap-3 border-t border-bone/12 pt-4">
+              <p className="m-0 text-sm leading-relaxed text-bone/58">
+                Mechanical engineering by training. Controls, software, field reality, and delivery work by necessity.
+              </p>
               <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
-                <a className={actionLink} href={profile.site.cvUrl}>
+                <a
+                  className="text-[0.96rem] font-medium tracking-[-0.01em] text-bone/82 transition-colors duration-200 hover:text-white"
+                  href={profile.site.cvUrl}
+                >
                   CV
                 </a>
                 {profile.socialLinks.map((link) => (
                   <a
                     key={link.href}
-                    className={actionLink}
+                    className="text-[0.96rem] font-medium tracking-[-0.01em] text-bone/82 transition-colors duration-200 hover:text-white"
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -86,7 +64,10 @@ export function AboutPage() {
                     {link.label}
                   </a>
                 ))}
-                <Link className={actionLink} to="/index">
+                <Link
+                  className="text-[0.96rem] font-medium tracking-[-0.01em] text-bone/82 transition-colors duration-200 hover:text-white"
+                  to="/index"
+                >
                   The Index
                 </Link>
               </div>
@@ -95,7 +76,52 @@ export function AboutPage() {
         </div>
       </section>
 
-      <section id="contact" className="border-t border-carbon/10 bg-bone px-4 py-14 text-carbon md:px-6 lg:px-8 xl:px-12 xl:py-16">
+      <section className="bg-bone px-4 py-14 text-carbon md:px-6 lg:px-8 xl:px-12 xl:py-16">
+        <div className={`${contentWrap} grid gap-5 lg:grid-cols-3`}>
+          <div className="grid gap-3 border border-carbon/10 bg-white p-5">
+            <h2 className="m-0 text-[1.3rem] font-semibold tracking-[-0.03em] text-carbon">Background</h2>
+            <p className="m-0 max-w-[42rem] text-base leading-relaxed text-carbon/68">
+              Mechanical engineering is the formal background, but the work kept expanding into controls,
+              software, embedded behavior, field troubleshooting, operator workflows, and the systems
+              around the system.
+            </p>
+          </div>
+          <div className="grid gap-3 border border-carbon/10 bg-white p-5">
+            <h2 className="m-0 text-[1.3rem] font-semibold tracking-[-0.03em] text-carbon">
+              Current independent work
+            </h2>
+            <p className="m-0 max-w-[42rem] text-base leading-relaxed text-carbon/68">
+              Current independent work ranges from web delivery to experimental controls and hardware
+              projects. The common thread is still the same: build something real, understand the
+              operating context, and leave behind something usable.
+            </p>
+          </div>
+          <div className="grid gap-3 border border-carbon/10 bg-white p-5">
+            <h2 className="m-0 text-[1.3rem] font-semibold tracking-[-0.03em] text-carbon">Useful links</h2>
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+              <a className={actionLink} href={profile.site.cvUrl}>
+                CV
+              </a>
+              {profile.socialLinks.map((link) => (
+                <a
+                  key={link.href}
+                  className={actionLink}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {link.label}
+                </a>
+              ))}
+              <Link className={actionLink} to="/index">
+                The Index
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" className="border-t border-carbon/10 bg-white px-4 py-14 text-carbon md:px-6 lg:px-8 xl:px-12 xl:py-16">
         <div className={`${pageWrap} grid gap-8 lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)] lg:items-start`}>
           <div className="grid gap-4">
             <h2 className="section-title max-w-[8ch] text-[clamp(2.2rem,4vw,3.4rem)]">

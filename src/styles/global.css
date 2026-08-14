@@ -4,6 +4,7 @@
 @theme {
   --color-carbon: #131417;
   --color-bone: #f7f3eb;
+  --color-paper: #fcfaf5;
   --color-cobalt: #2b55c7;
   --color-orange: #b36a31;
   --color-steel: #818995;
@@ -80,7 +81,7 @@
   }
 
   .editorial-kicker {
-    @apply m-0 text-[0.68rem] font-medium uppercase tracking-[0.08em] text-carbon/34;
+    @apply m-0 text-[0.72rem] font-medium tracking-[0.02em] text-carbon/36;
   }
 
   .page-title {

@@ -31,27 +31,24 @@ export function HomePage() {
         description="Tre Humphries is a whole-system engineer working across controls, hardware, software, interfaces, and operations through defined scopes and clean handoff."
       />
 
-      <section className="border-b border-carbon/10 bg-bone px-4 py-12 text-carbon md:px-6 lg:px-8 lg:py-18 xl:px-12 xl:py-20">
-        <div className={`${pageWrap} grid gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-end`}>
-          <div className="grid gap-5">
-            <p className={kicker}>Tre Humphries</p>
-            <div className="grid gap-4">
-              <h1 className={`${heroDisplay} max-w-[7ch] text-[clamp(4.2rem,11vw,7.2rem)]`}>
-                Whole-System Engineer
-              </h1>
-              <p className="m-0 max-w-[10ch] font-display text-[clamp(2rem,4vw,3.4rem)] leading-[0.96] tracking-[-0.03em] text-carbon/86">
-                {profile.hero.statement}
-              </p>
-            </div>
+      <section className="border-b border-carbon/10 bg-bone px-4 py-10 text-carbon md:px-6 lg:px-8 lg:py-16 xl:px-12 xl:py-18">
+        <div className={`${pageWrap} grid gap-8 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:items-start`}>
+          <div className="grid gap-3">
+            <h1 className={`${heroDisplay} max-w-[8ch] text-[clamp(4rem,9vw,6.2rem)]`}>
+              {profile.hero.statement}
+            </h1>
+            <p className="m-0 text-[clamp(1.12rem,2vw,1.45rem)] font-medium tracking-[-0.02em] text-carbon/58">
+              Whole-System Engineer
+            </p>
           </div>
 
-          <div className="grid gap-6 lg:justify-items-end">
-            <p className="body-copy max-w-[38rem]">
+          <div className="grid gap-5 lg:pt-5">
+            <p className="m-0 max-w-[37rem] text-[1.08rem] leading-[1.62] text-carbon/74">
               Work tends to land where physical systems, controls, software, interfaces, and operations
               start affecting each other. The useful version is defined scope, real deliverable, and
               clean handoff.
             </p>
-            <div className="flex w-full max-w-[42rem] flex-wrap gap-x-6 gap-y-2 border-t border-carbon/10 pt-4 text-sm tracking-[-0.02em] text-carbon/58">
+            <div className="grid w-full max-w-[37rem] gap-x-6 gap-y-2 border-t border-carbon/10 pt-4 text-sm tracking-[-0.02em] text-carbon/56 sm:grid-cols-2">
               {profile.hero.systemsProfile.map((item) => (
                 <p key={item} className="m-0">
                   {item}
@@ -64,10 +61,10 @@ export function HomePage() {
 
       <section className="bg-bone px-4 py-14 text-carbon md:px-6 lg:px-8 xl:px-12 xl:py-16">
         <div className={`${contentWrap} divide-y divide-carbon/10 lg:grid lg:grid-cols-2 lg:divide-x lg:divide-y-0`}>
-          <article className="grid gap-6 pb-10 lg:pr-8 lg:pb-0 xl:pr-10">
+          <article className="grid gap-5 pb-10 lg:pr-8 lg:pb-0 xl:pr-10">
             <div className="grid gap-4">
               <p className={kicker}>Industrial &amp; Controls</p>
-              <h2 className="section-title max-w-[12ch] text-[clamp(2.4rem,4.4vw,3.8rem)]">
+              <h2 className="section-title max-w-[12ch] text-[clamp(2.2rem,4vw,3.4rem)]">
                 Engineering work for machines, controls, hardware, and operations.
               </h2>
               <p className="support-copy max-w-[34rem]">
@@ -88,11 +85,11 @@ export function HomePage() {
             </Link>
           </article>
 
-          <article className="grid gap-6 pt-10 lg:pl-8 lg:pt-0 xl:pl-10">
+          <article className="grid gap-5 pt-10 lg:pl-8 lg:pt-0 xl:pl-10">
             {webLead ? <ArtifactPreview artifact={webLead} variant="wide" className="max-w-none" /> : null}
             <div className="grid gap-4">
               <p className={kicker}>Web &amp; Digital Systems</p>
-              <h2 className="section-title max-w-[12ch] text-[clamp(2.4rem,4.4vw,3.8rem)]">
+              <h2 className="section-title max-w-[12ch] text-[clamp(2.2rem,4vw,3.4rem)]">
                 Professional websites and digital systems that clients can actually own.
               </h2>
               <p className="support-copy max-w-[34rem]">

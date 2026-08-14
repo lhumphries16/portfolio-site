@@ -13,11 +13,11 @@ describe('App', () => {
 
     expect(
       await screen.findByRole('heading', {
-        name: /whole-system engineer/i,
+        name: /i build systems that have to work/i,
       })
     ).toBeInTheDocument();
 
-    expect(screen.getByText(/i build systems that have to work/i)).toBeInTheDocument();
+    expect(screen.getAllByText(/whole-system engineer/i).length).toBeGreaterThan(0);
 
     expect(document.title).toBe('Tre Humphries | Whole-System Engineer');
     expect(document.querySelector('meta[name="description"]')?.getAttribute('content')).toMatch(

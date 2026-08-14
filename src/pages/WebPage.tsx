@@ -14,7 +14,16 @@ const contentWrap = 'content-wrap';
 const kicker = 'editorial-kicker';
 const webArtifacts = getArtifactsForSurface(artifacts, 'web');
 const featuredArtifact = webArtifacts[0];
-const galleryArtifacts = webArtifacts.slice(0, 4);
+const galleryArtifacts = webArtifacts.slice(1, 5);
+const supportingPreviewArtifact =
+  webArtifacts.find((artifact) => artifact.id === 'all-seasons') ?? webArtifacts[2];
+const designLeadArtifact =
+  webArtifacts.find((artifact) => artifact.id === 'mayara-miranda') ?? webArtifacts[1];
+const webPrinciples = [
+  'Client-owned publishing and handoff',
+  'Lead flow, analytics, and page structure',
+  'Design restraint backed by implementation discipline',
+];
 
 export function WebPage() {
   return (
@@ -24,28 +33,107 @@ export function WebPage() {
         description="Professional websites and digital systems for contractors, service businesses, designers, and small organizations."
       />
 
-      <section className="border-b border-carbon/10 bg-bone px-4 py-12 text-carbon md:px-6 lg:px-8 lg:py-18 xl:px-12 xl:py-20">
-        <div className={`${pageWrap} grid gap-8 lg:grid-cols-[minmax(0,0.84fr)_minmax(0,1.16fr)] lg:items-end`}>
-          <div className="grid gap-4">
+      <section className="border-b border-carbon/10 bg-bone px-4 py-10 text-carbon md:px-6 lg:px-8 lg:py-16 xl:px-12 xl:py-18">
+        <div className={`${pageWrap} grid gap-8 xl:grid-cols-[minmax(0,0.74fr)_minmax(0,1.26fr)] xl:items-start`}>
+          <div className="grid gap-5 xl:py-4">
             <p className={kicker}>Web &amp; Digital Systems</p>
-            <h1 className="page-title max-w-[8ch] text-[clamp(3.8rem,10vw,6.4rem)]">
+            <h1 className="page-title max-w-[9ch] text-[clamp(3.3rem,8.8vw,5.7rem)]">
               Websites that look sharp, work cleanly, and hold up after handoff.
             </h1>
-          </div>
-          <div className="grid gap-4">
-            <p className="body-copy max-w-[42rem]">
+            <p className="m-0 max-w-[38rem] text-[1.04rem] leading-[1.64] text-carbon/74">
               This is the path for contractors, service businesses, designers, and small organizations
               that need a professional web presence or digital system without hiring a generic agency.
             </p>
-            <p className="support-copy max-w-[42rem]">
+            <p className="support-copy max-w-[38rem]">
               The engineering background helps with structure, logic, analytics, and edge cases. The
               result still has to be easy to understand and easy to own.
             </p>
+            <div className="grid gap-3 border-t border-carbon/10 pt-4 sm:grid-cols-3">
+              {webPrinciples.map((item) => (
+                <p key={item} className="m-0 text-sm leading-relaxed text-carbon/60">
+                  {item}
+                </p>
+              ))}
+            </div>
+          </div>
+
+          <div className="relative overflow-hidden bg-cobalt px-4 py-4 text-bone shadow-[0_24px_80px_rgba(43,85,199,0.18)] md:px-5 md:py-5 xl:px-6 xl:py-6">
+            <div
+              className="absolute inset-x-0 top-0 h-28"
+              aria-hidden="true"
+              style={{ background: 'linear-gradient(180deg, rgb(255 255 255 / 0.14), transparent)' }}
+            />
+            <div className="relative grid gap-4">
+              <div className="flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-[0.64rem] uppercase tracking-[0.16em] text-bone/76">
+                <p className="m-0">Current web work</p>
+                <p className="m-0">Live previews</p>
+                <p className="m-0">Client-owned systems</p>
+              </div>
+
+              <div className="grid gap-4 xl:grid-cols-[minmax(0,1.16fr)_minmax(17rem,0.84fr)]">
+                {featuredArtifact ? (
+                  <div className="grid gap-3 bg-white/96 p-3 shadow-[0_24px_48px_rgba(16,19,23,0.12)]">
+                    <div className="[&_figcaption]:hidden">
+                      <ArtifactPreview artifact={featuredArtifact} variant="wide" className="max-w-none" />
+                    </div>
+                    <div className="grid gap-1 border-t border-carbon/8 pt-2 text-carbon">
+                      <p className="m-0 font-mono text-[0.62rem] uppercase tracking-[0.16em] text-carbon/46">
+                        {formatArtifactDate(featuredArtifact.date)} {artifactTypeLabels[featuredArtifact.type]}
+                      </p>
+                      <h2 className="m-0 text-[1.1rem] font-semibold tracking-[-0.03em] text-carbon">
+                        {featuredArtifact.title}
+                      </h2>
+                      {featuredArtifact.subtitle ? (
+                        <p className="m-0 text-sm leading-relaxed text-carbon/64">{featuredArtifact.subtitle}</p>
+                      ) : null}
+                    </div>
+                  </div>
+                ) : null}
+
+                <div className="grid gap-4">
+                  {supportingPreviewArtifact ? (
+                    <div className="grid gap-3 bg-white/92 p-3 shadow-[0_18px_40px_rgba(16,19,23,0.1)]">
+                      <div className="[&_figcaption]:hidden">
+                        <ArtifactPreview
+                          artifact={supportingPreviewArtifact}
+                          variant="compact"
+                          className="max-w-none"
+                        />
+                      </div>
+                      <div className="grid gap-1 border-t border-carbon/8 pt-2 text-carbon">
+                        <p className="m-0 font-mono text-[0.62rem] uppercase tracking-[0.16em] text-carbon/46">
+                          {formatArtifactDate(supportingPreviewArtifact.date)}{' '}
+                          {artifactTypeLabels[supportingPreviewArtifact.type]}
+                        </p>
+                        <h2 className="m-0 text-[1rem] font-semibold tracking-[-0.03em] text-carbon">
+                          {supportingPreviewArtifact.title}
+                        </h2>
+                      </div>
+                    </div>
+                  ) : null}
+
+                  {designLeadArtifact ? (
+                    <div className="grid gap-3 border border-white/16 bg-carbon/18 p-4">
+                      <div className="flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-[0.62rem] uppercase tracking-[0.16em] text-bone/70">
+                        <p className="m-0">{formatArtifactDate(designLeadArtifact.date)}</p>
+                        <p className="m-0">{artifactTypeLabels[designLeadArtifact.type]}</p>
+                      </div>
+                      <h2 className="m-0 text-[1.8rem] font-semibold leading-[0.95] tracking-[-0.03em] text-bone">
+                        {designLeadArtifact.title}
+                      </h2>
+                      <p className="m-0 text-sm leading-relaxed text-bone/76">
+                        {designLeadArtifact.story ?? designLeadArtifact.summary}
+                      </p>
+                    </div>
+                  ) : null}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="bg-bone px-4 py-14 text-carbon md:px-6 lg:px-8 xl:px-12 xl:py-16">
+      <section className="bg-paper px-4 py-14 text-carbon md:px-6 lg:px-8 xl:px-12 xl:py-16">
         <div className={`${contentWrap} grid gap-9`}>
           <div className="grid gap-3 lg:grid-cols-[minmax(0,0.68fr)_minmax(0,1.32fr)] lg:items-end">
             <h2 className="section-title max-w-[10ch] text-[clamp(2.25rem,4vw,3.4rem)]">
@@ -66,7 +154,13 @@ export function WebPage() {
                     <p className="m-0">{formatArtifactDate(artifact.date)}</p>
                     <p className="m-0">{artifactTypeLabels[artifact.type]}</p>
                   </div>
-                  <h3 className={index === 0 ? 'm-0 text-[1.9rem] font-semibold tracking-[-0.03em] text-carbon' : 'm-0 text-[1.55rem] font-semibold tracking-[-0.03em] text-carbon'}>
+                  <h3
+                    className={
+                      index === 0
+                        ? 'm-0 text-[1.9rem] font-semibold tracking-[-0.03em] text-carbon'
+                        : 'm-0 text-[1.55rem] font-semibold tracking-[-0.03em] text-carbon'
+                    }
+                  >
                     {artifact.title}
                   </h3>
                   {artifact.subtitle ? <p className="m-0 text-[0.98rem] text-carbon/60">{artifact.subtitle}</p> : null}
@@ -99,29 +193,7 @@ export function WebPage() {
         </div>
       </section>
 
-      {featuredArtifact ? (
-        <section className="border-t border-carbon/10 bg-bone px-4 py-14 text-carbon md:px-6 lg:px-8 xl:px-12 xl:py-16">
-          <div className={`${contentWrap} grid gap-7 xl:grid-cols-[minmax(0,1.08fr)_minmax(22rem,0.92fr)] xl:items-start`}>
-            <ArtifactPreview artifact={featuredArtifact} variant="wide" className="max-w-none" />
-            <div className="grid gap-4 border-t border-carbon/10 pt-4 xl:border-t-0 xl:pt-0">
-              <div className="flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-[0.64rem] uppercase tracking-[0.16em] text-carbon/44">
-                <p className="m-0">{formatArtifactDate(featuredArtifact.date)}</p>
-                <p className="m-0">{artifactTypeLabels[featuredArtifact.type]}</p>
-              </div>
-              <h2 className="section-title max-w-[11ch] text-[clamp(2.25rem,4vw,3.5rem)]">
-                {featuredArtifact.title}
-              </h2>
-              {featuredArtifact.subtitle ? (
-                <p className="m-0 text-[1rem] tracking-[-0.02em] text-carbon/62">{featuredArtifact.subtitle}</p>
-              ) : null}
-              <p className="body-copy">{featuredArtifact.summary}</p>
-              {featuredArtifact.story ? <p className="support-copy">{featuredArtifact.story}</p> : null}
-            </div>
-          </div>
-        </section>
-      ) : null}
-
-      <section className="border-t border-carbon/10 bg-bone px-4 py-14 text-carbon md:px-6 lg:px-8 xl:px-12 xl:py-16">
+      <section className="border-t border-carbon/10 bg-white px-4 py-14 text-carbon md:px-6 lg:px-8 xl:px-12 xl:py-16">
         <div className={`${contentWrap} grid gap-8 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:items-start`}>
           <div className="grid gap-2">
             <h2 className="section-title max-w-[10ch] text-[clamp(2.1rem,4vw,3.2rem)]">

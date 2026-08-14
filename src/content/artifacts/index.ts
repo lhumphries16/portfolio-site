@@ -18,6 +18,8 @@ import rcGliderFeaturedImage from '../../../photo_assets/college_rc_glider_2.png
 import rcGliderFlightImage from '../../../photo_assets/college_rc_glider_3.png';
 import flyingButterflyImage from '../../../photo_assets/flying_butterfly.jpg';
 import flyingButterflyControllerImage from '../../../photo_assets/flying_butterfly_controller.png';
+import allSeasonsProofImage from '../../../allseasons-proof.png';
+import homeEmsProofImage from '../../../homeems-proof.png';
 
 export const artifactTypeLabels: Record<ArtifactType, string> = {
   project: 'Project',
@@ -353,13 +355,15 @@ export const artifacts = [
     },
     media: [
       {
-        type: 'iframe',
-        src: 'https://allseasonsmo.com/home/',
-        title: 'All Seasons live site preview',
-        caption: 'Live site preview loaded from the public website.',
+        type: 'image',
+        src: allSeasonsProofImage,
+        title: 'All Seasons homepage capture',
+        alt: 'All Seasons Maintenance Services homepage hero with aerial photo and bright green call to action',
+        caption: 'Captured public homepage from the live All Seasons website.',
         featured: true,
         display: {
           variant: 'wide',
+          objectPosition: 'center top',
         },
       },
     ],
@@ -538,13 +542,15 @@ export const artifacts = [
     },
     media: [
       {
-        type: 'iframe',
-        src: 'https://www.home-ems.net/',
-        title: 'HomeEMS live site preview',
-        caption: 'Live site preview loaded from the public website.',
+        type: 'image',
+        src: homeEmsProofImage,
+        title: 'HomeEMS homepage capture',
+        alt: 'HomeEMS public homepage showing restoration messaging, site navigation, and emergency service call to action',
+        caption: 'Captured public homepage from the live HomeEMS website.',
         featured: true,
         display: {
           variant: 'wide',
+          objectPosition: 'center top',
         },
       },
     ],
