@@ -52,6 +52,8 @@ export type ArtifactMedia = {
   featured?: boolean;
   display?: {
     variant?: 'default' | 'wide' | 'compact';
+    objectPosition?: string;
+    objectFit?: 'cover' | 'contain';
   };
 };
 

@@ -63,7 +63,7 @@ export function ArtifactFeature({ artifact, media }: ArtifactFeatureProps) {
 
         {artifact.visibility?.safeForPublic === 'pending-review' ? (
           <p className="m-0 max-w-[40rem] border-l-2 border-orange pl-4 text-sm leading-relaxed text-carbon/64">
-            Public-safe summary only. This record is intentionally constrained until media and detail are cleared for public release.
+            Public-safe summary only. This record uses approved visuals, while deeper technical detail remains intentionally constrained.
           </p>
         ) : null}
 

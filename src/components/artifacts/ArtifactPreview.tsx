@@ -56,6 +56,8 @@ function toBrowserPreviewRecord(media?: ArtifactMedia): BrowserPreviewRecord | u
       previewTitle: media.title ?? media.alt ?? 'Artifact image preview',
       previewAlt: media.alt,
       previewCaption: media.caption,
+      previewObjectPosition: media.display?.objectPosition,
+      previewObjectFit: media.display?.objectFit,
     };
   }
 

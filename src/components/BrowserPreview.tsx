@@ -162,7 +162,11 @@ export function BrowserPreview({
               src={preview.previewSrc}
               alt={preview.previewAlt ?? ''}
               loading={loading}
-              className="h-full w-full object-cover"
+              className="h-full w-full"
+              style={{
+                objectFit: preview.previewObjectFit ?? 'cover',
+                ...(preview.previewObjectPosition ? { objectPosition: preview.previewObjectPosition } : {}),
+              }}
               sizes="(max-width: 767px) 100vw, (max-width: 1279px) 70vw, 820px"
               onError={() => setHasFailed(true)}
             />

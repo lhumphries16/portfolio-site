@@ -11,6 +11,13 @@ import type {
   ArtifactType,
   ArtifactTypeFilter,
 } from './types';
+import avionFuselageImage from '../../../photo_assets/avion_custom_laser_cut_fuselage_folding_shell.jpg';
+import avionFlirMountImage from '../../../photo_assets/avion_drone_3dprint_flir_mount_demo.jpg';
+import rcGliderBuildImage from '../../../photo_assets/college_rc_glider_1.png';
+import rcGliderFeaturedImage from '../../../photo_assets/college_rc_glider_2.png';
+import rcGliderFlightImage from '../../../photo_assets/college_rc_glider_3.png';
+import flyingButterflyImage from '../../../photo_assets/flying_butterfly.jpg';
+import flyingButterflyControllerImage from '../../../photo_assets/flying_butterfly_controller.png';
 
 export const artifactTypeLabels: Record<ArtifactType, string> = {
   project: 'Project',
@@ -187,6 +194,60 @@ export const artifacts = [
     },
   },
   {
+    id: 'rc-glider',
+    slug: '2019-rc-glider',
+    title: 'RC Glider',
+    subtitle: 'College-era hand-built glider archive',
+    date: {
+      start: '2019-01-01',
+      precision: 'approximate',
+    },
+    sortDate: '2019-01-01',
+    type: 'project',
+    domains: ['physical', 'aerospace'],
+    era: 'purdue',
+    summary:
+      'A hand-built RC glider preserved here through a small surviving set of build-table and flight-test photos from college.',
+    story:
+      'This stays intentionally narrow. What survives publicly is the physical build context and flying stills, not a complete design log or formal spec sheet.',
+    highlights: ['RC glider', 'build archive', 'flight stills'],
+    display: {
+      weight: 'card',
+    },
+    media: [
+      {
+        type: 'image',
+        src: rcGliderFeaturedImage,
+        alt: 'Hand-built RC glider photographed from above during a college-era build and test period',
+        caption: 'College-era RC glider archive image showing the full airframe and control layout.',
+        featured: true,
+        display: {
+          variant: 'wide',
+          objectPosition: 'center 56%',
+        },
+      },
+      {
+        type: 'image',
+        src: rcGliderBuildImage,
+        alt: 'RC glider structure and components spread across a work table during assembly',
+        caption: 'Build-table context from the RC glider archive.',
+      },
+      {
+        type: 'image',
+        src: rcGliderFlightImage,
+        alt: 'Hand-built RC glider captured during a flying test with blue wing surfaces visible',
+        caption: 'Flight-test still from the RC glider archive.',
+      },
+    ],
+    placement: {
+      industrial: false,
+    },
+    detail: {
+      enabled: false,
+      template: 'archive',
+    },
+  },
+  {
     id: 'jumper-robot',
     slug: '2019-jumper-robot',
     title: 'Jumper Robot',
@@ -222,13 +283,38 @@ export const artifacts = [
     domains: ['aerospace', 'physical', 'controls', 'embedded'],
     era: 'purdue',
     summary:
-      'Worked with drones, fixed-wing aircraft, quadrotors, and experimental UAS, including a scale RC representation of a threat aircraft for a U.S. DoD application.',
+      'Worked across drones, fixed-wing aircraft, quadrotors, and experimental UAS during a summer internship, including public-safe prototype, fabrication, and integration work.',
     story:
-      'This public record stays intentionally narrow. The work is worth marking in the timeline, but detailed media and deeper discussion remain under public-safety review.',
+      'This public record stays intentionally high-level. The approved photos show fabrication and integration context, while technical scope, performance, and customer details stay out of the public archive.',
     status: 'Public detail intentionally limited',
-    highlights: ['drones', 'fixed-wing aircraft', 'experimental UAS'],
+    highlights: ['prototype fabrication', 'airframe process', 'integration work'],
     display: {
       weight: 'feature',
+    },
+    media: [
+      {
+        type: 'image',
+        src: avionFlirMountImage,
+        alt: 'Avion Solutions UAS lab setup with a drone-mounted thermal camera integration in view',
+        caption: 'Approved public-safe UAS integration context from Avion Solutions work.',
+        featured: true,
+        display: {
+          variant: 'wide',
+          objectPosition: 'center 42%',
+        },
+      },
+      {
+        type: 'image',
+        src: avionFuselageImage,
+        alt: 'Laser-cut fixed-wing fuselage parts arranged on a cutting mat during airframe fabrication',
+        caption: 'Approved fabrication photo from fixed-wing airframe process work.',
+      },
+    ],
+    placement: {
+      industrial: true,
+    },
+    order: {
+      industrial: 5,
     },
     detail: {
       enabled: false,
@@ -402,7 +488,7 @@ export const artifacts = [
       industrial: true,
     },
     order: {
-      industrial: 5,
+      industrial: 6,
     },
     media: [
       {
@@ -594,6 +680,25 @@ export const artifacts = [
       featured: true,
       current: true,
     },
+    media: [
+      {
+        type: 'image',
+        src: flyingButterflyImage,
+        alt: 'Programmable butterfly prototype held outdoors with illuminated wings and onboard electronics visible',
+        caption: 'Flight-test visual for the programmable butterfly system.',
+        featured: true,
+        display: {
+          variant: 'wide',
+          objectPosition: 'center 58%',
+        },
+      },
+      {
+        type: 'image',
+        src: flyingButterflyControllerImage,
+        alt: 'Handheld controller setup and butterfly hardware used during programmable butterfly control testing',
+        caption: 'Controller and interface hardware used during butterfly control experiments.',
+      },
+    ],
     placement: {
       home: true,
       industrial: true,

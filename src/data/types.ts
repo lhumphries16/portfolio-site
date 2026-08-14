@@ -30,6 +30,8 @@ export type BrowserPreviewRecord = {
   previewAutoplay?: boolean;
   previewLoop?: boolean;
   previewMuted?: boolean;
+  previewObjectPosition?: string;
+  previewObjectFit?: 'cover' | 'contain';
 };
 
 export type ExperienceRecord = {
