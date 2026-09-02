@@ -6,18 +6,20 @@ const contactPhoneDisplay = '(573) 933-0405';
 
 type ScheduleConfig = {
   label: string;
-  externalUrl?: string;
-  fallbackHref: string;
+  description: string;
+  href: string;
 };
 
 const scheduleConfig: Record<ScheduleAudience, ScheduleConfig> = {
   web: {
     label: 'Schedule a Project Call',
-    fallbackHref: '/contact?focus=web',
+    description: 'Project Call - websites, digital systems, service businesses, local brands',
+    href: 'https://cal.com/tre-humphries/project-call',
   },
   controls: {
     label: 'Schedule a Controls Consultation',
-    fallbackHref: '/contact?focus=controls',
+    description: 'Controls Consultation - OEM, controls, engineering discussions',
+    href: 'https://cal.com/tre-humphries/controls-consultation',
   },
 };
 
@@ -25,9 +27,8 @@ export function getScheduleLink(audience: ScheduleAudience) {
   const config = scheduleConfig[audience];
 
   return {
-    label: config.label,
-    href: config.externalUrl ?? config.fallbackHref,
-    external: Boolean(config.externalUrl),
+    ...config,
+    external: true,
   };
 }
 

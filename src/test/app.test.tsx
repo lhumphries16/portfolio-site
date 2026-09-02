@@ -1,6 +1,9 @@
 import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import App from '../App';
 
+const projectCallUrl = 'https://cal.com/tre-humphries/project-call';
+const controlsConsultationUrl = 'https://cal.com/tre-humphries/controls-consultation';
+
 function renderRoute(route: string) {
   window.history.pushState({}, '', route);
   render(<App />);
@@ -97,8 +100,8 @@ describe('App', () => {
     expect(screen.getAllByText(/event and bulk orders/i).length).toBeGreaterThan(0);
   });
 
-  it('renders the contact page and switches focus using the query param', async () => {
-    renderRoute('/contact?focus=controls');
+  it('renders the contact page with both direct scheduling options and email fallback', async () => {
+    renderRoute('/contact');
 
     expect(
       await screen.findByRole('heading', {
@@ -106,13 +109,17 @@ describe('App', () => {
       })
     ).toBeInTheDocument();
 
-    expect(screen.getAllByText(/schedule a controls consultation/i).length).toBeGreaterThan(0);
-    expect(screen.getByRole('heading', { name: /send the system outline/i })).toBeInTheDocument();
-    expect(screen.getByText(/the best first note names the system/i)).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /schedule a project call/i })).toHaveAttribute('href', projectCallUrl);
+    expect(screen.getByRole('link', { name: /schedule a controls consultation/i })).toHaveAttribute(
+      'href',
+      controlsConsultationUrl
+    );
+    expect(screen.getByRole('heading', { name: /send the outline/i })).toBeInTheDocument();
+    expect(screen.getByText(/the most useful first note names the real problem/i)).toBeInTheDocument();
   });
 
   it('opens a project-call draft from the contact page after valid form input', async () => {
-    renderRoute('/contact?focus=web');
+    renderRoute('/contact');
     const originalLocation = window.location;
     let assignedHref = '';
 
@@ -121,7 +128,7 @@ describe('App', () => {
       value: {
         ...originalLocation,
         pathname: '/contact',
-        search: '?focus=web',
+        search: '',
         set href(value: string) {
           assignedHref = value;
         },
@@ -140,7 +147,7 @@ describe('App', () => {
       fireEvent.click(screen.getByRole('button', { name: /open email draft/i }));
 
       expect(assignedHref).toContain('mailto:trehumphries16@gmail.com');
-      expect(assignedHref).toContain(encodeURIComponent('Project call'));
+      expect(assignedHref).toContain(encodeURIComponent('Website or controls inquiry'));
     } finally {
       Object.defineProperty(window, 'location', {
         configurable: true,
@@ -185,5 +192,32 @@ describe('App', () => {
 
     expect(await screen.findByText(/not part of the current public site/i)).toBeInTheDocument();
     expect(document.title).toBe('Page Not Found | Tre Humphries');
+  });
+
+  it.each([
+    ['/', 'Schedule a Project Call', projectCallUrl, 2],
+    ['/', 'Schedule a Controls Consultation', controlsConsultationUrl, 2],
+    ['/web', 'Schedule a Project Call', projectCallUrl, 2],
+    ['/controls', 'Schedule a Controls Consultation', controlsConsultationUrl, 2],
+    ['/contact', 'Schedule a Project Call', projectCallUrl, 1],
+    ['/contact', 'Schedule a Controls Consultation', controlsConsultationUrl, 1],
+    ['/about', 'Schedule a Project Call', projectCallUrl, 1],
+    ['/about', 'Schedule a Controls Consultation', controlsConsultationUrl, 1],
+    ['/work', 'Schedule a Project Call', projectCallUrl, 1],
+    ['/work', 'Schedule a Controls Consultation', controlsConsultationUrl, 1],
+    ['/work/homeems', 'Schedule a Project Call', projectCallUrl, 2],
+    ['/work/brazilian-sweet-bites-order-system', 'Schedule a Project Call', projectCallUrl, 2],
+  ])('uses the correct scheduler link on %s for %s', async (route, label, href, count) => {
+    renderRoute(route);
+
+    const links = await screen.findAllByRole('link', { name: new RegExp(label, 'i') });
+
+    expect(links).toHaveLength(count);
+
+    for (const link of links) {
+      expect(link).toHaveAttribute('href', href);
+      expect(link).toHaveAttribute('target', '_blank');
+      expect(link).toHaveAttribute('rel', 'noopener noreferrer');
+    }
   });
 });

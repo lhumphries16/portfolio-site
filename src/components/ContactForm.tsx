@@ -1,7 +1,6 @@
 import { FormEvent, useMemo, useState } from 'react';
 
 type ContactFormProps = {
-  audience: 'web' | 'controls';
   helper: string;
   email: string;
 };
@@ -22,29 +21,17 @@ const initialValues: FormValues = {
   scope: '',
 };
 
-const audienceLabels = {
-  web: 'Project call',
-  controls: 'Controls consultation',
+const formCopy = {
+  eyebrow: 'Email',
+  title: 'Send the outline.',
+  inquiryLabel: 'Website or controls inquiry',
+  currentLabel: 'Current site, system, or workflow',
+  currentPlaceholder: 'Business, site, machine, panel, process, or workflow',
+  scopePlaceholder:
+    'What is not working, what needs to be clearer, and what would a useful next step or handoff look like?',
 } as const;
 
-const audienceCopy = {
-  web: {
-    title: 'Send the project outline.',
-    currentLabel: 'Current site or system',
-    currentPlaceholder: 'Current site, process, or customer bottleneck',
-    scopePlaceholder:
-      'What does the current site or digital workflow fail to communicate, and what should a better handoff leave behind?',
-  },
-  controls: {
-    title: 'Send the system outline.',
-    currentLabel: 'System or workflow',
-    currentPlaceholder: 'Machine, panel, process, or workflow name',
-    scopePlaceholder:
-      'What is failing or unclear now, and what review, design package, or handoff would actually help your team?',
-  },
-} as const;
-
-export function ContactForm({ audience, helper, email }: ContactFormProps) {
+export function ContactForm({ helper, email }: ContactFormProps) {
   const [values, setValues] = useState<FormValues>(initialValues);
   const [touched, setTouched] = useState(false);
 
@@ -58,7 +45,6 @@ export function ContactForm({ audience, helper, email }: ContactFormProps) {
   }, [values]);
 
   const showInvalid = touched && !isValid;
-  const copy = audienceCopy[audience];
 
   const openDraft = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -68,18 +54,18 @@ export function ContactForm({ audience, helper, email }: ContactFormProps) {
       return;
     }
 
-    const subjectParts = [audienceLabels[audience]];
+    const subjectParts = [formCopy.inquiryLabel];
 
     if (values.company.trim()) {
       subjectParts.push(values.company.trim());
     }
 
     const body = [
-      `Inquiry type: ${audienceLabels[audience]}`,
+      `Inquiry type: ${formCopy.inquiryLabel}`,
       `Name: ${values.name.trim()}`,
       values.company.trim() ? `Company or team: ${values.company.trim()}` : null,
       `Email: ${values.email.trim()}`,
-      values.currentSystem.trim() ? `${copy.currentLabel}: ${values.currentSystem.trim()}` : null,
+      values.currentSystem.trim() ? `${formCopy.currentLabel}: ${values.currentSystem.trim()}` : null,
       '',
       'Scope or problem:',
       values.scope.trim(),
@@ -104,10 +90,10 @@ export function ContactForm({ audience, helper, email }: ContactFormProps) {
     >
       <div className="grid gap-2">
         <p className="m-0 text-[0.76rem] font-semibold uppercase tracking-[0.14em] text-carbon/46">
-          {audienceLabels[audience]}
+          {formCopy.eyebrow}
         </p>
         <h2 className="m-0 text-[clamp(1.8rem,4vw,2.45rem)] font-semibold leading-[0.97] tracking-[-0.04em] text-carbon">
-          {copy.title}
+          {formCopy.title}
         </h2>
         <p className="m-0 max-w-[40rem] text-[0.98rem] leading-relaxed text-carbon/68">{helper}</p>
       </div>
@@ -158,11 +144,11 @@ export function ContactForm({ audience, helper, email }: ContactFormProps) {
         </label>
 
         <label className="grid gap-2">
-          <span className="text-sm font-medium text-carbon/66">{copy.currentLabel}</span>
+          <span className="text-sm font-medium text-carbon/66">{formCopy.currentLabel}</span>
           <input
             className="min-h-12 rounded-[1rem] border border-carbon/12 bg-bone px-4 text-carbon"
             name="currentSystem"
-            placeholder={copy.currentPlaceholder}
+            placeholder={formCopy.currentPlaceholder}
             type="text"
             value={values.currentSystem}
             onChange={(event) => updateField('currentSystem', event.target.value)}
@@ -177,7 +163,7 @@ export function ContactForm({ audience, helper, email }: ContactFormProps) {
           aria-invalid={touched && values.scope.trim().length === 0}
           className="min-h-40 rounded-[1rem] border border-carbon/12 bg-bone px-4 py-3 text-carbon"
           name="scope"
-          placeholder={copy.scopePlaceholder}
+          placeholder={formCopy.scopePlaceholder}
           value={values.scope}
           onBlur={() => setTouched(true)}
           onChange={(event) => updateField('scope', event.target.value)}

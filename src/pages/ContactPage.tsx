@@ -1,4 +1,3 @@
-import { useSearchParams } from 'react-router-dom';
 import { ButtonLink } from '../components/ButtonLink';
 import { ContactForm } from '../components/ContactForm';
 import { RouteMeta } from '../components/RouteMeta';
@@ -6,9 +5,6 @@ import { ctaLinks, siteContent } from '../data/siteContent';
 import { profile } from '../data/profile';
 
 export function ContactPage() {
-  const [searchParams] = useSearchParams();
-  const focus = searchParams.get('focus') === 'controls' ? 'controls' : 'web';
-
   return (
     <>
       <RouteMeta
@@ -32,28 +28,20 @@ export function ContactPage() {
 
       <section className="px-4 py-10 md:px-6 lg:px-8 lg:py-14 xl:px-12">
         <div className="content-wrap grid gap-4 lg:grid-cols-2">
-          <div
-            className={`grid gap-4 rounded-[1.8rem] border p-5 shadow-[0_18px_50px_rgba(24,34,45,0.05)] ${
-              focus === 'web' ? 'border-cobalt bg-white' : 'border-carbon/10 bg-paper'
-            }`}
-          >
+          <div className="grid gap-4 rounded-[1.8rem] border border-carbon/10 bg-white p-5 shadow-[0_18px_50px_rgba(24,34,45,0.05)]">
             <div className="grid gap-2">
               <p className="m-0 text-[0.76rem] font-semibold uppercase tracking-[0.14em] text-carbon/44">Web & Digital</p>
               <h2 className="m-0 text-[1.65rem] font-semibold leading-[0.98] tracking-[-0.04em] text-carbon">
                 {ctaLinks.web.label}
               </h2>
-              <p className="m-0 text-[1rem] leading-relaxed text-carbon/72">{siteContent.contact.webNote}</p>
+              <p className="m-0 text-[1rem] leading-relaxed text-carbon/72">{ctaLinks.web.description}</p>
             </div>
-            <ButtonLink href="/contact?focus=web" variant={focus === 'web' ? 'primary' : 'secondary'}>
+            <ButtonLink external={ctaLinks.web.external} href={ctaLinks.web.href}>
               {ctaLinks.web.label}
             </ButtonLink>
           </div>
 
-          <div
-            className={`grid gap-4 rounded-[1.8rem] border p-5 shadow-[0_18px_50px_rgba(24,34,45,0.05)] ${
-              focus === 'controls' ? 'border-cobalt bg-white' : 'border-carbon/10 bg-paper'
-            }`}
-          >
+          <div className="grid gap-4 rounded-[1.8rem] border border-carbon/10 bg-paper p-5 shadow-[0_18px_50px_rgba(24,34,45,0.05)]">
             <div className="grid gap-2">
               <p className="m-0 text-[0.76rem] font-semibold uppercase tracking-[0.14em] text-carbon/44">
                 Controls Engineering
@@ -61,9 +49,9 @@ export function ContactPage() {
               <h2 className="m-0 text-[1.65rem] font-semibold leading-[0.98] tracking-[-0.04em] text-carbon">
                 {ctaLinks.controls.label}
               </h2>
-              <p className="m-0 text-[1rem] leading-relaxed text-carbon/72">{siteContent.contact.controlsNote}</p>
+              <p className="m-0 text-[1rem] leading-relaxed text-carbon/72">{ctaLinks.controls.description}</p>
             </div>
-            <ButtonLink href="/contact?focus=controls" variant={focus === 'controls' ? 'primary' : 'secondary'}>
+            <ButtonLink external={ctaLinks.controls.external} href={ctaLinks.controls.href}>
               {ctaLinks.controls.label}
             </ButtonLink>
           </div>
@@ -72,11 +60,7 @@ export function ContactPage() {
 
       <section className="px-4 pb-14 pt-2 md:px-6 lg:px-8 lg:pb-18 xl:px-12">
         <div className="content-wrap grid gap-6 lg:grid-cols-[minmax(0,1.06fr)_minmax(20rem,0.94fr)] lg:items-start">
-          <ContactForm
-            audience={focus}
-            email={profile.brand.email}
-            helper={focus === 'web' ? siteContent.contact.formHelper.web : siteContent.contact.formHelper.controls}
-          />
+          <ContactForm email={profile.brand.email} helper={profile.contact.helper} />
 
           <aside className="grid gap-4 rounded-[1.8rem] border border-carbon/10 bg-paper p-5">
             <div className="grid gap-2">
