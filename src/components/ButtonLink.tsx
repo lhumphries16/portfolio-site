@@ -11,13 +11,13 @@ type ButtonLinkProps = {
 
 const variantClassNames = {
   primary:
-    'inline-flex min-h-12 items-center justify-center rounded-full bg-cobalt px-6 text-[0.96rem] font-semibold tracking-[-0.02em] text-white shadow-[0_16px_40px_rgba(191,77,45,0.2)] transition-transform duration-200 hover:-translate-y-[1px] hover:bg-carbon',
+    'inline-flex min-h-12 items-center justify-center rounded-full bg-carbon px-6 text-[0.96rem] font-semibold tracking-[-0.02em] text-white shadow-[0_18px_44px_rgba(15,23,42,0.18)] transition-all duration-200 hover:-translate-y-[1px] hover:bg-[#172240]',
   secondary:
-    'inline-flex min-h-12 items-center justify-center rounded-full border border-carbon/14 bg-white px-6 text-[0.96rem] font-semibold tracking-[-0.02em] text-carbon transition-transform duration-200 hover:-translate-y-[1px] hover:border-carbon/28 hover:bg-paper',
+    'inline-flex min-h-12 items-center justify-center rounded-full border border-carbon/12 bg-white px-6 text-[0.96rem] font-semibold tracking-[-0.02em] text-carbon shadow-[0_12px_30px_rgba(15,23,42,0.05)] transition-all duration-200 hover:-translate-y-[1px] hover:border-carbon/24 hover:bg-paper/90',
   ghost:
-    'inline-flex min-h-12 items-center justify-center rounded-full border border-carbon/12 bg-transparent px-6 text-[0.96rem] font-semibold tracking-[-0.02em] text-carbon transition-colors duration-200 hover:border-carbon/26 hover:bg-white/72',
+    'inline-flex min-h-12 items-center justify-center rounded-full border border-carbon/12 bg-transparent px-6 text-[0.96rem] font-semibold tracking-[-0.02em] text-carbon transition-colors duration-200 hover:border-carbon/22 hover:bg-white/72',
   text:
-    'inline-flex items-center gap-2 text-[0.96rem] font-semibold tracking-[-0.02em] text-carbon transition-colors duration-200 hover:text-cobalt',
+    'inline-flex items-center gap-2 text-[0.96rem] font-semibold tracking-[-0.02em] text-cobalt transition-colors duration-200 hover:text-carbon',
 } as const;
 
 export function ButtonLink({

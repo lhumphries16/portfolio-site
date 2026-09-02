@@ -17,41 +17,39 @@ export function WorkPage() {
         description="Selected work across web, digital systems, and scoped controls engineering from Tre Humphries."
       />
 
-      <section className="px-4 pb-10 pt-8 md:px-6 lg:px-8 lg:pb-14 lg:pt-12 xl:px-12">
-        <div className="page-wrap grid gap-6 lg:grid-cols-[minmax(0,0.84fr)_minmax(0,1.16fr)] lg:items-end">
+      <section className="hero-shell">
+        <div className="page-wrap grid gap-6 xl:grid-cols-[minmax(0,0.42fr)_minmax(0,0.58fr)] xl:items-end">
           <div className="grid gap-4">
-            <p className="m-0 text-[0.8rem] font-semibold uppercase tracking-[0.14em] text-carbon/46">Selected Work</p>
-            <h1 className="m-0 max-w-[10ch] text-[clamp(3rem,7vw,5.2rem)] font-semibold leading-[0.94] tracking-[-0.06em] text-carbon">
+            <p className="eyebrow">Selected work</p>
+            <h1 className="m-0 max-w-[10ch] text-[clamp(2.8rem,4.9vw,4.6rem)] font-semibold leading-[0.99] tracking-[-0.055em] text-carbon">
               Selected work
             </h1>
           </div>
-          <p className="m-0 max-w-[42rem] text-[1.04rem] leading-relaxed text-carbon/72">
+
+          <p className="body-lead max-w-[42rem]">
             A few examples across websites, workflow systems, and controls engineering.
           </p>
         </div>
       </section>
 
-      <section className="px-4 py-10 md:px-6 lg:px-8 lg:py-14 xl:px-12">
+      <section className="section-shell section-block">
         <div className="content-wrap grid gap-6">
           <div className="grid gap-3">
-            <p className="m-0 text-[0.8rem] font-semibold uppercase tracking-[0.14em] text-carbon/46">Flagship</p>
-            <h2 className="m-0 text-[clamp(2.2rem,4vw,3.4rem)] font-semibold leading-[0.96] tracking-[-0.05em] text-carbon">
-              HomeEMS
-            </h2>
+            <p className="eyebrow">Flagship</p>
+            <h2 className="section-heading max-w-[9ch]">HomeEMS</h2>
           </div>
           <ProjectCard item={flagshipProject} variant="feature" />
         </div>
       </section>
 
-      <section className="px-4 py-10 md:px-6 lg:px-8 lg:py-14 xl:px-12">
-        <div className="content-wrap grid gap-6 lg:grid-cols-[minmax(0,1.06fr)_minmax(0,0.94fr)] lg:items-start">
+      <section className="section-shell section-block">
+        <div className="content-wrap grid gap-6 xl:grid-cols-[minmax(0,1.02fr)_minmax(0,0.98fr)] xl:items-start">
           <ProjectCard item={secondaryCaseStudy} />
+
           <div className="grid gap-4">
-            <div className="grid gap-3">
-              <p className="m-0 text-[0.8rem] font-semibold uppercase tracking-[0.14em] text-carbon/46">
-                More website work
-              </p>
-              <p className="m-0 text-[1rem] leading-relaxed text-carbon/68">
+            <div className="surface-soft grid gap-3 p-5">
+              <p className="eyebrow">More website work</p>
+              <p className="body-copy">
                 Mayara shows a more visual service-business presentation. Brazilian Sweet Bites broadens the industry
                 mix. All Seasons remains an earlier example of service-business website delivery.
               </p>
@@ -65,13 +63,12 @@ export function WorkPage() {
         </div>
       </section>
 
-      <section className="px-4 py-10 md:px-6 lg:px-8 lg:py-14 xl:px-12">
+      <section className="section-shell section-block">
         <div className="content-wrap grid gap-6">
-          <div className="grid gap-4 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] lg:items-end">
-            <h2 className="m-0 max-w-[10ch] text-[clamp(2.15rem,4vw,3.2rem)] font-semibold leading-[0.96] tracking-[-0.05em] text-carbon">
-              Selected engineering work
-            </h2>
-            <p className="m-0 max-w-[40rem] text-[1rem] leading-relaxed text-carbon/68">
+          <div className="grid gap-3">
+            <p className="eyebrow">Selected engineering work</p>
+            <h2 className="section-heading max-w-[10ch]">Selected engineering work</h2>
+            <p className="body-lead max-w-[40rem]">
               Work from prior roles across HVAC controls, machine systems, robotics, and internal engineering tools.
             </p>
           </div>
@@ -84,14 +81,13 @@ export function WorkPage() {
         </div>
       </section>
 
-      <section className="px-4 pb-14 pt-10 md:px-6 lg:px-8 lg:pb-18 lg:pt-14 xl:px-12">
-        <div className="page-wrap rounded-[2rem] border border-carbon/10 bg-white px-6 py-7 shadow-[0_24px_80px_rgba(24,34,45,0.08)] md:px-8 md:py-8">
+      <section className="section-shell pb-14 pt-2 md:pb-18">
+        <div className="page-wrap surface-card px-6 py-7 md:px-8 md:py-8">
           <div className="grid gap-5 lg:grid-cols-[minmax(0,0.9fr)_auto] lg:items-end">
             <div className="grid gap-3">
-              <h2 className="m-0 max-w-[10ch] text-[clamp(2.1rem,4vw,3rem)] font-semibold leading-[0.96] tracking-[-0.05em] text-carbon">
-                Need to talk through fit before scoping?
-              </h2>
-              <p className="m-0 max-w-[38rem] text-[1rem] leading-relaxed text-carbon/68">
+              <p className="eyebrow">Contact</p>
+              <h2 className="section-heading max-w-[10ch]">Need to talk through fit before scoping?</h2>
+              <p className="body-copy max-w-[38rem]">
                 Use the contact route that matches the work you are considering and start with the current situation.
               </p>
             </div>
