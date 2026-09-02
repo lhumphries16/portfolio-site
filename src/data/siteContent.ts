@@ -1,12 +1,13 @@
-import allSeasonsProofImage from '../../allseasons-proof.png';
-import homeEmsProofImage from '../../homeems-proof.png';
-import bsbHomeImage from '../../output/playwright/bsb-home-desktop-full.png';
-import bsbOrderImage from '../../output/playwright/bsb-order-desktop-full.png';
-import homeEmsContactImage from '../../output/playwright/homeems-contact-desktop-full.png';
-import homeEmsGalleryImage from '../../output/playwright/homeems-gallery-desktop-full.png';
-import homeEmsServiceAreaImage from '../../output/playwright/homeems-service-area-desktop-full.png';
-import mayaraImage from '../../output/playwright/mayara-home-desktop-full.png';
 import { getScheduleLink } from './profile';
+
+const allSeasonsProofImage = '/images/portfolio/all-seasons/homepage.png';
+const homeEmsProofImage = '/images/portfolio/homeems/homepage.png';
+const bsbHomeImage = '/images/portfolio/brazilian-sweet-bites/home-desktop.png';
+const bsbOrderImage = '/images/portfolio/bsb-order/home-desktop.png';
+const homeEmsContactImage = '/images/portfolio/homeems/contact-desktop.png';
+const homeEmsGalleryImage = '/images/portfolio/homeems/gallery-desktop.png';
+const homeEmsServiceAreaImage = '/images/portfolio/homeems/service-area-desktop.png';
+const mayaraImage = '/images/portfolio/mayara/home-desktop.png';
 
 export type PortfolioCategory = 'web' | 'controls';
 export type PortfolioTreatment = 'flagship' | 'case-study' | 'project-card';

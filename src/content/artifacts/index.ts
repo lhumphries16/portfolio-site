@@ -11,15 +11,16 @@ import type {
   ArtifactType,
   ArtifactTypeFilter,
 } from './types';
-import avionFuselageImage from '../../../photo_assets/avion_custom_laser_cut_fuselage_folding_shell.jpg';
-import avionFlirMountImage from '../../../photo_assets/avion_drone_3dprint_flir_mount_demo.jpg';
-import rcGliderBuildImage from '../../../photo_assets/college_rc_glider_1.png';
-import rcGliderFeaturedImage from '../../../photo_assets/college_rc_glider_2.png';
-import rcGliderFlightImage from '../../../photo_assets/college_rc_glider_3.png';
-import flyingButterflyImage from '../../../photo_assets/flying_butterfly.jpg';
-import flyingButterflyControllerImage from '../../../photo_assets/flying_butterfly_controller.png';
-import allSeasonsProofImage from '../../../allseasons-proof.png';
-import homeEmsProofImage from '../../../homeems-proof.png';
+
+const avionFuselageImage = '/images/artifacts/avion/fuselage-folding-shell.jpg';
+const avionFlirMountImage = '/images/artifacts/avion/flir-mount-demo.jpg';
+const rcGliderBuildImage = '/images/artifacts/rc-glider/build.png';
+const rcGliderFeaturedImage = '/images/artifacts/rc-glider/featured.png';
+const rcGliderFlightImage = '/images/artifacts/rc-glider/flight.png';
+const flyingButterflyImage = '/images/artifacts/butterfly/flight.jpg';
+const flyingButterflyControllerImage = '/images/artifacts/butterfly/controller.png';
+const allSeasonsProofImage = '/images/portfolio/all-seasons/homepage.png';
+const homeEmsProofImage = '/images/portfolio/homeems/homepage.png';
 
 export const artifactTypeLabels: Record<ArtifactType, string> = {
   project: 'Project',
