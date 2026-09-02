@@ -70,20 +70,6 @@ export function ProjectCard({
           </p>
         </div>
 
-        {variant === 'compact' ? (
-          <div className="hidden rounded-[1.05rem] bg-paper px-4 py-3 md:block">
-            <p className="m-0 text-[0.9rem] leading-relaxed text-carbon/72">
-              <span className="font-semibold text-carbon">What it proves:</span> {item.whatItProves}
-            </p>
-          </div>
-        ) : (
-          <div className="rounded-[1.15rem] bg-paper px-4 py-3">
-            <p className="m-0 text-[0.92rem] leading-relaxed text-carbon/72">
-              <span className="font-semibold text-carbon">What it proves:</span> {item.whatItProves}
-            </p>
-          </div>
-        )}
-
         {item.caution ? (
           <p className={`m-0 leading-relaxed text-carbon/58 ${variant === 'compact' ? 'hidden text-[0.82rem] md:block' : 'text-sm'}`}>
             {item.caution}

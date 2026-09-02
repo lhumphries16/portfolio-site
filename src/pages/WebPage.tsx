@@ -56,7 +56,7 @@ export function WebPage() {
                   alt={secondaryCaseStudy.primaryAsset.alt}
                 />
                 <p className="m-0 px-1 pt-4 text-[0.95rem] leading-relaxed text-carbon/68">
-                  Strong supporting proof for customer flow and lightweight workflow design.
+                  A focused example of customer flow and lightweight workflow design.
                 </p>
               </div>
 
@@ -80,8 +80,7 @@ export function WebPage() {
               Built for businesses that already have customers, reputation, and real operations.
             </h2>
             <p className="m-0 max-w-[36rem] text-[1rem] leading-relaxed text-carbon/68">
-              Contractors and service companies should feel especially well served here, but the practice is not
-              contractor-exclusive. The benchmark is a real business whose site is underselling the operation behind it.
+              Best fit for established businesses whose real-world operation has outgrown the website representing it.
             </p>
           </div>
 
@@ -100,10 +99,10 @@ export function WebPage() {
           <article className="grid gap-5 rounded-[2rem] border border-carbon/10 bg-white p-6 shadow-[0_20px_60px_rgba(24,34,45,0.06)]">
             <div className="grid gap-3">
               <h2 className="m-0 max-w-[10ch] text-[clamp(2.2rem,4vw,3.3rem)] font-semibold leading-[0.96] tracking-[-0.05em] text-carbon">
-                The offer stays fixed-scope and handoff-oriented.
+                A fixed-scope website engagement with a clean handoff.
               </h2>
               <p className="m-0 max-w-[40rem] text-[1rem] leading-relaxed text-carbon/68">
-                Strategy, responsive design and build, service pages, intake flow, search structure, launch, and a
+                Planning, responsive design and build, service pages, intake flow, search structure, launch, and a
                 client-owned result.
               </p>
             </div>
@@ -119,7 +118,7 @@ export function WebPage() {
 
           <article className="grid gap-4 rounded-[2rem] border border-carbon/10 bg-paper p-6">
             <h2 className="m-0 max-w-[10ch] text-[clamp(2rem,4vw,2.9rem)] font-semibold leading-[0.96] tracking-[-0.05em] text-carbon">
-              Bounded on purpose.
+              Clear scope. Clean handoff.
             </h2>
             <div className="grid gap-3">
               {siteContent.web.boundaries.map((item) => (
@@ -136,11 +135,10 @@ export function WebPage() {
         <div className="content-wrap grid gap-6">
           <div className="grid gap-4 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] lg:items-end">
             <h2 className="m-0 max-w-[10ch] text-[clamp(2.2rem,4vw,3.3rem)] font-semibold leading-[0.96] tracking-[-0.05em] text-carbon">
-              Selected web proof
+              Selected website work
             </h2>
             <p className="m-0 max-w-[40rem] text-[1rem] leading-relaxed text-carbon/68">
-              HomeEMS carries the most weight because it most directly shows the kind of service-business work this
-              offer is built to win.
+              HomeEMS is the clearest example of a service-business site built around structure, intake, and handoff.
             </p>
           </div>
 
@@ -187,8 +185,8 @@ export function WebPage() {
                 Have a site that no longer matches the business behind it?
               </h2>
               <p className="m-0 max-w-[38rem] text-[1rem] leading-relaxed text-carbon/68">
-                Start with the current site, the business reality it is underselling, and what a better handoff should
-                leave behind.
+                Start with the current site, what the business actually needs, and what a better handoff should leave
+                behind.
               </p>
             </div>
             <ButtonLink external={ctaLinks.web.external} href={ctaLinks.web.href}>

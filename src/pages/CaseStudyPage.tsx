@@ -88,8 +88,7 @@ export function CaseStudyPage() {
           </div>
 
           <div className="grid gap-4 rounded-[1.8rem] border border-carbon/10 bg-paper p-6">
-            <h2 className="m-0 text-[1.6rem] font-semibold tracking-[-0.04em] text-carbon">What this proves</h2>
-            <p className="m-0 text-[1rem] leading-relaxed text-carbon/72">{item.whatItProves}</p>
+            <h2 className="m-0 text-[1.6rem] font-semibold tracking-[-0.04em] text-carbon">Project highlights</h2>
             <div className="grid gap-3 border-t border-carbon/10 pt-4 sm:grid-cols-2">
               {caseStudy.highlights.map((highlight) => (
                 <p key={highlight} className="m-0 rounded-[1rem] bg-white px-4 py-3 text-[0.95rem] leading-relaxed text-carbon/70">

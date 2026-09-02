@@ -34,7 +34,7 @@ export function ControlsPage() {
                 {ctaLinks.controls.label}
               </ButtonLink>
               <ButtonLink href="/work" variant="secondary">
-                See curated work
+                See selected work
               </ButtonLink>
             </div>
           </div>
@@ -138,11 +138,11 @@ export function ControlsPage() {
         <div className="content-wrap grid gap-6">
           <div className="grid gap-4 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] lg:items-end">
             <h2 className="m-0 max-w-[10ch] text-[clamp(2.2rem,4vw,3.3rem)] font-semibold leading-[0.96] tracking-[-0.05em] text-carbon">
-              Controls proof
+              Selected engineering work
             </h2>
             <p className="m-0 max-w-[40rem] text-[1rem] leading-relaxed text-carbon/68">
-              Public-safe professional-history proof to support the offer without implying these employers were outside
-              consulting clients.
+              Selected engineering work from prior roles across HVAC controls, machine systems, robotics, and internal
+              engineering tools.
             </p>
           </div>
 

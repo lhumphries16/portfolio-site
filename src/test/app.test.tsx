@@ -66,7 +66,7 @@ describe('App', () => {
 
     expect(
       await screen.findByRole('heading', {
-        name: /curated proof, not a dump of everything/i,
+        name: /^selected work$/i,
       })
     ).toBeInTheDocument();
 

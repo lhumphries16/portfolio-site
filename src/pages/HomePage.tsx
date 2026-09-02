@@ -61,13 +61,13 @@ export function HomePage() {
               />
               <div className="grid gap-2 px-1">
                 <p className="m-0 text-[0.74rem] font-semibold uppercase tracking-[0.14em] text-carbon/42">
-                  Flagship web proof
+                  Featured website
                 </p>
                 <h2 className="m-0 text-[1.75rem] font-semibold leading-[0.97] tracking-[-0.04em] text-carbon">
                   HomeEMS
                 </h2>
                 <p className="m-0 text-[0.98rem] leading-relaxed text-carbon/68">
-                  A structured service-business website with emergency intake, service-area coverage, gallery proof,
+                  A structured service-business website with emergency intake, service-area coverage, a project gallery,
                   and client-owned handoff.
                 </p>
                 <div className="pt-1">
@@ -87,7 +87,7 @@ export function HomePage() {
                 />
                 <div className="grid gap-1 px-1">
                   <p className="m-0 text-[0.74rem] font-semibold uppercase tracking-[0.14em] text-carbon/42">
-                    Workflow proof
+                    Workflow system
                   </p>
                   <p className="m-0 text-[1rem] font-semibold tracking-[-0.03em] text-carbon">
                     BSB Order System
@@ -115,11 +115,10 @@ export function HomePage() {
         <div className="content-wrap grid gap-6 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] lg:items-end">
           <div className="grid gap-4">
             <h2 className="m-0 max-w-[11ch] text-[clamp(2.2rem,4.4vw,3.5rem)] font-semibold leading-[0.95] tracking-[-0.05em] text-carbon">
-              Selected proof, weighted on purpose.
+              Selected work
             </h2>
             <p className="m-0 max-w-[38rem] text-[1.02rem] leading-relaxed text-carbon/68">
-              The site should earn confidence with specific work, not a flat archive. HomeEMS carries the most weight
-              because it is the clearest match for the actively marketed web lane.
+              A few examples across websites, workflow systems, and controls engineering.
             </p>
           </div>
 
@@ -138,7 +137,7 @@ export function HomePage() {
                 Web & Digital
               </p>
               <h2 className="m-0 max-w-[10ch] text-[clamp(2.15rem,4vw,3.2rem)] font-semibold leading-[0.96] tracking-[-0.05em] text-carbon">
-                The main commercial front door.
+                Websites built around the business behind them.
               </h2>
               <p className="m-0 max-w-[40rem] text-[1rem] leading-relaxed text-carbon/70">{siteContent.web.intro}</p>
             </div>
@@ -167,7 +166,7 @@ export function HomePage() {
                 Controls Engineering
               </p>
               <h2 className="m-0 max-w-[10ch] text-[clamp(2rem,4vw,2.9rem)] font-semibold leading-[0.96] tracking-[-0.05em] text-carbon">
-                Separate buyer path, same practice.
+                Scoped controls engineering for defined problems.
               </h2>
             </div>
 
@@ -218,8 +217,8 @@ export function HomePage() {
               ownable.
             </p>
             <p className="m-0 max-w-[40rem] text-[1rem] leading-relaxed text-carbon/72">
-              That is why the site can credibly serve both web buyers and technical buyers without pretending they are
-              the same project or the same pitch.
+              The same practice can help with either a website or a defined engineering problem, with scope and
+              handoff shaped to the work.
             </p>
             <div className="flex flex-wrap gap-3">
               <ButtonLink href="/about" variant="text">

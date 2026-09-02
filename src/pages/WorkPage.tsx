@@ -14,7 +14,7 @@ export function WorkPage() {
     <>
       <RouteMeta
         title="Selected Work | Tre Humphries"
-        description="Curated proof across web, digital systems, and scoped controls engineering work from Tre Humphries."
+        description="Selected work across web, digital systems, and scoped controls engineering from Tre Humphries."
       />
 
       <section className="px-4 pb-10 pt-8 md:px-6 lg:px-8 lg:pb-14 lg:pt-12 xl:px-12">
@@ -22,12 +22,11 @@ export function WorkPage() {
           <div className="grid gap-4">
             <p className="m-0 text-[0.8rem] font-semibold uppercase tracking-[0.14em] text-carbon/46">Selected Work</p>
             <h1 className="m-0 max-w-[10ch] text-[clamp(3rem,7vw,5.2rem)] font-semibold leading-[0.94] tracking-[-0.06em] text-carbon">
-              Curated proof, not a dump of everything.
+              Selected work
             </h1>
           </div>
           <p className="m-0 max-w-[42rem] text-[1.04rem] leading-relaxed text-carbon/72">
-            The portfolio is weighted toward the work that best supports the current commercial site: one flagship web
-            case study, one strong workflow case study, supporting project cards, and concise controls proof.
+            A few examples across websites, workflow systems, and controls engineering.
           </p>
         </div>
       </section>
@@ -50,11 +49,11 @@ export function WorkPage() {
           <div className="grid gap-4">
             <div className="grid gap-3">
               <p className="m-0 text-[0.8rem] font-semibold uppercase tracking-[0.14em] text-carbon/46">
-                Supporting web proof
+                More website work
               </p>
               <p className="m-0 text-[1rem] leading-relaxed text-carbon/68">
-                Mayara stays polished supporting proof. Brazilian Sweet Bites broadens the industry fit. All Seasons
-                remains selective legacy proof.
+                Mayara shows a more visual service-business presentation. Brazilian Sweet Bites broadens the industry
+                mix. All Seasons remains an earlier example of service-business website delivery.
               </p>
             </div>
             <ProjectCard item={supportingWebProjects[0]} variant="compact" />
@@ -70,11 +69,10 @@ export function WorkPage() {
         <div className="content-wrap grid gap-6">
           <div className="grid gap-4 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] lg:items-end">
             <h2 className="m-0 max-w-[10ch] text-[clamp(2.15rem,4vw,3.2rem)] font-semibold leading-[0.96] tracking-[-0.05em] text-carbon">
-              Controls proof
+              Selected engineering work
             </h2>
             <p className="m-0 max-w-[40rem] text-[1rem] leading-relaxed text-carbon/68">
-              Concise public-safe professional-history proof to support the controls offer without pretending these
-              were freelance consulting case studies.
+              Work from prior roles across HVAC controls, machine systems, robotics, and internal engineering tools.
             </p>
           </div>
 

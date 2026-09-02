@@ -102,8 +102,8 @@ export const siteContent = {
     ],
     boundaries: [
       'No indefinite retainer by default',
-      'No public hourly rate sheet',
-      'Extra workflow, intake, or search work can be scoped separately when justified',
+      'Ongoing maintenance is optional, not required',
+      'Extra workflow, intake, or search work can be scoped separately when needed',
     ],
     pricing:
       'Website engagements typically start around $3,000. Final pricing is fixed upfront based on scope.',
@@ -113,7 +113,7 @@ export const siteContent = {
     intro:
       'Written for OEMs, controls teams, engineering managers, and technical operators who need a bounded review or design package their own team can act on.',
     proofNote:
-      'The controls proof here is presented as public-safe professional-history evidence, not as outside consulting case studies.',
+      'Selected engineering work from prior roles across HVAC controls, machine systems, robotics, and internal engineering tools.',
     fit: [
       'A defined machine, panel, sequence, or workflow',
       'An owner who can name the current ambiguity, failure mode, or handoff risk',
@@ -225,20 +225,20 @@ export const portfolioItems = [
   {
     slug: 'homeems',
     title: 'HomeEMS',
-    year: '2024',
+    year: '2026',
     category: 'web',
     treatment: 'flagship',
     relationshipLabel: 'Independent client work',
     context: 'Website strategy, design, build, and handoff for a restoration contractor.',
     summary:
-      'Flagship case-study proof of a client-owned restoration website built around service clarity, geographic coverage, emergency intake, and maintainable handoff.',
+      'A client-owned restoration website built around service clarity, geographic coverage, emergency intake, and maintainable handoff.',
     whatItProves:
       'Tre can turn messy operating requirements into a serious service-business website with a clearer customer path and a client-owned handoff.',
     liveUrl: 'https://www.home-ems.net',
     primaryAsset: {
       src: homeEmsProofImage,
       alt: 'HomeEMS homepage showing restoration messaging, emergency calls to action, and a clear service structure.',
-      caption: 'Homepage proof from the live HomeEMS website.',
+      caption: 'Homepage from the live HomeEMS website.',
     },
     supportingAssets: [
       {
@@ -261,7 +261,7 @@ export const portfolioItems = [
       eyebrow: 'Flagship case study',
       intro: [
         'Home Emergency Mitigation Services needed a website that better reflected the professionalism of the company, clarified its services, and made it easier for customers to get help under real time pressure.',
-        'The finished system organized service structure, service-area logic, gallery proof, customer intake, and handoff into one client-owned foundation.',
+        'The finished system organized service structure, service-area logic, a project gallery, customer intake, and handoff into one client-owned foundation.',
       ],
       facts: [
         { label: 'Client', value: 'Home Emergency Mitigation Services LLC' },
@@ -406,15 +406,9 @@ export const portfolioItems = [
           ],
         },
         {
-          title: 'Why it matters as portfolio proof',
+          title: 'Why it works',
           paragraphs: [
-            'This is strong supporting proof because it shows workflow thinking: the page is solving for order structure, expectation setting, and clean intake, not just a nicer marketing surface.',
-          ],
-        },
-        {
-          title: 'Claims avoided',
-          paragraphs: [
-            'The public source material supports the structure and the ordering rules. It does not support claims about volume, automation depth, business impact, or back-office implementation details, so the case study stays disciplined.',
+            'The page solves the ordering problem directly by setting expectations, showing the current menu, and giving customers a cleaner request path.',
           ],
         },
       ],
@@ -427,18 +421,18 @@ export const portfolioItems = [
     category: 'web',
     treatment: 'project-card',
     relationshipLabel: 'Independent client work',
-    context: 'Polished visual proof for a design and prepress practice.',
+    context: 'Website for a design and prepress practice.',
     summary:
-      'Design-forward portfolio proof for a service practice, showing a sharper visual language without losing structure or owner usability.',
+      'A design-forward website for a service practice, with a sharper visual language and straightforward owner usability.',
     whatItProves:
       'Tre can deliver a more visual brand presentation while staying commercially composed and technically clean.',
     caution:
-      'The live project still shows placeholder project media, so it stays supporting proof rather than a full case study.',
+      'The live project still shows placeholder project media, so it is included here as a supporting example rather than a full case study.',
     liveUrl: 'https://mayara-site.trehumphries16.workers.dev',
     primaryAsset: {
       src: mayaraImage,
       alt: 'Mayara Miranda homepage with strong typography and a design-focused layout.',
-      caption: 'Polished visual proof for a different kind of service practice.',
+      caption: 'A design-forward website for a different kind of service practice.',
     },
   },
   {
@@ -451,14 +445,14 @@ export const portfolioItems = [
     relationshipLabel: 'Independent client work',
     context: 'Local brand website with strong product photography.',
     summary:
-      'Supporting proof that the web practice is not contractor-only and can still feel commercially grounded for a local food brand.',
+      'A local brand website with strong product photography, clear categories, and grounded sales flow.',
     whatItProves:
       'Tre can present a local brand with personality and product imagery without losing sales clarity.',
     liveUrl: 'https://braziliansweetbites.com',
     primaryAsset: {
       src: bsbHomeImage,
       alt: 'Brazilian Sweet Bites marketing site with product photography and bold category blocks.',
-      caption: 'Local-brand proof with strong real product imagery.',
+      caption: 'Local brand website with strong real product imagery.',
     },
   },
   {
@@ -468,18 +462,18 @@ export const portfolioItems = [
     category: 'web',
     treatment: 'project-card',
     relationshipLabel: 'Independent client work',
-    context: 'Selective legacy proof from earlier service-business website delivery.',
+    context: 'Earlier service-business website delivery.',
     summary:
-      'Older but still useful service-business proof showing practical delivery and client-owned handoff for an established operating business.',
+      'An earlier service-business website showing practical delivery and client-owned handoff for an established operating business.',
     whatItProves:
       'Tre has relevant service-business web experience that predates the newer flagship work.',
     caution:
-      'This is legacy proof and should stay selective rather than carrying flagship design weight.',
+      'This is an earlier example and not the visual benchmark for the current work.',
     liveUrl: 'https://allseasonsmo.com/home/',
     primaryAsset: {
       src: allSeasonsProofImage,
-      alt: 'All Seasons homepage capture showing service-business website proof.',
-      caption: 'Useful historical proof, not the visual benchmark for the redesign.',
+      alt: 'All Seasons homepage capture of a service-business website.',
+      caption: 'An earlier service-business website example.',
     },
   },
   {
@@ -492,24 +486,24 @@ export const portfolioItems = [
     relationshipLabel: 'Professional history',
     context: 'Controls Engineer work on configurable commercial HVAC fan-array systems.',
     summary:
-      'Professional-history proof across PLC and HMI logic, drives, integrations, startup, commissioning, and field troubleshooting for configurable HVAC equipment.',
+      'PLC and HMI work, drives, integrations, startup, commissioning, and field troubleshooting for configurable HVAC equipment.',
     whatItProves:
       'Tre has serious equipment-side controls experience where sequence, commissioning, and real installation constraints all matter.',
     primaryAsset: {
       src: '/images/mainstream_rooftop_ahu_public.jpg',
-      alt: 'Commercial HVAC equipment used as public-safe proof for controls and commissioning work.',
+      alt: 'Commercial HVAC equipment used in controls and commissioning work.',
       caption: 'Commercial HVAC context where controls and commissioning had to hold up.',
     },
     supportingAssets: [
       {
         src: '/images/yaskawa_drive_photo_public.jpg',
-        alt: 'Public-safe photo of a Yaskawa drive used in controls work.',
-        caption: 'Public-safe supporting controls artifact.',
+        alt: 'Yaskawa drive used in controls work.',
+        caption: 'Supporting equipment from controls work.',
       },
       {
         src: '/images/baldor_motor_photo_public.jpg',
-        alt: 'Public-safe photo of a Baldor motor used in equipment context.',
-        caption: 'Additional public-safe equipment proof.',
+        alt: 'Baldor motor used in equipment context.',
+        caption: 'Additional equipment from the system context.',
       },
     ],
   },
@@ -523,12 +517,12 @@ export const portfolioItems = [
     relationshipLabel: 'Professional history',
     context: 'Senior engineering and technology work on an early electric sprayer platform.',
     summary:
-      'Public-safe professional-history proof spanning CODESYS controls, telemetry paths, field issues, operator workflows, and machine-system integration.',
+      'CODESYS controls, telemetry paths, field issues, operator workflows, and machine-system integration on an early electric sprayer platform.',
     whatItProves:
       'Tre can work across machine behavior, controls, telemetry, and field reality without pretending those are separate disciplines.',
     primaryAsset: {
       src: '/images/feature_road-application-1.jpg',
-      alt: 'Electric road-application sprayer platform used as public-safe proof for controls and telemetry work.',
+      alt: 'Electric road-application sprayer platform used in controls and telemetry work.',
       caption: 'Controls, telemetry, and field integration on a machine platform.',
     },
   },
@@ -542,12 +536,12 @@ export const portfolioItems = [
     relationshipLabel: 'Professional history',
     context: 'Controls and field integration around robotic ultrasonic inspection systems.',
     summary:
-      'Professional-history proof in industrial inspection systems where controls, robotics, electronics, and field troubleshooting all had to line up.',
+      'Controls, robotics, electronics, and field troubleshooting around industrial ultrasonic inspection systems.',
     whatItProves:
       'Tre has real robotics and industrial inspection experience grounded in actual equipment behavior.',
     primaryAsset: {
       src: '/images/rollmate-inspection-system_innerspec.jpg',
-      alt: 'Robotic ultrasonic inspection system used as public-safe proof for Innerspec work.',
+      alt: 'Robotic ultrasonic inspection system used in industrial controls work.',
       caption: 'Inspection-system context from Innerspec.',
     },
   },
@@ -560,13 +554,13 @@ export const portfolioItems = [
     relationshipLabel: 'Professional history',
     context: 'Internal quoting, selection, and workflow software tied to engineering logic.',
     summary:
-      'Supporting proof that Tre can translate product knowledge, calculations, pricing rules, and engineering handoffs into practical internal software.',
+      'Internal quoting, selection, and workflow software tied to product knowledge, pricing rules, and engineering handoff.',
     whatItProves:
       'Tre understands how technical workflow software can support real engineering work without becoming vague digital transformation language.',
     primaryAsset: {
       src: '/images/mainstream_fan_submittal_example_doc_public.jpg',
-      alt: 'Public-safe submittal document from an internal engineering selection workflow.',
-      caption: 'Supporting proof for workflow and internal tooling work.',
+      alt: 'Submittal document from an internal engineering selection workflow.',
+      caption: 'Workflow and internal tooling tied to engineering handoff.',
     },
   },
 ] as const satisfies readonly PortfolioItem[];
