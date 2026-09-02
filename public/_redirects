@@ -1,0 +1,11 @@
+/industrial /controls 301
+/consulting /controls 301
+/client-work /work 301
+/projects /work 301
+/projects/homeems /work/homeems 301
+/projects/brazilian-sweet-bites-order-system /work/brazilian-sweet-bites-order-system 301
+/experience /about 301
+/index /work 301
+/living-cv /work 301
+/cv /cv/tre-humphries-cv.pdf 302
+/* /index.html 200

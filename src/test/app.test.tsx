@@ -1,5 +1,4 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
-import { within } from '@testing-library/react';
+import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import App from '../App';
 
 function renderRoute(route: string) {
@@ -7,275 +6,184 @@ function renderRoute(route: string) {
   render(<App />);
 }
 
+afterEach(() => {
+  cleanup();
+  window.history.pushState({}, '', '/');
+});
+
 describe('App', () => {
-  it('renders the core homepage messaging and strips query params from the canonical url', async () => {
+  it('renders the homepage and strips query params from the canonical url', async () => {
     renderRoute('/?utm_source=instagram');
 
     expect(
       await screen.findByRole('heading', {
-        name: /i build systems that have to work/i,
+        name: /tre humphries turns messy requirements into clear working systems/i,
       })
     ).toBeInTheDocument();
 
-    expect(screen.getAllByText(/whole-system engineer/i).length).toBeGreaterThan(0);
-
-    expect(document.title).toBe('Tre Humphries | Whole-System Engineer');
+    expect(document.title).toBe('Tre Humphries | Websites & Controls for Real Operating Businesses');
     expect(document.querySelector('meta[name="description"]')?.getAttribute('content')).toMatch(
-      /whole-system engineer/i
+      /established service businesses/i
     );
     expect(document.querySelector('link[rel="canonical"]')?.getAttribute('href')).toBe(
       'https://trehumphries.com/'
     );
   });
 
-  it('renders the industrial page', async () => {
-    renderRoute('/industrial');
-
-    expect(
-      await screen.findByRole('heading', {
-        name: /controls, machines, hardware, and the systems around them/i,
-      })
-    ).toBeInTheDocument();
-
-    expect(screen.getByText(/defined packages, not open-ended ownership/i)).toBeInTheDocument();
-    await waitFor(() => {
-      expect(document.title).toBe('Industrial & Controls | Tre Humphries');
-    });
-  });
-
-  it('renders the web page', async () => {
+  it('renders the web page with the approved pricing language', async () => {
     renderRoute('/web');
 
     expect(
       await screen.findByRole('heading', {
-        name: /websites that look sharp, work cleanly, and hold up after handoff/i,
+        name: /websites and digital systems for established service businesses and local brands/i,
       })
     ).toBeInTheDocument();
 
-    expect(screen.getByText(/visual records from the same artifact archive/i)).toBeInTheDocument();
+    expect(screen.getByText(/website engagements typically start around \$3,000/i)).toBeInTheDocument();
+    expect(document.title).toBe('Web & Digital | Tre Humphries');
+  });
+
+  it('renders the controls page with bounded offer language', async () => {
+    renderRoute('/controls');
+
+    expect(
+      await screen.findByRole('heading', {
+        name: /scoped controls engineering for teams that need senior clarity/i,
+      })
+    ).toBeInTheDocument();
+
+    expect(screen.getByText(/controls audit/i)).toBeInTheDocument();
+    expect(screen.getByText(/controls design-for-hire/i)).toBeInTheDocument();
+    expect(screen.getByText(/process & information flow audit/i)).toBeInTheDocument();
+    expect(document.title).toBe('Controls Engineering | Tre Humphries');
+  });
+
+  it('renders the selected work page with the flagship and secondary case study', async () => {
+    renderRoute('/work');
+
+    expect(
+      await screen.findByRole('heading', {
+        name: /curated proof, not a dump of everything/i,
+      })
+    ).toBeInTheDocument();
+
     expect(screen.getAllByText(/homeems/i).length).toBeGreaterThan(0);
-    await waitFor(() => {
-      expect(document.title).toBe('Web & Digital Systems | Tre Humphries');
+    expect(screen.getAllByText(/bsb order system/i).length).toBeGreaterThan(0);
+  });
+
+  it('renders the homeems case study page', async () => {
+    renderRoute('/work/homeems');
+
+    expect(
+      await screen.findByRole('heading', {
+        name: /^homeems$/i,
+      })
+    ).toBeInTheDocument();
+
+    expect(screen.getByText(/follow-on search strategy/i)).toBeInTheDocument();
+    expect(screen.getByText(/130 relevant search terms/i)).toBeInTheDocument();
+    expect(document.title).toBe('HomeEMS | Tre Humphries');
+  });
+
+  it('renders the order-system case study page', async () => {
+    renderRoute('/work/brazilian-sweet-bites-order-system');
+
+    expect(
+      await screen.findByRole('heading', {
+        name: /brazilian sweet bites order system/i,
+      })
+    ).toBeInTheDocument();
+
+    expect(screen.getAllByText(/event and bulk orders/i).length).toBeGreaterThan(0);
+  });
+
+  it('renders the contact page and switches focus using the query param', async () => {
+    renderRoute('/contact?focus=controls');
+
+    expect(
+      await screen.findByRole('heading', {
+        name: /start with the real problem/i,
+      })
+    ).toBeInTheDocument();
+
+    expect(screen.getAllByText(/schedule a controls consultation/i).length).toBeGreaterThan(0);
+    expect(screen.getByRole('heading', { name: /send the system outline/i })).toBeInTheDocument();
+    expect(screen.getByText(/the best first note names the system/i)).toBeInTheDocument();
+  });
+
+  it('opens a project-call draft from the contact page after valid form input', async () => {
+    renderRoute('/contact?focus=web');
+    const originalLocation = window.location;
+    let assignedHref = '';
+
+    Object.defineProperty(window, 'location', {
+      configurable: true,
+      value: {
+        ...originalLocation,
+        pathname: '/contact',
+        search: '?focus=web',
+        set href(value: string) {
+          assignedHref = value;
+        },
+        get href() {
+          return assignedHref || originalLocation.href;
+        },
+      },
     });
+
+    try {
+      fireEvent.change(await screen.findByLabelText(/^name$/i), { target: { value: 'Tre Tester' } });
+      fireEvent.change(screen.getByLabelText(/^email$/i), { target: { value: 'tre@example.com' } });
+      fireEvent.change(screen.getByLabelText(/scope or problem/i), {
+        target: { value: 'Need a better service-business site.' },
+      });
+      fireEvent.click(screen.getByRole('button', { name: /open email draft/i }));
+
+      expect(assignedHref).toContain('mailto:trehumphries16@gmail.com');
+      expect(assignedHref).toContain(encodeURIComponent('Project call'));
+    } finally {
+      Object.defineProperty(window, 'location', {
+        configurable: true,
+        value: originalLocation,
+      });
+    }
   });
 
-  it('renders the about page', async () => {
-    renderRoute('/about');
-
-    expect(
-      await screen.findByRole('heading', {
-        name: /whole-system engineer/i,
-      })
-    ).toBeInTheDocument();
-
-    expect(screen.getByText(/my work usually lands where hardware, controls, software/i)).toBeInTheDocument();
-    expect(document.title).toBe('About | Tre Humphries');
-  });
-
-  it('renders the experience page', async () => {
-    renderRoute('/experience');
-
-    expect(
-      await screen.findByRole('heading', {
-        name: /corporate engineering/i,
-      })
-    ).toBeInTheDocument();
-
-    expect(screen.getByText(/gaf roads \/ standard industries/i)).toBeInTheDocument();
-  });
-
-  it('renders the client work page', async () => {
-    renderRoute('/client-work');
-
-    expect(
-      await screen.findByRole('heading', {
-        name: /independent delivery for paying clients/i,
-      })
-    ).toBeInTheDocument();
-
-    expect(screen.getByText(/website \+ lead \/ service-area system/i)).toBeInTheDocument();
-    expect(document.title).toBe('Client Work | Tre Humphries');
-
-    const liveSiteLinks = screen.getAllByRole('link', { name: /open live site/i });
-    expect(liveSiteLinks).toHaveLength(2);
-    expect(liveSiteLinks[0]).toHaveAttribute('href', 'https://allseasonsmo.com/home/');
-    expect(liveSiteLinks[1]).toHaveAttribute('href', 'https://www.home-ems.net/');
-  });
-
-  it('renders the consulting page', async () => {
-    renderRoute('/consulting');
-
-    expect(
-      await screen.findByRole('heading', {
-        name: /scoped engineering work with clear deliverables and a clean handoff/i,
-      })
-    ).toBeInTheDocument();
-
-    expect(screen.getAllByText(/controls systems audit/i).length).toBeGreaterThan(0);
-  });
-
-  it('renders the projects index page', async () => {
-    renderRoute('/projects');
-
-    expect(
-      await screen.findByRole('heading', {
-        name: /independent technical work built out of curiosity/i,
-      })
-    ).toBeInTheDocument();
-
-    expect(screen.getByText(/programmable flying creatures/i)).toBeInTheDocument();
-    expect(document.title).toBe('Engineering Projects | Tre Humphries');
-  });
-
-  it('renders the index route and honors filter search params', async () => {
-    renderRoute('/index?type=experiment&domain=embedded&from=2019&to=2019');
-
-    expect(
-      await screen.findByRole('heading', {
-        level: 1,
-        name: /personal archive. working catalog./i,
-      })
-    ).toBeInTheDocument();
-
-    const timelineRegion = screen.getByRole('region', { name: /archive timeline/i });
-
-    expect(within(timelineRegion).getAllByText(/servo spider/i).length).toBeGreaterThan(0);
-    expect(within(timelineRegion).getAllByText(/jumper robot/i).length).toBeGreaterThan(0);
-    expect(within(timelineRegion).queryByText(/homeems/i)).not.toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /experiments/i })).toHaveAttribute('aria-pressed', 'true');
-    expect(screen.getByRole('button', { name: /embedded/i })).toHaveAttribute('aria-pressed', 'true');
-    expect(screen.getByTestId('artifact-year-range-start')).toHaveValue('2019');
-    expect(screen.getByTestId('artifact-year-range-end')).toHaveValue('2019');
-    expect(document.title).toBe('The Index | Tre Humphries');
-  });
-
-  it('redirects the legacy living cv route to the index route', async () => {
-    renderRoute('/living-cv?type=experiment&domain=embedded&from=2019&to=2019');
-
-    expect(
-      await screen.findByRole('heading', {
-        level: 1,
-        name: /personal archive. working catalog./i,
-      })
-    ).toBeInTheDocument();
-
-    expect(window.location.pathname).toBe('/index');
-    expect(window.location.search).toBe('?type=experiment&domain=embedded&from=2019&to=2019');
-  });
-
-  it('renders a project detail page from the slug route', async () => {
-    renderRoute('/projects/flying-creatures');
-
-    expect(
-      await screen.findByRole('heading', {
-        level: 1,
-        name: /programmable flying creatures/i,
-      })
-    ).toBeInTheDocument();
-
-    expect(screen.getByText(/^Questions$/i)).toBeInTheDocument();
-    expect(document.title).toBe('Programmable Flying Creatures | Tre Humphries');
-  });
-
-  it('renders the cv page with embedded pdf controls', async () => {
-    renderRoute('/cv');
-
-    expect(
-      await screen.findByRole('heading', {
-        level: 1,
-        name: /current cv/i,
-      })
-    ).toBeInTheDocument();
-
-    expect(screen.getByTestId('cv-pdf-viewer')).toHaveAttribute('data-pdf-url', '/cv/tre-humphries-cv.pdf');
-    expect(screen.getByTestId('react-pdf-page')).toHaveAttribute('data-page-number', '1');
-    expect(screen.getAllByRole('link', { name: /open pdf/i })[0]).toHaveAttribute(
-      'href',
-      '/cv/tre-humphries-cv.pdf'
-    );
-    expect(screen.getAllByRole('link', { name: /download pdf/i })[0]).toHaveAttribute(
-      'href',
-      '/cv/tre-humphries-cv.pdf'
-    );
-    expect(document.title).toBe('CV | Tre Humphries');
-  });
-
-  it('fails gracefully for an invalid project slug', async () => {
-    renderRoute('/projects/not-a-real-project');
-
-    expect(await screen.findByText(/that project page does not exist/i)).toBeInTheDocument();
-    expect(document.title).toBe('Project Not Found | Tre Humphries');
-  });
-
-  it('navigates to the about page from another route', async () => {
-    renderRoute('/projects');
-
-    fireEvent.click(screen.getByRole('link', { name: /^about$/i }));
+  it('redirects legacy commercial routes', async () => {
+    renderRoute('/industrial');
 
     await waitFor(() => {
-      expect(window.location.pathname).toBe('/about');
+      expect(window.location.pathname).toBe('/controls');
     });
 
     expect(
-      screen.getByRole('heading', {
-        name: /whole-system engineer/i,
+      await screen.findByRole('heading', {
+        name: /scoped controls engineering/i,
       })
     ).toBeInTheDocument();
   });
 
-  it('opens the shared contact chooser from the header', async () => {
-    renderRoute('/');
-
-    fireEvent.click(screen.getAllByRole('button', { name: /contact/i })[0]);
-
-    expect(await screen.findByRole('dialog', { name: /reach tre directly/i })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /email me trehumphries16@gmail.com/i })).toHaveAttribute(
-      'href',
-      'mailto:trehumphries16@gmail.com'
-    );
-    expect(screen.getByRole('link', { name: /call or text \(573\) 933-0405/i })).toHaveAttribute(
-      'href',
-      'tel:5739330405'
-    );
-
-    fireEvent.keyDown(document, { key: 'Escape' });
+  it('redirects the legacy archive route to the curated work page', async () => {
+    renderRoute('/living-cv?from=2019');
 
     await waitFor(() => {
-      expect(screen.queryByRole('dialog', { name: /reach tre directly/i })).not.toBeInTheDocument();
+      expect(window.location.pathname).toBe('/work');
+      expect(window.location.search).toBe('?from=2019');
     });
   });
 
-  it('clamps invalid year params back to the full artifact timeline', async () => {
-    renderRoute('/index?from=9999&to=2010');
-
-    expect(
-      await screen.findByRole('heading', {
-        level: 1,
-        name: /personal archive. working catalog./i,
-      })
-    ).toBeInTheDocument();
-
-    expect(screen.getByTestId('artifact-year-range-start')).toHaveValue('2014');
-    expect(screen.getByTestId('artifact-year-range-end')).toHaveValue('2026');
-    expect(screen.queryByRole('button', { name: /reset/i })).not.toBeInTheDocument();
-  });
-
-  it('resets a narrowed year range back to the full timeline and clears year params', async () => {
-    renderRoute('/index?from=2019&to=2024');
-
-    expect(
-      await screen.findByRole('heading', {
-        level: 1,
-        name: /personal archive. working catalog./i,
-      })
-    ).toBeInTheDocument();
-
-    fireEvent.click(screen.getByRole('button', { name: /reset/i }));
+  it('redirects a legacy project slug to the new case study route when available', async () => {
+    renderRoute('/projects/homeems');
 
     await waitFor(() => {
-      expect(screen.getByTestId('artifact-year-range-start')).toHaveValue('2014');
-      expect(screen.getByTestId('artifact-year-range-end')).toHaveValue('2026');
-      expect(window.location.search).toBe('');
+      expect(window.location.pathname).toBe('/work/homeems');
     });
+  });
+
+  it('renders a not found page for unknown routes', async () => {
+    renderRoute('/not-a-real-page');
+
+    expect(await screen.findByText(/not part of the current public site/i)).toBeInTheDocument();
+    expect(document.title).toBe('Page Not Found | Tre Humphries');
   });
 });

@@ -1,96 +1,91 @@
-import type { NavItem } from './types';
+export type ScheduleAudience = 'web' | 'controls';
 
 const contactEmail = 'trehumphries16@gmail.com';
 const contactPhone = '5739330405';
 const contactPhoneDisplay = '(573) 933-0405';
 
+type ScheduleConfig = {
+  label: string;
+  externalUrl?: string;
+  fallbackHref: string;
+};
+
+const scheduleConfig: Record<ScheduleAudience, ScheduleConfig> = {
+  web: {
+    label: 'Schedule a Project Call',
+    fallbackHref: '/contact?focus=web',
+  },
+  controls: {
+    label: 'Schedule a Controls Consultation',
+    fallbackHref: '/contact?focus=controls',
+  },
+};
+
+export function getScheduleLink(audience: ScheduleAudience) {
+  const config = scheduleConfig[audience];
+
+  return {
+    label: config.label,
+    href: config.externalUrl ?? config.fallbackHref,
+    external: Boolean(config.externalUrl),
+  };
+}
+
 export const profile = {
   brand: {
     name: 'Tre Humphries',
     fullName: 'Larry "Tre" Humphries',
-    role: 'Whole-System Engineer',
-    location: 'Morristown, New Jersey',
+    role: 'Independent Web & Controls Practice',
+    location: 'Based in New Jersey, working across the U.S.',
     email: contactEmail,
     phone: contactPhone,
     phoneDisplay: contactPhoneDisplay,
   },
   navigation: [
-    { label: 'Industrial', href: '/industrial' },
     { label: 'Web', href: '/web' },
-    { label: 'Index', href: '/index' },
+    { label: 'Controls', href: '/controls' },
+    { label: 'Work', href: '/work' },
     { label: 'About', href: '/about' },
-  ] satisfies readonly NavItem[],
+    { label: 'Contact', href: '/contact' },
+  ] as const,
   socialLinks: [
     {
       label: 'LinkedIn',
       href: 'https://www.linkedin.com/in/lhumphr',
     },
   ],
+  scheduleConfig,
+  portrait: {
+    src: '/images/tre-box-desk-normalized.jpg',
+    alt: 'Tre Humphries working on a laptop beside field documents in an industrial setting.',
+    fileName: 'tre-box-desk-normalized.jpg',
+    objectPosition: '78% center',
+  },
   site: {
     origin: 'https://trehumphries.com',
     domain: 'trehumphries.com',
-    cvUrl: '/cv/tre-humphries-cv.pdf',
-    socialImagePath: undefined as string | undefined,
-  },
-  hero: {
-    eyebrow: 'Whole-System Engineer',
-    name: 'Tre Humphries',
-    role: 'Whole-System Engineer',
-    statement: 'I build systems that have to work.',
-    support:
-      'Hardware, controls, software, interfaces, and operations. One engineer, defined scopes, real handoff.',
-    actions: [
-      { label: 'Industrial & Controls', href: '/industrial' },
-      { label: 'Web & Digital Systems', href: '/web' },
-    ],
-    image: {
-      src: '/images/tre-panel-work-normalized.jpg',
-      alt: 'Tre working inside an industrial control panel during field engineering work',
-      caption: 'Panel work, field constraints, and systems that have to survive the real site.',
-    },
-    systemsProfile: [
-      'Hardware + Controls',
-      'Software + Interfaces',
-      'Operations',
-      'Clean Handoff',
-    ],
-  },
-  about: {
-    label: 'About',
-    title: 'A mechanical engineer who keeps following the whole system.',
-    paragraphs: [
-      'My work usually lands where hardware, controls, software, interfaces, and operating reality start affecting each other.',
-      'That can mean machines, field failures, internal tools, client websites, automation logic, or independent R&D. The through-line is building something useful that can survive real use.',
-    ],
+    socialImagePath: '/images/tre-box-desk-normalized.jpg',
   },
   contact: {
-    label: 'Contact',
     ctaLabel: 'Contact',
-    title: 'Start with the actual problem.',
-    intro:
-      'If the scope can be defined, the deliverable can be named, and the handoff can be clean, that is enough to start.',
     helper:
-      'Helpful context: what the system is trying to do, where it breaks down, and what a useful deliverable or handoff would look like.',
-    success:
-      'Required details are in place. Sending opens an email draft so the conversation can continue directly.',
-    error: 'Please fill in the required fields before sending the note.',
-    submitLabel: 'Start the conversation',
+      'The most useful first note names the real problem, the current system, and what a clean handoff would look like.',
+    success: 'Opening a direct email draft.',
+    error: 'Please complete the required fields before opening the email draft.',
+    submitLabel: 'Open email draft',
     methods: [
       {
-        label: 'Email me',
+        label: 'Email',
         href: `mailto:${contactEmail}`,
         value: contactEmail,
       },
       {
-        label: 'Call or text',
-        href: `tel:${contactPhone}`,
-        value: contactPhoneDisplay,
+        label: 'LinkedIn',
+        href: 'https://www.linkedin.com/in/lhumphr',
+        value: 'linkedin.com/in/lhumphr',
       },
     ],
-    image: {
-      src: '/images/tre-work-contact-normalized.jpg',
-      alt: 'Tre beside road-application equipment during field engineering work',
-    },
   },
-  footerNote: 'One whole-system engineer working across controls, hardware, software, interfaces, and operations.',
+  footerNote:
+    'Independent practice for established service businesses, local brands, and defined engineering problems that need a clear owner handoff.',
 } as const;

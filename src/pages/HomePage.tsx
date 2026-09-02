@@ -1,180 +1,234 @@
-import { Link } from 'react-router-dom';
-import { ContactCTA } from '../components/ContactCTA';
-import { ArtifactPreview } from '../components/artifacts/ArtifactPreview';
+import { ButtonLink } from '../components/ButtonLink';
+import { ProjectCard } from '../components/ProjectCard';
 import { RouteMeta } from '../components/RouteMeta';
-import {
-  artifactTypeLabels,
-  artifacts,
-  formatArtifactDate,
-  getArtifactsForSurface,
-} from '../content/artifacts';
+import { ctaLinks, controlsProjects, homePageProjects, siteContent } from '../data/siteContent';
 import { profile } from '../data/profile';
 
-const pageWrap = 'page-wrap';
-const contentWrap = 'content-wrap';
-const heroDisplay = 'page-title';
-const kicker = 'editorial-kicker';
-const actionLink = 'editorial-link';
-
-const homeArtifacts = getArtifactsForSurface(artifacts, 'home');
-const industrialArtifacts = getArtifactsForSurface(artifacts, 'industrial', { limit: 2 });
-const webArtifacts = getArtifactsForSurface(artifacts, 'web', { limit: 2 });
-
 export function HomePage() {
-  const industrialLead = industrialArtifacts[0];
-  const webLead = webArtifacts[0];
-
   return (
     <>
       <RouteMeta
-        title="Tre Humphries | Whole-System Engineer"
-        description="Tre Humphries is a whole-system engineer working across controls, hardware, software, interfaces, and operations through defined scopes and clean handoff."
+        title="Tre Humphries | Websites & Controls for Real Operating Businesses"
+        description="Tre Humphries builds websites and digital systems for established service businesses and local brands, with scoped controls engineering for defined technical problems."
       />
 
-      <section className="border-b border-carbon/10 bg-bone px-4 py-10 text-carbon md:px-6 lg:px-8 lg:py-16 xl:px-12 xl:py-18">
-        <div className={`${pageWrap} grid gap-8 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:items-start`}>
-          <div className="grid gap-3">
-            <h1 className={`${heroDisplay} max-w-[8ch] text-[clamp(4rem,9vw,6.2rem)]`}>
-              {profile.hero.statement}
+      <section className="px-4 pb-10 pt-8 md:px-6 lg:px-8 lg:pb-14 lg:pt-12 xl:px-12">
+        <div className="page-wrap grid gap-8 lg:grid-cols-[minmax(0,0.86fr)_minmax(0,1.14fr)] lg:items-start">
+          <div className="grid gap-6">
+            <p className="m-0 text-[0.8rem] font-semibold uppercase tracking-[0.14em] text-carbon/46">
+              Tre Humphries
+            </p>
+            <h1 className="m-0 max-w-[10ch] text-[clamp(3.15rem,7.2vw,5.9rem)] font-semibold leading-[0.92] tracking-[-0.06em] text-carbon">
+              {siteContent.home.title}
             </h1>
-            <p className="m-0 text-[clamp(1.12rem,2vw,1.45rem)] font-medium tracking-[-0.02em] text-carbon/58">
-              Whole-System Engineer
-            </p>
-          </div>
-
-          <div className="grid gap-5 lg:pt-5">
-            <p className="m-0 max-w-[37rem] text-[1.08rem] leading-[1.62] text-carbon/74">
-              Work tends to land where physical systems, controls, software, interfaces, and operations
-              start affecting each other. The useful version is defined scope, real deliverable, and
-              clean handoff.
-            </p>
-            <div className="grid w-full max-w-[37rem] gap-x-6 gap-y-2 border-t border-carbon/10 pt-4 text-sm tracking-[-0.02em] text-carbon/56 sm:grid-cols-2">
-              {profile.hero.systemsProfile.map((item) => (
-                <p key={item} className="m-0">
-                  {item}
+            <div className="grid gap-3">
+              {siteContent.home.intro.map((paragraph) => (
+                <p key={paragraph} className="m-0 max-w-[40rem] text-[1.04rem] leading-relaxed text-carbon/74">
+                  {paragraph}
                 </p>
               ))}
             </div>
-          </div>
-        </div>
-      </section>
+            <div className="flex flex-wrap gap-3">
+              <ButtonLink external={ctaLinks.web.external} href={ctaLinks.web.href}>
+                {ctaLinks.web.label}
+              </ButtonLink>
+              <ButtonLink href="/work" variant="secondary">
+                Explore selected work
+              </ButtonLink>
+              <ButtonLink external={ctaLinks.controls.external} href={ctaLinks.controls.href} variant="text">
+                {ctaLinks.controls.label}
+              </ButtonLink>
+            </div>
 
-      <section className="bg-bone px-4 py-14 text-carbon md:px-6 lg:px-8 xl:px-12 xl:py-16">
-        <div className={`${contentWrap} divide-y divide-carbon/10 lg:grid lg:grid-cols-2 lg:divide-x lg:divide-y-0`}>
-          <article className="grid gap-5 pb-10 lg:pr-8 lg:pb-0 xl:pr-10">
+            <div className="grid gap-3 border-t border-carbon/10 pt-5 md:grid-cols-3">
+              {siteContent.home.reputationPoints.map((point) => (
+                <div key={point.label} className="grid gap-1">
+                  <p className="m-0 text-[0.74rem] font-semibold uppercase tracking-[0.14em] text-carbon/42">
+                    {point.label}
+                  </p>
+                  <p className="m-0 text-[0.98rem] leading-relaxed text-carbon/72">{point.value}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="grid gap-4 lg:grid-cols-[minmax(0,1.05fr)_minmax(15rem,0.62fr)]">
+            <article className="grid gap-4 rounded-[2rem] border border-carbon/10 bg-white p-4 shadow-[0_24px_80px_rgba(24,34,45,0.08)]">
+              <img
+                className="aspect-[16/10] w-full rounded-[1.45rem] object-cover object-top"
+                src={homePageProjects.flagship.primaryAsset.src}
+                alt={homePageProjects.flagship.primaryAsset.alt}
+              />
+              <div className="grid gap-2 px-1">
+                <p className="m-0 text-[0.74rem] font-semibold uppercase tracking-[0.14em] text-carbon/42">
+                  Flagship web proof
+                </p>
+                <h2 className="m-0 text-[1.75rem] font-semibold leading-[0.97] tracking-[-0.04em] text-carbon">
+                  HomeEMS
+                </h2>
+                <p className="m-0 text-[0.98rem] leading-relaxed text-carbon/68">
+                  A structured service-business website with emergency intake, service-area coverage, gallery proof,
+                  and client-owned handoff.
+                </p>
+                <div className="pt-1">
+                  <ButtonLink href="/work/homeems" variant="text">
+                    Read the flagship case study
+                  </ButtonLink>
+                </div>
+              </div>
+            </article>
+
             <div className="grid gap-4">
-              <p className={kicker}>Industrial &amp; Controls</p>
-              <h2 className="section-title max-w-[12ch] text-[clamp(2.2rem,4vw,3.4rem)]">
-                Engineering work for machines, controls, hardware, and operations.
-              </h2>
-              <p className="support-copy max-w-[34rem]">
-                For engineering teams, manufacturers, integrators, owners, and operators who need one
-                experienced generalist on a defined problem.
-              </p>
-            </div>
-            {industrialLead ? <ArtifactPreview artifact={industrialLead} variant="wide" className="max-w-none" /> : null}
-            <div className="grid gap-2 border-t border-carbon/10 pt-4">
-              {industrialArtifacts.map((artifact) => (
-                <p key={artifact.id} className="m-0 text-sm leading-relaxed text-carbon/58">
-                  {artifact.title}
-                </p>
-              ))}
-            </div>
-            <Link className={actionLink} to="/industrial">
-              Open Industrial &amp; Controls
-            </Link>
-          </article>
-
-          <article className="grid gap-5 pt-10 lg:pl-8 lg:pt-0 xl:pl-10">
-            {webLead ? <ArtifactPreview artifact={webLead} variant="wide" className="max-w-none" /> : null}
-            <div className="grid gap-4">
-              <p className={kicker}>Web &amp; Digital Systems</p>
-              <h2 className="section-title max-w-[12ch] text-[clamp(2.2rem,4vw,3.4rem)]">
-                Professional websites and digital systems that clients can actually own.
-              </h2>
-              <p className="support-copy max-w-[34rem]">
-                For contractors, service businesses, designers, and small organizations that need a
-                sharp site, practical structure, and a handoff that lasts.
-              </p>
-            </div>
-            <div className="grid gap-2 border-t border-carbon/10 pt-4">
-              {webArtifacts.map((artifact) => (
-                <p key={artifact.id} className="m-0 text-sm leading-relaxed text-carbon/58">
-                  {artifact.title}
-                </p>
-              ))}
-            </div>
-            <Link className={actionLink} to="/web">
-              Open Web &amp; Digital Systems
-            </Link>
-          </article>
-        </div>
-      </section>
-
-      <section className="border-t border-carbon/10 bg-bone px-4 py-14 text-carbon md:px-6 lg:px-8 xl:px-12 xl:py-16">
-        <div className={`${contentWrap} grid gap-9`}>
-          <div className="grid gap-3 lg:grid-cols-[minmax(0,0.68fr)_minmax(0,1.32fr)] lg:items-end">
-            <h2 className="section-title max-w-[11ch] text-[clamp(2.3rem,4vw,3.5rem)]">
-              A few representative artifacts from both paths.
-            </h2>
-            <p className="support-copy max-w-[40rem]">
-              The same artifact data feeds the homepage, the commercial pages, and The Index. No separate
-              project lists, no duplicated records.
-            </p>
-          </div>
-
-          <div className="grid gap-10 lg:grid-cols-2">
-            {homeArtifacts.map((artifact) => (
-              <article key={artifact.id} className="grid gap-5">
-                <ArtifactPreview artifact={artifact} variant="wide" className="max-w-none" />
-                <div className="grid gap-2 border-t border-carbon/10 pt-4">
-                  <div className="flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-[0.64rem] uppercase tracking-[0.16em] text-carbon/46">
-                    <p className="m-0">{formatArtifactDate(artifact.date)}</p>
-                    <p className="m-0">{artifactTypeLabels[artifact.type]}</p>
-                  </div>
-                  <h3 className="m-0 text-[1.65rem] font-semibold tracking-[-0.03em] text-carbon">
-                    {artifact.title}
-                  </h3>
-                  {artifact.subtitle ? <p className="m-0 text-[0.98rem] text-carbon/60">{artifact.subtitle}</p> : null}
-                  <p className="m-0 text-sm leading-relaxed text-carbon/70">{artifact.summary}</p>
+              <article className="grid gap-3 rounded-[1.8rem] border border-carbon/10 bg-paper p-4">
+                <img
+                  className="aspect-[4/3] w-full rounded-[1.25rem] object-cover object-top"
+                  src={homePageProjects.workflow.primaryAsset.src}
+                  alt={homePageProjects.workflow.primaryAsset.alt}
+                />
+                <div className="grid gap-1 px-1">
+                  <p className="m-0 text-[0.74rem] font-semibold uppercase tracking-[0.14em] text-carbon/42">
+                    Workflow proof
+                  </p>
+                  <p className="m-0 text-[1rem] font-semibold tracking-[-0.03em] text-carbon">
+                    BSB Order System
+                  </p>
                 </div>
               </article>
-            ))}
+
+              <article className="grid gap-3 rounded-[1.8rem] border border-carbon/10 bg-white p-4">
+                <img
+                  className="aspect-[4/3] w-full rounded-[1.25rem] object-cover"
+                  src={profile.portrait.src}
+                  style={{ objectPosition: profile.portrait.objectPosition }}
+                  alt={profile.portrait.alt}
+                />
+                <p className="m-0 px-1 text-[0.96rem] leading-relaxed text-carbon/68">
+                  Independent practice, direct communication, and work built for a clean handoff.
+                </p>
+              </article>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="border-t border-b border-carbon/10 bg-bone px-4 py-12 text-carbon md:px-6 lg:px-8 xl:px-12">
-        <div className={`${pageWrap} grid gap-4 lg:grid-cols-[minmax(0,0.8fr)_auto] lg:items-end`}>
-          <div className="grid gap-2">
-            <h2 className="section-title max-w-[12ch] text-[clamp(2rem,4vw,3.2rem)]">
-              Want the full chronology instead of the quick routing?
+      <section className="px-4 py-10 md:px-6 lg:px-8 lg:py-14 xl:px-12">
+        <div className="content-wrap grid gap-6 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] lg:items-end">
+          <div className="grid gap-4">
+            <h2 className="m-0 max-w-[11ch] text-[clamp(2.2rem,4.4vw,3.5rem)] font-semibold leading-[0.95] tracking-[-0.05em] text-carbon">
+              Selected proof, weighted on purpose.
             </h2>
-          </div>
-          <Link className={actionLink} to="/index">
-            Explore The Index
-          </Link>
-        </div>
-      </section>
-
-      <section id="contact" className="bg-bone px-4 py-14 text-carbon md:px-6 lg:px-8 xl:px-12 xl:py-16">
-        <div className={`${pageWrap} grid gap-6 border-t border-carbon/10 pt-6 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] lg:items-end`}>
-          <div className="grid gap-3">
-            <h2 className="section-title max-w-[11ch] text-[clamp(2.15rem,4vw,3.35rem)]">
-              Have a project in mind?
-            </h2>
-          </div>
-          <div className="grid gap-5">
-            <p className="support-copy max-w-[40rem]">
-              Defined scope, clear handoff, and the right mix of physical systems, software, or delivery
-              work is usually enough to know whether a conversation should happen.
+            <p className="m-0 max-w-[38rem] text-[1.02rem] leading-relaxed text-carbon/68">
+              The site should earn confidence with specific work, not a flat archive. HomeEMS carries the most weight
+              because it is the clearest match for the actively marketed web lane.
             </p>
-            <ContactCTA
-              ctaLabel={profile.contact.ctaLabel}
-              dialogTitle="Start the conversation"
-              methods={profile.contact.methods}
-              variant="section"
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-2">
+            <ProjectCard item={homePageProjects.workflow} variant="compact" />
+            <ProjectCard item={homePageProjects.visual} variant="compact" />
+          </div>
+        </div>
+      </section>
+
+      <section className="px-4 py-10 md:px-6 lg:px-8 lg:py-14 xl:px-12">
+        <div className="content-wrap grid gap-4 lg:grid-cols-[minmax(0,1.14fr)_minmax(0,0.86fr)]">
+          <article className="grid gap-5 rounded-[2rem] border border-carbon/10 bg-white p-6 shadow-[0_20px_60px_rgba(24,34,45,0.07)]">
+            <div className="grid gap-2">
+              <p className="m-0 text-[0.74rem] font-semibold uppercase tracking-[0.14em] text-carbon/42">
+                Web & Digital
+              </p>
+              <h2 className="m-0 max-w-[10ch] text-[clamp(2.15rem,4vw,3.2rem)] font-semibold leading-[0.96] tracking-[-0.05em] text-carbon">
+                The main commercial front door.
+              </h2>
+              <p className="m-0 max-w-[40rem] text-[1rem] leading-relaxed text-carbon/70">{siteContent.web.intro}</p>
+            </div>
+
+            <div className="grid gap-3 md:grid-cols-3">
+              {siteContent.home.webPoints.map((point) => (
+                <div key={point} className="rounded-[1.2rem] bg-paper px-4 py-4">
+                  <p className="m-0 text-[0.95rem] leading-relaxed text-carbon/72">{point}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="flex flex-wrap gap-3">
+              <ButtonLink external={ctaLinks.web.external} href={ctaLinks.web.href}>
+                {ctaLinks.web.label}
+              </ButtonLink>
+              <ButtonLink href="/web" variant="secondary">
+                See the web offer
+              </ButtonLink>
+            </div>
+          </article>
+
+          <article className="grid gap-5 rounded-[2rem] border border-carbon/10 bg-paper p-6">
+            <div className="grid gap-2">
+              <p className="m-0 text-[0.74rem] font-semibold uppercase tracking-[0.14em] text-carbon/42">
+                Controls Engineering
+              </p>
+              <h2 className="m-0 max-w-[10ch] text-[clamp(2rem,4vw,2.9rem)] font-semibold leading-[0.96] tracking-[-0.05em] text-carbon">
+                Separate buyer path, same practice.
+              </h2>
+            </div>
+
+            <div className="grid gap-3">
+              {siteContent.home.controlsPoints.map((point) => (
+                <p key={point} className="m-0 border-b border-carbon/10 pb-3 text-[0.98rem] leading-relaxed text-carbon/72 last:border-b-0 last:pb-0">
+                  {point}
+                </p>
+              ))}
+            </div>
+
+            <div className="grid gap-3 md:grid-cols-2">
+              {controlsProjects.slice(0, 2).map((item) => (
+                <div key={item.slug} className="grid gap-2 rounded-[1.2rem] border border-carbon/10 bg-white p-3">
+                  <img className="aspect-[4/3] w-full rounded-[1rem] object-cover" src={item.primaryAsset.src} alt={item.primaryAsset.alt} />
+                  <p className="m-0 text-[0.95rem] font-semibold tracking-[-0.03em] text-carbon">{item.shortTitle ?? item.title}</p>
+                </div>
+              ))}
+            </div>
+
+            <div>
+              <ButtonLink external={ctaLinks.controls.external} href={ctaLinks.controls.href} variant="secondary">
+                {ctaLinks.controls.label}
+              </ButtonLink>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section className="px-4 pb-14 pt-10 md:px-6 lg:px-8 lg:pb-18 lg:pt-14 xl:px-12">
+        <div className="page-wrap grid gap-8 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] lg:items-center">
+          <div className="overflow-hidden rounded-[2rem] border border-carbon/10 bg-paper">
+            <img
+              className="aspect-[5/4] w-full object-cover"
+              style={{ objectPosition: profile.portrait.objectPosition }}
+              src={profile.portrait.src}
+              alt={profile.portrait.alt}
             />
+          </div>
+
+          <div className="grid gap-4">
+            <h2 className="m-0 max-w-[12ch] text-[clamp(2.15rem,4vw,3.1rem)] font-semibold leading-[0.96] tracking-[-0.05em] text-carbon">
+              A small practice with a direct owner handoff.
+            </h2>
+            <p className="m-0 max-w-[40rem] text-[1rem] leading-relaxed text-carbon/72">
+              The background spans mechanical systems, controls, field work, internal tools, and client-facing
+              websites. The useful through-line is turning complicated requirements into something clearer and more
+              ownable.
+            </p>
+            <p className="m-0 max-w-[40rem] text-[1rem] leading-relaxed text-carbon/72">
+              That is why the site can credibly serve both web buyers and technical buyers without pretending they are
+              the same project or the same pitch.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <ButtonLink href="/about" variant="text">
+                More about the practice
+              </ButtonLink>
+              <ButtonLink href="/contact" variant="secondary">
+                Contact Tre
+              </ButtonLink>
+            </div>
           </div>
         </div>
       </section>

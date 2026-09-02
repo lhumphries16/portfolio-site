@@ -1,161 +1,80 @@
-import { Link } from 'react-router-dom';
-import { ContactForm } from '../components/ContactForm';
+import { ButtonLink } from '../components/ButtonLink';
 import { RouteMeta } from '../components/RouteMeta';
+import { ctaLinks, siteContent } from '../data/siteContent';
 import { profile } from '../data/profile';
-
-const pageWrap = 'page-wrap';
-const contentWrap = 'content-wrap';
-const actionLink = 'editorial-link';
 
 export function AboutPage() {
   return (
     <>
       <RouteMeta
         title="About | Tre Humphries"
-        description="Background, current work, and contact information for Tre Humphries, a whole-system engineer working across controls, hardware, software, and operations."
+        description="About Tre Humphries, an independent practice spanning web systems, controls engineering, and clean owner handoff."
       />
 
-      <section className="border-b border-carbon/10 bg-bone px-4 py-10 text-carbon md:px-6 lg:px-8 lg:py-16 xl:px-12 xl:py-18">
-        <div className={`${pageWrap} overflow-hidden border border-carbon/10 bg-paper lg:grid lg:grid-cols-[minmax(0,0.54fr)_minmax(0,0.46fr)]`}>
-          <div className="bg-carbon/4">
+      <section className="px-4 pb-10 pt-8 md:px-6 lg:px-8 lg:pb-14 lg:pt-12 xl:px-12">
+        <div className="page-wrap grid gap-8 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:items-center">
+          <div className="overflow-hidden rounded-[2rem] border border-carbon/10 bg-paper">
             <img
-              className="aspect-[4/5] h-full w-full object-cover object-[62%_36%]"
-              src={profile.contact.image.src}
-              alt={profile.contact.image.alt}
-              loading="lazy"
+              className="aspect-[5/4] w-full object-cover"
+              style={{ objectPosition: profile.portrait.objectPosition }}
+              src={profile.portrait.src}
+              alt={profile.portrait.alt}
             />
           </div>
 
-          <div className="grid gap-6 bg-carbon px-5 py-6 text-bone md:px-8 md:py-8 xl:px-10 xl:py-10">
-            <div className="grid gap-4">
-              <p className="m-0 text-[0.72rem] font-medium tracking-[0.02em] text-bone/46">About</p>
-              <h1 className="page-title max-w-[8.5ch] text-[clamp(3.25rem,8.6vw,5.5rem)] text-bone">
-                Whole-System Engineer
-              </h1>
-            </div>
-
-            <div className="grid gap-4">
-              {profile.about.paragraphs.map((paragraph) => (
-                <p key={paragraph} className="m-0 max-w-[34rem] text-[1.04rem] leading-[1.66] text-bone/76">
-                  {paragraph}
-                </p>
-              ))}
-            </div>
-
-            <div className="grid gap-3 border-t border-bone/12 pt-4">
-              <p className="m-0 text-sm leading-relaxed text-bone/58">
-                Mechanical engineering by training. Controls, software, field reality, and delivery work by necessity.
+          <div className="grid gap-5">
+            <p className="m-0 text-[0.8rem] font-semibold uppercase tracking-[0.14em] text-carbon/46">About</p>
+            <h1 className="m-0 max-w-[10ch] text-[clamp(3rem,7vw,5rem)] font-semibold leading-[0.94] tracking-[-0.06em] text-carbon">
+              {siteContent.about.title}
+            </h1>
+            {siteContent.about.paragraphs.map((paragraph) => (
+              <p key={paragraph} className="m-0 max-w-[42rem] text-[1.02rem] leading-relaxed text-carbon/72">
+                {paragraph}
               </p>
-              <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
-                <a
-                  className="text-[0.96rem] font-medium tracking-[-0.01em] text-bone/82 transition-colors duration-200 hover:text-white"
-                  href={profile.site.cvUrl}
-                >
-                  CV
-                </a>
-                {profile.socialLinks.map((link) => (
-                  <a
-                    key={link.href}
-                    className="text-[0.96rem] font-medium tracking-[-0.01em] text-bone/82 transition-colors duration-200 hover:text-white"
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {link.label}
-                  </a>
-                ))}
-                <Link
-                  className="text-[0.96rem] font-medium tracking-[-0.01em] text-bone/82 transition-colors duration-200 hover:text-white"
-                  to="/index"
-                >
-                  The Index
-                </Link>
-              </div>
-            </div>
+            ))}
+            <p className="m-0 text-[0.96rem] leading-relaxed text-carbon/58">{profile.brand.location}</p>
           </div>
         </div>
       </section>
 
-      <section className="bg-bone px-4 py-14 text-carbon md:px-6 lg:px-8 xl:px-12 xl:py-16">
-        <div className={`${contentWrap} grid gap-5 lg:grid-cols-3`}>
-          <div className="grid gap-3 border border-carbon/10 bg-white p-5">
-            <h2 className="m-0 text-[1.3rem] font-semibold tracking-[-0.03em] text-carbon">Background</h2>
-            <p className="m-0 max-w-[42rem] text-base leading-relaxed text-carbon/68">
-              Mechanical engineering is the formal background, but the work kept expanding into controls,
-              software, embedded behavior, field troubleshooting, operator workflows, and the systems
-              around the system.
-            </p>
-          </div>
-          <div className="grid gap-3 border border-carbon/10 bg-white p-5">
-            <h2 className="m-0 text-[1.3rem] font-semibold tracking-[-0.03em] text-carbon">
-              Current independent work
-            </h2>
-            <p className="m-0 max-w-[42rem] text-base leading-relaxed text-carbon/68">
-              Current independent work ranges from web delivery to experimental controls and hardware
-              projects. The common thread is still the same: build something real, understand the
-              operating context, and leave behind something usable.
-            </p>
-          </div>
-          <div className="grid gap-3 border border-carbon/10 bg-white p-5">
-            <h2 className="m-0 text-[1.3rem] font-semibold tracking-[-0.03em] text-carbon">Useful links</h2>
-            <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
-              <a className={actionLink} href={profile.site.cvUrl}>
-                CV
-              </a>
-              {profile.socialLinks.map((link) => (
-                <a
-                  key={link.href}
-                  className={actionLink}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {link.label}
-                </a>
-              ))}
-              <Link className={actionLink} to="/index">
-                The Index
-              </Link>
-            </div>
-          </div>
+      <section className="px-4 py-10 md:px-6 lg:px-8 lg:py-14 xl:px-12">
+        <div className="content-wrap grid gap-4 xl:grid-cols-3">
+          {siteContent.about.pillars.map((pillar, index) => (
+            <article
+              key={pillar.title}
+              className={`grid gap-3 rounded-[1.6rem] border border-carbon/10 ${
+                index === 1 ? 'bg-white shadow-[0_18px_50px_rgba(24,34,45,0.05)]' : 'bg-paper'
+              } px-5 py-5`}
+            >
+              <h2 className="m-0 text-[1.28rem] font-semibold leading-[1] tracking-[-0.03em] text-carbon">
+                {pillar.title}
+              </h2>
+              <p className="m-0 text-[0.98rem] leading-relaxed text-carbon/72">{pillar.body}</p>
+            </article>
+          ))}
         </div>
       </section>
 
-      <section id="contact" className="border-t border-carbon/10 bg-white px-4 py-14 text-carbon md:px-6 lg:px-8 xl:px-12 xl:py-16">
-        <div className={`${pageWrap} grid gap-8 lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)] lg:items-start`}>
-          <div className="grid gap-4">
-            <h2 className="section-title max-w-[8ch] text-[clamp(2.2rem,4vw,3.4rem)]">
-              {profile.contact.title}
-            </h2>
-            <p className="support-copy max-w-[30rem]">{profile.contact.intro}</p>
-            <div className="grid gap-2 border-t border-carbon/10 pt-4">
-              <p className="m-0 text-[0.84rem] font-medium tracking-[0.01em] text-carbon/56">Location</p>
-              <p className="m-0 text-sm text-carbon/66">{profile.brand.location}</p>
+      <section className="px-4 pb-14 pt-10 md:px-6 lg:px-8 lg:pb-18 lg:pt-14 xl:px-12">
+        <div className="page-wrap rounded-[2rem] border border-carbon/10 bg-white px-6 py-7 shadow-[0_24px_80px_rgba(24,34,45,0.08)] md:px-8 md:py-8">
+          <div className="grid gap-5 lg:grid-cols-[minmax(0,0.9fr)_auto] lg:items-end">
+            <div className="grid gap-3">
+              <h2 className="m-0 max-w-[10ch] text-[clamp(2.1rem,4vw,3rem)] font-semibold leading-[0.96] tracking-[-0.05em] text-carbon">
+                Need to talk through a project?
+              </h2>
+              <p className="m-0 max-w-[38rem] text-[1rem] leading-relaxed text-carbon/68">
+                Use the contact route that matches the work. The best conversations start from the actual problem and
+                the actual handoff.
+              </p>
             </div>
-            <div className="grid gap-2 border-t border-carbon/10 pt-4">
-              <p className="m-0 text-[0.84rem] font-medium tracking-[0.01em] text-carbon/56">Direct contact</p>
-              <div className="grid gap-2">
-                {profile.contact.methods.map((method) => (
-                  <a
-                    key={method.href}
-                    className="text-sm text-carbon/66 transition-colors duration-200 hover:text-cobalt"
-                    href={method.href}
-                  >
-                    {method.label}: {method.value}
-                  </a>
-                ))}
-              </div>
+            <div className="flex flex-wrap gap-3">
+              <ButtonLink external={ctaLinks.web.external} href={ctaLinks.web.href}>
+                {ctaLinks.web.label}
+              </ButtonLink>
+              <ButtonLink external={ctaLinks.controls.external} href={ctaLinks.controls.href} variant="secondary">
+                {ctaLinks.controls.label}
+              </ButtonLink>
             </div>
-          </div>
-
-          <div className="border-t border-carbon/10 pt-4">
-            <ContactForm
-              helper={profile.contact.helper}
-              success={profile.contact.success}
-              error={profile.contact.error}
-              submitLabel={profile.contact.submitLabel}
-              email={profile.brand.email}
-            />
           </div>
         </div>
       </section>

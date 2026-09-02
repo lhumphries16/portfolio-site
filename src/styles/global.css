@@ -1,16 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --color-carbon: #131417;
-  --color-bone: #f7f3eb;
-  --color-paper: #fcfaf5;
-  --color-cobalt: #2b55c7;
-  --color-orange: #b36a31;
-  --color-steel: #818995;
-  --color-active: #5d8f63;
+  --color-carbon: #18222d;
+  --color-bone: #f2ede4;
+  --color-paper: #f8f4ed;
+  --color-cobalt: #b64f33;
+  --color-orange: #b64f33;
+  --color-steel: #69737e;
+  --color-active: #2d6d57;
 
-  --font-display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --font-display: "IBM Plex Sans", "Segoe UI", sans-serif;
   --font-body: "IBM Plex Sans", "Segoe UI", sans-serif;
   --font-mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
 }
@@ -30,11 +30,15 @@
   html {
     scroll-behavior: smooth;
     scrollbar-gutter: stable;
+    background: var(--color-bone);
   }
 
   body {
-    @apply m-0 min-w-80 bg-bone font-body text-[17px] leading-[1.68] text-carbon antialiased;
-    background-image: linear-gradient(180deg, rgb(255 255 255 / 0.3), transparent 16rem);
+    @apply m-0 min-w-80 bg-bone font-body text-[17px] leading-[1.66] text-carbon antialiased;
+    background-image:
+      radial-gradient(circle at top left, rgb(255 255 255 / 0.74), transparent 28%),
+      radial-gradient(circle at top right, rgb(182 79 51 / 0.07), transparent 24%),
+      linear-gradient(180deg, rgb(255 255 255 / 0.34), transparent 22rem);
     text-rendering: optimizeLegibility;
   }
 
@@ -60,8 +64,12 @@
     font: inherit;
   }
 
+  textarea {
+    resize: vertical;
+  }
+
   ::selection {
-    background: rgb(21 94 239 / 0.88);
+    background: rgb(182 79 51 / 0.92);
     color: #fff;
   }
 
@@ -77,35 +85,7 @@
   }
 
   .content-wrap {
-    @apply mx-auto max-w-[1320px];
-  }
-
-  .editorial-kicker {
-    @apply m-0 text-[0.72rem] font-medium tracking-[0.02em] text-carbon/36;
-  }
-
-  .page-title {
-    @apply m-0 font-display leading-[0.94] tracking-[-0.035em] text-carbon;
-  }
-
-  .section-title {
-    @apply m-0 font-semibold leading-[0.98] tracking-[-0.035em] text-carbon;
-  }
-
-  .body-copy {
-    @apply m-0 text-[1.02rem] leading-relaxed text-carbon/74;
-  }
-
-  .support-copy {
-    @apply m-0 text-base leading-relaxed text-carbon/68;
-  }
-
-  .meta-line {
-    @apply font-mono text-[0.66rem] uppercase tracking-[0.16em] text-carbon/48;
-  }
-
-  .editorial-link {
-    @apply inline-flex items-center gap-2 text-[0.96rem] font-medium tracking-[-0.01em] text-carbon/76 transition-colors duration-200 hover:text-cobalt;
+    @apply mx-auto max-w-[1260px];
   }
 }
 
@@ -118,66 +98,15 @@
   height: auto !important;
 }
 
-.timeline-range-slider {
-  pointer-events: none;
-}
-
-.timeline-range-slider::-webkit-slider-runnable-track {
-  height: 0;
-}
-
-.timeline-range-slider::-webkit-slider-thumb {
-  pointer-events: auto;
-  appearance: none;
-  width: 0.95rem;
-  height: 0.95rem;
-  margin-top: -0.5rem;
-  border: 1px solid rgb(16 19 23 / 0.18);
-  border-radius: 999px;
-  background: rgb(247 243 235);
-  box-shadow: 0 0 0 3px rgb(242 238 229 / 0.9);
-  transition:
-    transform 160ms ease,
-    border-color 160ms ease,
-    box-shadow 160ms ease;
-}
-
-.timeline-range-slider::-moz-range-track {
-  height: 0;
-  border: 0;
-  background: transparent;
-}
-
-.timeline-range-slider::-moz-range-thumb {
-  pointer-events: auto;
-  width: 0.95rem;
-  height: 0.95rem;
-  border: 1px solid rgb(16 19 23 / 0.18);
-  border-radius: 999px;
-  background: rgb(247 243 235);
-  box-shadow: 0 0 0 3px rgb(242 238 229 / 0.9);
-  transition:
-    transform 160ms ease,
-    border-color 160ms ease,
-    box-shadow 160ms ease;
-}
-
-.timeline-range-slider:hover::-webkit-slider-thumb,
-.timeline-range-slider:hover::-moz-range-thumb {
-  border-color: rgb(21 94 239 / 0.36);
-}
-
-.timeline-range-slider:focus-visible::-webkit-slider-thumb,
-.timeline-range-slider:focus-visible::-moz-range-thumb {
-  border-color: rgb(21 94 239 / 0.6);
-  box-shadow:
-    0 0 0 3px rgb(242 238 229 / 0.95),
-    0 0 0 5px rgb(21 94 239 / 0.16);
-}
-
 @media (max-width: 767px) {
   html {
     scroll-padding-top: 5rem;
+  }
+
+  body {
+    background-image:
+      radial-gradient(circle at top left, rgb(255 255 255 / 0.74), transparent 34%),
+      linear-gradient(180deg, rgb(255 255 255 / 0.28), transparent 16rem);
   }
 }
 
