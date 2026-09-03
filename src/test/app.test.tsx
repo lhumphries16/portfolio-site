@@ -20,7 +20,7 @@ describe('App', () => {
 
     expect(
       await screen.findByRole('heading', {
-        name: /tre humphries turns messy requirements into clear working systems/i,
+        name: /serious websites and digital systems for established businesses that do real work/i,
       })
     ).toBeInTheDocument();
 
@@ -42,7 +42,7 @@ describe('App', () => {
       })
     ).toBeInTheDocument();
 
-    expect(screen.getByText(/website engagements typically start around \$3,000/i)).toBeInTheDocument();
+    expect(screen.getAllByText(/website engagements typically start around \$3,000/i).length).toBeGreaterThan(0);
     expect(document.title).toBe('Web & Digital | Tre Humphries');
   });
 

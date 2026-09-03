@@ -1,6 +1,5 @@
 import { getScheduleLink } from './profile';
 
-const allSeasonsProofImage = '/images/portfolio/all-seasons/homepage.png';
 const homeEmsProofImage = '/images/portfolio/homeems/homepage.png';
 const bsbHomeImage = '/images/portfolio/brazilian-sweet-bites/home-desktop.png';
 const bsbOrderImage = '/images/portfolio/bsb-order/home-desktop.png';
@@ -56,10 +55,10 @@ export type PortfolioItem = {
 
 export const siteContent = {
   home: {
-    title: 'Tre Humphries turns messy requirements into clear working systems.',
+    title: 'Serious websites and digital systems for established businesses that do real work.',
     intro: [
-      'Most often, that means websites and digital systems for established service businesses and local brands.',
-      'When the problem sits closer to the machine, the sequence, or the engineering handoff, it can mean scoped controls work with a defined deliverable.',
+      'Tre builds professional websites, intake flows, and practical digital systems for established service businesses and local brands that already have substance.',
+      'When the problem sits closer to the machine, the sequence, or the engineering handoff, the same practice also takes on scoped controls work with a defined deliverable.',
     ],
     reputationPoints: [
       { label: 'Web engagements', value: 'Typically start around $3,000' },
@@ -109,7 +108,7 @@ export const siteContent = {
       'Website engagements typically start around $3,000. Final pricing is fixed upfront based on scope.',
   },
   controls: {
-    title: 'Scoped controls engineering for teams that need senior clarity, not open-ended support.',
+    title: 'Scoped controls engineering for teams that need senior clarity and a bounded deliverable.',
     intro:
       'Written for OEMs, controls teams, engineering managers, and technical operators who need a bounded review or design package their own team can act on.',
     proofNote:
@@ -122,7 +121,7 @@ export const siteContent = {
     boundaries: [
       'No staff augmentation positioning',
       'No open-ended maintenance ownership',
-      'Implementation only if separately scoped',
+      'Controls implementation only if separately scoped',
     ],
     steps: [
       'Confirm one system, workflow, or project and define the deliverable.',
@@ -205,7 +204,7 @@ export const siteContent = {
     {
       title: 'Process & Information Flow Audit',
       summary:
-        'A fixed-scope review of one workflow where information, decisions, or ownership are breaking down, ending with one practical implemented improvement and a clean closeout.',
+        'A fixed-scope review of one workflow where information, decisions, or ownership are breaking down, ending with one lightweight practical workflow improvement and a clean closeout.',
       meta: [
         { label: 'Typical scope', value: 'One workflow' },
         { label: 'Duration', value: '2 to 3 weeks' },
@@ -214,7 +213,7 @@ export const siteContent = {
       bullets: [
         'Current-state conversations and artifact review',
         'Three to five prioritized friction points',
-        'One implemented practical improvement',
+        'One lightweight practical workflow improvement',
         'Documentation and clearly bounded follow-on scope',
       ],
     },
@@ -238,7 +237,7 @@ export const portfolioItems = [
     primaryAsset: {
       src: homeEmsProofImage,
       alt: 'HomeEMS homepage showing restoration messaging, emergency calls to action, and a clear service structure.',
-      caption: 'Homepage from the live HomeEMS website.',
+      caption: 'Live HomeEMS homepage capture with real restoration imagery.',
     },
     supportingAssets: [
       {
@@ -247,14 +246,14 @@ export const portfolioItems = [
         caption: 'Structured service-area experience with map and coverage lookup.',
       },
       {
-        src: homeEmsContactImage,
-        alt: 'HomeEMS contact page with a structured emergency intake form and photo-upload field.',
-        caption: 'Emergency intake flow with optional damage-photo upload.',
-      },
-      {
         src: homeEmsGalleryImage,
         alt: 'HomeEMS gallery page with real restoration photography from storm, fire, and water jobs.',
         caption: 'Real project imagery supporting restoration credibility.',
+      },
+      {
+        src: homeEmsContactImage,
+        alt: 'HomeEMS contact page with a structured emergency intake form and photo-upload field.',
+        caption: 'Emergency intake flow with optional damage-photo upload.',
       },
     ],
     caseStudy: {
@@ -289,14 +288,14 @@ export const portfolioItems = [
           caption: 'Service coverage treated as structured information rather than a buried town list.',
         },
         {
-          src: homeEmsContactImage,
-          alt: 'HomeEMS contact page with a structured emergency intake form and photo-upload field.',
-          caption: 'The intake form reduces friction between "I have a problem" and "the company has enough detail to respond."',
-        },
-        {
           src: homeEmsGalleryImage,
           alt: 'HomeEMS gallery page with real restoration photography from storm, fire, and water jobs.',
           caption: 'Real project imagery gives the site operational credibility without inflated claims.',
+        },
+        {
+          src: homeEmsContactImage,
+          alt: 'HomeEMS contact page with a structured emergency intake form and photo-upload field.',
+          caption: 'The intake form reduces friction between "I have a problem" and "the company has enough detail to respond."',
         },
       ],
       sections: [
@@ -426,8 +425,6 @@ export const portfolioItems = [
       'A design-forward website for a service practice, with a sharper visual language and straightforward owner usability.',
     whatItProves:
       'Tre can deliver a more visual brand presentation while staying commercially composed and technically clean.',
-    caution:
-      'The live project still shows placeholder project media, so it is included here as a supporting example rather than a full case study.',
     liveUrl: 'https://mayara-site.trehumphries16.workers.dev',
     primaryAsset: {
       src: mayaraImage,
@@ -453,27 +450,6 @@ export const portfolioItems = [
       src: bsbHomeImage,
       alt: 'Brazilian Sweet Bites marketing site with product photography and bold category blocks.',
       caption: 'Local brand website with strong real product imagery.',
-    },
-  },
-  {
-    slug: 'all-seasons',
-    title: 'All Seasons',
-    year: '2021',
-    category: 'web',
-    treatment: 'project-card',
-    relationshipLabel: 'Independent client work',
-    context: 'Earlier service-business website delivery.',
-    summary:
-      'An earlier service-business website showing practical delivery and client-owned handoff for an established operating business.',
-    whatItProves:
-      'Tre has relevant service-business web experience that predates the newer flagship work.',
-    caution:
-      'This is an earlier example and not the visual benchmark for the current work.',
-    liveUrl: 'https://allseasonsmo.com/home/',
-    primaryAsset: {
-      src: allSeasonsProofImage,
-      alt: 'All Seasons homepage capture of a service-business website.',
-      caption: 'An earlier service-business website example.',
     },
   },
   {
@@ -578,7 +554,7 @@ export const supportingWebProjects = webProjects.filter((item) => item.treatment
 export const homePageProjects = {
   flagship: portfolioBySlug.homeems,
   workflow: portfolioBySlug['brazilian-sweet-bites-order-system'],
-  visual: portfolioBySlug['mayara-miranda'],
+  visual: portfolioBySlug['brazilian-sweet-bites'],
   controls: portfolioBySlug['mainstream-hvac-controls'],
 } as const;
 

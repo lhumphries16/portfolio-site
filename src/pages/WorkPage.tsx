@@ -10,6 +10,11 @@ import {
 } from '../data/siteContent';
 
 export function WorkPage() {
+  const visualSupportProjects = [
+    supportingWebProjects.find((item) => item.slug === 'brazilian-sweet-bites'),
+    supportingWebProjects.find((item) => item.slug === 'mayara-miranda'),
+  ].filter((item): item is (typeof supportingWebProjects)[number] => Boolean(item));
+
   return (
     <>
       <RouteMeta
@@ -32,7 +37,7 @@ export function WorkPage() {
         </div>
       </section>
 
-      <section className="section-shell section-block">
+      <section className="section-shell pb-10 pt-4 md:pb-12 md:pt-6 lg:pb-14 lg:pt-8">
         <div className="content-wrap grid gap-6">
           <div className="grid gap-3">
             <p className="eyebrow">Flagship</p>
@@ -42,7 +47,7 @@ export function WorkPage() {
         </div>
       </section>
 
-      <section className="section-shell section-block">
+      <section className="section-shell py-10 md:py-12 lg:py-14">
         <div className="content-wrap grid gap-6 xl:grid-cols-[minmax(0,1.02fr)_minmax(0,0.98fr)] xl:items-start">
           <ProjectCard item={secondaryCaseStudy} />
 
@@ -50,20 +55,25 @@ export function WorkPage() {
             <div className="surface-soft grid gap-3 p-5">
               <p className="eyebrow">More website work</p>
               <p className="body-copy">
-                Mayara shows a more visual service-business presentation. Brazilian Sweet Bites broadens the industry
-                mix. All Seasons remains an earlier example of service-business website delivery.
+                Brazilian Sweet Bites broadens the industry mix. Mayara shows a more visual service-business
+                presentation within the same independent practice.
               </p>
             </div>
-            <ProjectCard item={supportingWebProjects[0]} variant="compact" />
             <div className="grid gap-4 md:grid-cols-2">
-              <ProjectCard item={supportingWebProjects[1]} variant="compact" />
-              <ProjectCard item={supportingWebProjects[2]} variant="compact" />
+              {visualSupportProjects.map((item) => (
+                <ProjectCard
+                  key={item.slug}
+                  item={item}
+                  showAction={item.slug !== 'mayara-miranda'}
+                  variant="compact"
+                />
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      <section className="section-shell section-block">
+      <section className="section-shell pb-14 pt-10 md:pb-16 md:pt-12 lg:pb-18 lg:pt-14">
         <div className="content-wrap grid gap-6">
           <div className="grid gap-3">
             <p className="eyebrow">Selected engineering work</p>

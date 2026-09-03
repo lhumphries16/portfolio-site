@@ -11,6 +11,7 @@ import {
 
 export function WebPage() {
   const flagshipSupport = flagshipProject.supportingAssets ?? [];
+  const commercialSupportProjects = supportingWebProjects.filter((item) => item.slug !== 'mayara-miranda');
 
   return (
     <>
@@ -23,7 +24,7 @@ export function WebPage() {
         <div className="page-wrap grid gap-8 xl:grid-cols-[minmax(0,0.47fr)_minmax(0,0.53fr)] xl:items-start">
           <div className="grid gap-6 xl:sticky xl:top-28">
             <p className="eyebrow">Web &amp; Digital</p>
-            <h1 className="m-0 max-w-[12ch] text-[clamp(2.7rem,4.8vw,4.45rem)] font-semibold leading-[0.99] tracking-[-0.055em] text-carbon">
+            <h1 className="m-0 max-w-[15ch] text-[clamp(2.35rem,9vw,4.45rem)] font-semibold leading-[0.99] tracking-[-0.055em] text-carbon xl:max-w-[12ch]">
               {siteContent.web.title}
             </h1>
             <p className="body-lead max-w-[34rem]">{siteContent.web.intro}</p>
@@ -34,11 +35,11 @@ export function WebPage() {
               </p>
             </div>
 
-            <div className="flex flex-wrap gap-3">
-              <ButtonLink external={ctaLinks.web.external} href={ctaLinks.web.href}>
+            <div className="grid gap-3 sm:flex sm:flex-wrap">
+              <ButtonLink className="w-full sm:w-auto" external={ctaLinks.web.external} href={ctaLinks.web.href}>
                 {ctaLinks.web.label}
               </ButtonLink>
-              <ButtonLink href="/work/homeems" variant="secondary">
+              <ButtonLink className="w-full sm:w-auto" href="/work/homeems" variant="secondary">
                 Read the HomeEMS case study
               </ButtonLink>
             </div>
@@ -80,13 +81,11 @@ export function WebPage() {
         </div>
       </section>
 
-      <section className="section-shell section-block">
+      <section className="section-shell pb-10 pt-4 md:pb-12 md:pt-6 lg:pb-14 lg:pt-8">
         <div className="content-wrap grid gap-6">
           <div className="grid gap-3">
             <p className="eyebrow">Best fit</p>
-            <h2 className="section-heading max-w-[12ch]">
-              Built for businesses that already have customers, reputation, and real operations.
-            </h2>
+            <h2 className="section-heading max-w-[15ch]">Best fit for established businesses with real operations.</h2>
             <p className="body-lead max-w-[38rem]">
               Best fit for established businesses whose real-world operation has outgrown the website representing it.
             </p>
@@ -102,7 +101,7 @@ export function WebPage() {
         </div>
       </section>
 
-      <section className="section-shell section-block">
+      <section className="section-shell py-10 md:py-12 lg:py-14">
         <div className="content-wrap grid gap-6">
           <div className="grid gap-3">
             <p className="eyebrow">Selected website work</p>
@@ -114,15 +113,9 @@ export function WebPage() {
 
           <ProjectCard item={flagshipProject} variant="feature" />
 
-          <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+          <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-start">
             <ProjectCard item={secondaryCaseStudy} />
-            <ProjectCard item={supportingWebProjects[0]} />
-          </div>
-
-          <div className="grid gap-4 md:grid-cols-2">
-            {supportingWebProjects.slice(1).map((item) => (
-              <ProjectCard key={item.slug} item={item} variant="compact" />
-            ))}
+            <ProjectCard item={commercialSupportProjects[0]} />
           </div>
         </div>
       </section>
@@ -171,9 +164,7 @@ export function WebPage() {
                 ))}
               </div>
               <div className="soft-rule border-white/10 pt-4">
-                <p className="m-0 max-w-[32rem] text-[1rem] leading-relaxed text-white/78">
-                  {siteContent.web.pricing}
-                </p>
+                <p className="m-0 max-w-[32rem] text-[1rem] leading-relaxed text-white/78">{siteContent.web.pricing}</p>
               </div>
             </article>
           </div>
@@ -185,15 +176,13 @@ export function WebPage() {
           <div className="grid gap-5 lg:grid-cols-[minmax(0,0.9fr)_auto] lg:items-end">
             <div className="grid gap-3">
               <p className="eyebrow">Schedule</p>
-              <h2 className="section-heading max-w-[10ch]">
-                Have a site that no longer matches the business behind it?
-              </h2>
+              <h2 className="section-heading max-w-[10ch]">Have a site that no longer matches the business behind it?</h2>
               <p className="body-copy max-w-[38rem]">
                 Start with the current site, what the business actually needs, and what a better handoff should leave
                 behind.
               </p>
             </div>
-            <ButtonLink external={ctaLinks.web.external} href={ctaLinks.web.href}>
+            <ButtonLink className="w-full justify-center sm:w-auto" external={ctaLinks.web.external} href={ctaLinks.web.href}>
               {ctaLinks.web.label}
             </ButtonLink>
           </div>

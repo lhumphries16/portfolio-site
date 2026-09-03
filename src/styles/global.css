@@ -31,6 +31,7 @@
     scroll-behavior: smooth;
     scrollbar-gutter: stable;
     background: var(--color-bone);
+    scroll-padding-top: 6rem;
   }
 
   body {
@@ -173,10 +174,6 @@
 }
 
 @media (max-width: 767px) {
-  html {
-    scroll-padding-top: 5rem;
-  }
-
   body {
     background-image:
       radial-gradient(circle at top left, rgb(255 255 255 / 0.92), transparent 34%),

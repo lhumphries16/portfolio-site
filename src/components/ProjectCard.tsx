@@ -9,7 +9,7 @@ type ProjectCardProps = {
 };
 
 const imageAspectByVariant = {
-  feature: 'aspect-[16/10] lg:h-full lg:min-h-[28rem]',
+  feature: 'aspect-[16/10]',
   standard: 'aspect-[16/11]',
   compact: 'aspect-[16/11]',
 } as const;

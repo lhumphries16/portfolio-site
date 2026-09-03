@@ -6,6 +6,8 @@ import { controlsProjects, ctaLinks, siteContent } from '../data/siteContent';
 export function ControlsPage() {
   const primaryProof = controlsProjects[0];
   const supportingProof = controlsProjects.slice(1);
+  const primaryOffers = siteContent.offers.slice(0, 2);
+  const processAuditOffer = siteContent.offers[2];
 
   return (
     <>
@@ -18,18 +20,27 @@ export function ControlsPage() {
         <div className="page-wrap grid gap-6 xl:grid-cols-[minmax(0,0.44fr)_minmax(0,0.56fr)] xl:items-start">
           <article className="surface-dark grid gap-5 p-6 text-white md:p-8 xl:sticky xl:top-28">
             <p className="m-0 text-[0.82rem] font-semibold tracking-[0.08em] text-white/62">Controls Engineering</p>
-            <h1 className="m-0 max-w-[11ch] text-[clamp(2.7rem,4.8vw,4.5rem)] font-semibold leading-[0.99] tracking-[-0.055em] text-white">
+            <h1 className="m-0 max-w-[15ch] text-[clamp(2.25rem,8.8vw,4.5rem)] font-semibold leading-[0.99] tracking-[-0.055em] text-white xl:max-w-[11ch]">
               {siteContent.controls.title}
             </h1>
             <p className="m-0 max-w-[34rem] text-[1.02rem] leading-[1.72] text-white/78">{siteContent.controls.intro}</p>
             <div className="rounded-[1.5rem] border border-white/10 bg-white/6 px-5 py-4">
               <p className="m-0 text-[0.98rem] leading-relaxed text-white/74">{siteContent.controls.proofNote}</p>
             </div>
-            <div className="flex flex-wrap gap-3">
-              <ButtonLink external={ctaLinks.controls.external} href={ctaLinks.controls.href} variant="secondary">
+            <div className="grid gap-3 sm:flex sm:flex-wrap">
+              <ButtonLink
+                className="w-full sm:w-auto"
+                external={ctaLinks.controls.external}
+                href={ctaLinks.controls.href}
+                variant="secondary"
+              >
                 {ctaLinks.controls.label}
               </ButtonLink>
-              <ButtonLink href="/work" variant="ghost">
+              <ButtonLink
+                className="w-full border-white/18 text-white hover:border-white/36 hover:bg-white/10 hover:text-white sm:w-auto"
+                href="/work"
+                variant="ghost"
+              >
                 See selected work
               </ButtonLink>
             </div>
@@ -63,15 +74,15 @@ export function ControlsPage() {
         </div>
       </section>
 
-      <section className="section-shell section-block">
+      <section className="section-shell pb-10 pt-4 md:pb-12 md:pt-6 lg:pb-14 lg:pt-8">
         <div className="content-wrap grid gap-6">
           <div className="grid gap-3">
             <p className="eyebrow">Offer structure</p>
-            <h2 className="section-heading max-w-[11ch]">Defined engagement models for defined technical problems.</h2>
+            <h2 className="section-heading max-w-[14ch]">Defined controls engagements for defined technical problems.</h2>
           </div>
 
-          <div className="grid gap-4 xl:grid-cols-3">
-            {siteContent.offers.map((offer, index) => (
+          <div className="grid gap-4 xl:grid-cols-2">
+            {primaryOffers.map((offer, index) => (
               <article key={offer.title} className={index === 1 ? 'surface-dark grid gap-5 p-5 text-white' : 'surface-card grid gap-5 p-5'}>
                 <div className="grid gap-2">
                   <h2 className={`m-0 text-[1.5rem] font-semibold leading-[1.02] tracking-[-0.04em] ${index === 1 ? 'text-white' : 'text-carbon'}`}>
@@ -104,10 +115,41 @@ export function ControlsPage() {
               </article>
             ))}
           </div>
+
+          <article className="surface-soft grid gap-5 p-5 xl:max-w-[62rem]">
+            <div className="grid gap-2">
+              <p className="eyebrow">Adjacent capability</p>
+            <h2 className="m-0 max-w-[18ch] text-[1.5rem] font-semibold leading-[1.02] tracking-[-0.04em] text-carbon">
+                {processAuditOffer.title}
+              </h2>
+              <p className="m-0 max-w-[46rem] text-[0.98rem] leading-relaxed text-carbon/70">{processAuditOffer.summary}</p>
+              <p className="detail-copy max-w-[46rem]">
+                This scope includes one lightweight practical workflow improvement. Broader controls implementation stays
+                separately scoped.
+              </p>
+            </div>
+
+            <div className="grid gap-3 rounded-[1.4rem] bg-white px-4 py-4 sm:grid-cols-3">
+              {processAuditOffer.meta.map((item) => (
+                <div key={item.label} className="grid gap-1">
+                  <p className="m-0 text-[0.84rem] font-semibold tracking-[0.04em] text-carbon/48">{item.label}</p>
+                  <p className="m-0 text-[0.96rem] leading-relaxed text-carbon/72">{item.value}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="grid gap-3 sm:grid-cols-2">
+              {processAuditOffer.bullets.map((bullet) => (
+                <p key={bullet} className="m-0 rounded-[1.2rem] bg-white px-3 py-3 text-[0.92rem] leading-relaxed text-carbon/70">
+                  {bullet}
+                </p>
+              ))}
+            </div>
+          </article>
         </div>
       </section>
 
-      <section className="section-shell section-block">
+      <section className="section-shell py-10 md:py-12 lg:py-14">
         <div className="content-wrap grid gap-6 xl:grid-cols-[minmax(0,0.96fr)_minmax(0,1.04fr)]">
           <article className="surface-card grid gap-4 p-6 md:p-8">
             <p className="eyebrow">Good fit</p>
@@ -137,7 +179,7 @@ export function ControlsPage() {
         </div>
       </section>
 
-      <section className="section-shell section-block">
+      <section className="section-shell pb-14 pt-10 md:pb-16 md:pt-12 lg:pb-18 lg:pt-14">
         <div className="content-wrap grid gap-6">
           <div className="grid gap-3">
             <p className="eyebrow">Selected engineering work</p>
@@ -148,15 +190,14 @@ export function ControlsPage() {
             </p>
           </div>
 
-          <div className="grid gap-4 xl:grid-cols-[minmax(0,1.04fr)_minmax(0,0.96fr)]">
+          <div className="grid gap-4 xl:grid-cols-[minmax(0,1.04fr)_minmax(0,0.96fr)] xl:items-start">
             <ProjectCard item={controlsProjects[0]} variant="feature" showAction={false} />
             <div className="grid gap-4">
               <ProjectCard item={controlsProjects[1]} showAction={false} />
               <ProjectCard item={controlsProjects[2]} showAction={false} />
+              <ProjectCard item={controlsProjects[3]} showAction={false} />
             </div>
           </div>
-
-          <ProjectCard item={controlsProjects[3]} showAction={false} />
         </div>
       </section>
 
@@ -183,7 +224,7 @@ export function ControlsPage() {
           <div className="grid gap-5 lg:grid-cols-[minmax(0,0.9fr)_auto] lg:items-end">
             <div className="grid gap-3">
               <p className="m-0 text-[0.82rem] font-semibold tracking-[0.08em] text-white/60">Schedule</p>
-              <h2 className="m-0 max-w-[10ch] text-[clamp(2.1rem,4vw,3rem)] font-semibold leading-[1.02] tracking-[-0.05em] text-white">
+              <h2 className="m-0 max-w-[12ch] text-[clamp(2.1rem,4vw,3rem)] font-semibold leading-[1.02] tracking-[-0.05em] text-white">
                 Need a bounded controls engagement with a real deliverable?
               </h2>
               <p className="m-0 max-w-[38rem] text-[1rem] leading-relaxed text-white/76">
@@ -191,7 +232,12 @@ export function ControlsPage() {
                 would actually help your team move forward.
               </p>
             </div>
-            <ButtonLink external={ctaLinks.controls.external} href={ctaLinks.controls.href} variant="secondary">
+            <ButtonLink
+              className="w-full justify-center sm:w-auto"
+              external={ctaLinks.controls.external}
+              href={ctaLinks.controls.href}
+              variant="secondary"
+            >
               {ctaLinks.controls.label}
             </ButtonLink>
           </div>

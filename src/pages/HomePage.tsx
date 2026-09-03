@@ -5,6 +5,8 @@ import { ctaLinks, controlsProjects, homePageProjects, siteContent } from '../da
 import { profile } from '../data/profile';
 
 export function HomePage() {
+  const webFeatureAsset = homePageProjects.flagship.supportingAssets?.[1] ?? homePageProjects.flagship.primaryAsset;
+
   return (
     <>
       <RouteMeta
@@ -17,7 +19,7 @@ export function HomePage() {
           <div className="grid gap-7">
             <div className="grid gap-5">
               <p className="eyebrow">Independent web &amp; controls practice</p>
-              <h1 className="m-0 max-w-[12ch] text-[clamp(2.8rem,5.2vw,4.75rem)] font-semibold leading-[0.99] tracking-[-0.055em] text-carbon">
+              <h1 className="m-0 max-w-[15ch] text-[clamp(2.8rem,5.2vw,4.75rem)] font-semibold leading-[0.99] tracking-[-0.055em] text-carbon xl:max-w-[12ch]">
                 {siteContent.home.title}
               </h1>
             </div>
@@ -41,7 +43,6 @@ export function HomePage() {
                 {ctaLinks.controls.label}
               </ButtonLink>
             </div>
-
           </div>
 
           <div className="grid gap-4">
@@ -53,7 +54,7 @@ export function HomePage() {
                     <span className="browser-dot" />
                     <span className="browser-dot" />
                   </div>
-                  <p className="m-0 truncate text-[0.82rem] text-carbon/52">Flagship website • HomeEMS</p>
+                  <p className="m-0 truncate text-[0.82rem] text-carbon/52">Flagship website / HomeEMS</p>
                   <span className="h-2.5 w-2.5 rounded-full bg-cobalt/70" aria-hidden="true" />
                 </div>
                 <img
@@ -124,7 +125,7 @@ export function HomePage() {
             </p>
           </div>
 
-          <div className="grid gap-6 xl:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">
+          <div className="grid gap-6 xl:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] xl:items-start">
             <ProjectCard item={homePageProjects.flagship} variant="feature" />
 
             <div className="grid gap-6">
@@ -138,11 +139,7 @@ export function HomePage() {
       <section className="section-shell section-block">
         <div className="content-wrap grid gap-6 xl:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">
           <article className="surface-card grid gap-6 overflow-hidden p-6 md:p-8">
-            <img
-              className="aspect-[16/10] w-full rounded-[1.5rem] object-cover object-top"
-              src={homePageProjects.flagship.supportingAssets?.[2]?.src ?? homePageProjects.flagship.primaryAsset.src}
-              alt={homePageProjects.flagship.supportingAssets?.[2]?.alt ?? homePageProjects.flagship.primaryAsset.alt}
-            />
+            <img className="aspect-[16/10] w-full rounded-[1.5rem] object-cover object-top" src={webFeatureAsset.src} alt={webFeatureAsset.alt} />
             <div className="grid gap-4">
               <p className="eyebrow">Web &amp; Digital</p>
               <h2 className="section-heading max-w-[10ch]">Websites built around the business behind them.</h2>
