@@ -1,6 +1,4 @@
 import '@testing-library/jest-dom';
-import React from 'react';
-import { vi } from 'vitest';
 
 Object.defineProperty(window, 'matchMedia', {
   writable: true,
@@ -42,27 +40,3 @@ Object.defineProperty(window, 'ResizeObserver', {
     disconnect() {}
   },
 });
-
-vi.mock('react-pdf', () => ({
-  pdfjs: {
-    GlobalWorkerOptions: {},
-  },
-  Document: ({
-    children,
-  }: {
-    children: React.ReactNode;
-  }) => React.createElement('div', { className: 'react-pdf__Document' }, children),
-  Page: ({
-    pageNumber,
-    width,
-  }: {
-    pageNumber: number;
-    width?: number;
-  }) =>
-    React.createElement('div', {
-      className: 'react-pdf__Page',
-      'data-testid': 'react-pdf-page',
-      'data-page-number': pageNumber,
-      'data-width': width,
-    }),
-}));

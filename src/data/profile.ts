@@ -1,8 +1,6 @@
 export type ScheduleAudience = 'web' | 'controls';
 
 const contactEmail = 'trehumphries16@gmail.com';
-const contactPhone = '5739330405';
-const contactPhoneDisplay = '(573) 933-0405';
 
 type ScheduleConfig = {
   label: string;
@@ -35,12 +33,9 @@ export function getScheduleLink(audience: ScheduleAudience) {
 export const profile = {
   brand: {
     name: 'Tre Humphries',
-    fullName: 'Larry "Tre" Humphries',
     role: 'Independent Web & Controls Practice',
     location: 'Based in New Jersey, working across the U.S.',
     email: contactEmail,
-    phone: contactPhone,
-    phoneDisplay: contactPhoneDisplay,
   },
   navigation: [
     { label: 'Web', href: '/web' },
@@ -55,7 +50,6 @@ export const profile = {
       href: 'https://www.linkedin.com/in/lhumphr',
     },
   ],
-  scheduleConfig,
   portrait: {
     src: '/images/tre-box-desk-normalized.jpg',
     alt: 'Tre Humphries working on a laptop beside field documents in an industrial setting.',
@@ -64,16 +58,11 @@ export const profile = {
   },
   site: {
     origin: 'https://trehumphries.com',
-    domain: 'trehumphries.com',
     socialImagePath: '/images/tre-box-desk-normalized.jpg',
   },
   contact: {
-    ctaLabel: 'Contact',
     helper:
       'The most useful first note names the real problem, the current system, and what a clean handoff would look like.',
-    success: 'Opening a direct email draft.',
-    error: 'Please complete the required fields before opening the email draft.',
-    submitLabel: 'Open email draft',
     methods: [
       {
         label: 'Email',

@@ -118,6 +118,18 @@ describe('App', () => {
     expect(screen.getByText(/the most useful first note names the real problem/i)).toBeInTheDocument();
   });
 
+  it('renders the about page with the approved practice framing', async () => {
+    renderRoute('/about');
+
+    expect(
+      await screen.findByRole('heading', {
+        name: /one practice that stays close to the business, the system, and the handoff/i,
+      })
+    ).toBeInTheDocument();
+
+    expect(document.title).toBe('About | Tre Humphries');
+  });
+
   it('opens a project-call draft from the contact page after valid form input', async () => {
     renderRoute('/contact');
     const originalLocation = window.location;
@@ -156,27 +168,23 @@ describe('App', () => {
     }
   });
 
-  it('redirects legacy commercial routes', async () => {
-    renderRoute('/industrial');
+  it.each([
+    ['/industrial', '/controls', '', /scoped controls engineering/i],
+    ['/consulting', '/controls', '', /scoped controls engineering/i],
+    ['/client-work', '/work', '', /^selected work$/i],
+    ['/projects', '/work', '', /^selected work$/i],
+    ['/experience', '/about', '', /one practice that stays close to the business, the system, and the handoff/i],
+    ['/index', '/work', '', /^selected work$/i],
+    ['/living-cv?from=2019', '/work', '?from=2019', /^selected work$/i],
+  ])('redirects %s to %s', async (from, pathname, search, heading) => {
+    renderRoute(from);
 
     await waitFor(() => {
-      expect(window.location.pathname).toBe('/controls');
+      expect(window.location.pathname).toBe(pathname);
+      expect(window.location.search).toBe(search);
     });
 
-    expect(
-      await screen.findByRole('heading', {
-        name: /scoped controls engineering/i,
-      })
-    ).toBeInTheDocument();
-  });
-
-  it('redirects the legacy archive route to the curated work page', async () => {
-    renderRoute('/living-cv?from=2019');
-
-    await waitFor(() => {
-      expect(window.location.pathname).toBe('/work');
-      expect(window.location.search).toBe('?from=2019');
-    });
+    expect(await screen.findByRole('heading', { name: heading })).toBeInTheDocument();
   });
 
   it('redirects a legacy project slug to the new case study route when available', async () => {
@@ -184,6 +192,22 @@ describe('App', () => {
 
     await waitFor(() => {
       expect(window.location.pathname).toBe('/work/homeems');
+    });
+  });
+
+  it('redirects a second legacy project slug to the matching case study route', async () => {
+    renderRoute('/projects/brazilian-sweet-bites-order-system');
+
+    await waitFor(() => {
+      expect(window.location.pathname).toBe('/work/brazilian-sweet-bites-order-system');
+    });
+  });
+
+  it('redirects unknown legacy project slugs back to selected work', async () => {
+    renderRoute('/projects/not-a-real-project');
+
+    await waitFor(() => {
+      expect(window.location.pathname).toBe('/work');
     });
   });
 
