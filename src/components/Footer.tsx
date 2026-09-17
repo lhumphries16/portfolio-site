@@ -35,12 +35,6 @@ export function Footer({ brand, note, socialLinks }: FooterProps) {
         <div className="grid gap-8 md:grid-cols-2">
           <div className="grid gap-3 text-[0.95rem] text-carbon/66">
             <p className="m-0 font-semibold text-carbon">Navigate</p>
-            <Link className="transition-colors duration-200 hover:text-cobalt" to="/web">
-              Web
-            </Link>
-            <Link className="transition-colors duration-200 hover:text-cobalt" to="/controls">
-              Controls
-            </Link>
             <Link className="transition-colors duration-200 hover:text-cobalt" to="/work">
               Work
             </Link>

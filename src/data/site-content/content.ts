@@ -2,25 +2,21 @@ import { getScheduleLink } from '../profile';
 
 export const siteContent = {
   home: {
-    title: 'Serious websites and digital systems for established businesses that do real work.',
+    title: 'I build the systems between an idea and a working machine.',
     intro: [
-      'Tre builds professional websites, intake flows, and practical digital systems for established service businesses and local brands that already have substance.',
-      'When the problem sits closer to the machine, the sequence, or the engineering handoff, the same practice also takes on scoped controls work with a defined deliverable.',
+      'Product and systems engineering across physical equipment, controls, automation, test systems, and the software around them.',
+      'I work best on bounded technical problems where someone needs a clear owner from fuzzy requirements through prototype, commissioning, and handoff.',
     ],
     reputationPoints: [
-      { label: 'Web engagements', value: 'Typically start around $3,000' },
-      { label: 'Delivery model', value: 'Fixed scope, fixed fee, clean handoff' },
-      { label: 'Controls work', value: 'Senior review or design on defined problems' },
+      { label: 'Core strength', value: 'End-to-end technical ownership' },
+      { label: 'Best fit', value: 'Complex physical + software systems' },
+      { label: 'Delivery model', value: 'Scoped project, tested result, clean handoff' },
     ],
-    webPoints: [
-      'Fixed-scope website and search foundation',
-      'Client-owned launch, documentation, and handoff',
-      'Digital systems that fit the business instead of dressing around it',
-    ],
-    controlsPoints: [
-      'One system, panel, machine, or workflow per engagement',
-      'Senior review or design clarity without open-ended ownership',
-      'Useful findings, design notes, and handoff-ready deliverables',
+    capabilityPoints: [
+      'Product development — architecture, prototypes, electromechanical systems, embedded hardware and software',
+      'Controls & automation — PLC/HMI, VFDs, BAS, Modbus/BACnet, commissioning and troubleshooting',
+      'Test & diagnostic systems — fixtures, automated test workflows, field tooling and validation',
+      'Engineering software — internal tools, data systems, and software around physical operations',
     ],
   },
   web: {
@@ -77,31 +73,31 @@ export const siteContent = {
     ],
   },
   about: {
-    title: 'One practice that stays close to the business, the system, and the handoff.',
+    title: 'A product and systems engineer who likes owning the whole technical problem.',
     paragraphs: [
-      'The through-line is not lots of unrelated technology. It is understanding how a real business or technical system works, finding where requirements get messy, and turning that into something clear enough to build and hand off.',
-      'That can look like a contractor website with a better intake path, a service-area system, a controls review before commissioning, or internal workflow tooling that removes guesswork from engineering work.',
-      'The practice is intentionally small, direct, and bounded. The goal is useful work with clear ownership after delivery, not permanent attachment to the client.',
+      'My background spans mechanical systems, controls, robotics, field commissioning, internal engineering tools, and independent product work. The through-line is taking ambiguous technical requirements and turning them into something that works in the real world.',
+      'I am strongest when hardware, controls, software, and field reality overlap — especially when a problem does not fit neatly inside one discipline or one person needs to carry it from architecture through test and handoff.',
+      'The independent practice is intentionally small and project-based. The goal is clear ownership during the hard part, then a clean exit once the system is usable and documented.',
     ],
     pillars: [
       {
-        title: 'Mechanical and controls foundation',
-        body: 'A large part of the judgment here comes from real equipment, field conditions, commissioning logic, and engineering handoffs, not from treating every problem like abstract software.',
+        title: 'Physical systems first',
+        body: 'Mechanical constraints, wiring, actuators, sensors, operators, installation, and field conditions are part of the design — not afterthoughts around the software.',
       },
       {
-        title: 'Business-facing web delivery',
-        body: 'The web side is strongest when a business already has substance and just needs the digital system to represent that substance clearly.',
+        title: 'Front-to-back ownership',
+        body: 'I am comfortable moving between architecture, controls, software, debugging, documentation, and commissioning when that is what it takes to get the system over the line.',
       },
       {
-        title: 'Bounded scope by design',
-        body: 'Projects are sold to end with a useful result and clear ownership, not to create dependence on an always-on freelancer.',
+        title: 'Bounded by design',
+        body: 'The best engagements have a real definition of done: a working prototype, a tested design, a commissioning result, or a handoff-ready technical package.',
       },
     ],
   },
   contact: {
-    title: 'Start with the real problem.',
+    title: 'Bring me the technical problem.',
     intro:
-      'Choose the path that matches the work. If it helps to send context first, use the outline form and Tre can reply directly with the next step.',
+      'If the work crosses hardware, controls, software, test, or field operations and needs a clear owner, send the current situation and what a good finished state would look like.',
   },
   offers: [
     {
@@ -158,6 +154,7 @@ export const siteContent = {
 } as const;
 
 export const ctaLinks = {
+  project: getScheduleLink('project'),
   web: getScheduleLink('web'),
   controls: getScheduleLink('controls'),
 } as const;

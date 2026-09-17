@@ -1,4 +1,4 @@
-export type ScheduleAudience = 'web' | 'controls';
+export type ScheduleAudience = 'project' | 'web' | 'controls';
 
 const contactEmail = 'trehumphries16@gmail.com';
 
@@ -9,6 +9,11 @@ type ScheduleConfig = {
 };
 
 const scheduleConfig: Record<ScheduleAudience, ScheduleConfig> = {
+  project: {
+    label: 'Discuss a Project',
+    description: 'Project Call - product development, controls, automation, test systems, and engineering software',
+    href: 'https://cal.com/tre-humphries/project-call',
+  },
   web: {
     label: 'Schedule a Project Call',
     description: 'Project Call - websites, digital systems, service businesses, local brands',
@@ -33,13 +38,11 @@ export function getScheduleLink(audience: ScheduleAudience) {
 export const profile = {
   brand: {
     name: 'Tre Humphries',
-    role: 'Independent Web & Controls Practice',
+    role: 'Product & Systems Engineer',
     location: 'Based in New Jersey, working across the U.S.',
     email: contactEmail,
   },
   navigation: [
-    { label: 'Web', href: '/web' },
-    { label: 'Controls', href: '/controls' },
     { label: 'Work', href: '/work' },
     { label: 'About', href: '/about' },
     { label: 'Contact', href: '/contact' },
@@ -62,7 +65,7 @@ export const profile = {
   },
   contact: {
     helper:
-      'The most useful first note names the real problem, the current system, and what a clean handoff would look like.',
+      'The most useful first note names the technical problem, the current system, what has already been tried, and what a finished handoff should look like.',
     methods: [
       {
         label: 'Email',
@@ -77,5 +80,5 @@ export const profile = {
     ],
   },
   footerNote:
-    'Independent practice for established service businesses, local brands, and defined engineering problems that need a clear owner handoff.',
+    'Independent product and systems engineering across physical systems, controls, automation, test equipment, and engineering software.',
 } as const;

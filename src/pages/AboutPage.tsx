@@ -8,7 +8,7 @@ export function AboutPage() {
     <>
       <RouteMeta
         title="About | Tre Humphries"
-        description="About Tre Humphries, an independent practice spanning web systems, controls engineering, and clean owner handoff."
+        description="About Tre Humphries, a product and systems engineer working across physical systems, controls, automation, engineering software, commissioning, and handoff."
       />
 
       <section className="hero-shell">
@@ -25,7 +25,7 @@ export function AboutPage() {
 
             <div className="grid gap-5">
               <p className="eyebrow">About</p>
-              <h1 className="m-0 max-w-[10ch] text-[clamp(2.8rem,5vw,4.65rem)] font-semibold leading-[0.99] tracking-[-0.055em] text-carbon">
+              <h1 className="m-0 max-w-[12ch] text-[clamp(2.8rem,5vw,4.65rem)] font-semibold leading-[0.99] tracking-[-0.055em] text-carbon">
                 {siteContent.about.title}
               </h1>
               {siteContent.about.paragraphs.map((paragraph) => (
@@ -56,21 +56,15 @@ export function AboutPage() {
         <div className="page-wrap surface-card px-6 py-7 md:px-8 md:py-8">
           <div className="grid gap-5 lg:grid-cols-[minmax(0,0.9fr)_auto] lg:items-end">
             <div className="grid gap-3">
-              <p className="eyebrow">Schedule</p>
-              <h2 className="section-heading max-w-[10ch]">Need to talk through a project?</h2>
-              <p className="body-copy max-w-[38rem]">
-                Use the contact route that matches the work. The best conversations start from the actual problem and
-                the actual handoff.
+              <p className="eyebrow">Project fit</p>
+              <h2 className="section-heading max-w-[11ch]">Have a problem that needs a technical owner?</h2>
+              <p className="body-copy max-w-[40rem]">
+                Send the real situation, the constraints, and what done should look like. I can usually tell pretty quickly whether I am the right person to own it.
               </p>
             </div>
-            <div className="flex flex-wrap gap-3">
-              <ButtonLink external={ctaLinks.web.external} href={ctaLinks.web.href}>
-                {ctaLinks.web.label}
-              </ButtonLink>
-              <ButtonLink external={ctaLinks.controls.external} href={ctaLinks.controls.href} variant="secondary">
-                {ctaLinks.controls.label}
-              </ButtonLink>
-            </div>
+            <ButtonLink external={ctaLinks.project.external} href={ctaLinks.project.href}>
+              {ctaLinks.project.label}
+            </ButtonLink>
           </div>
         </div>
       </section>
