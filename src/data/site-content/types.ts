@@ -1,4 +1,4 @@
-export type PortfolioCategory = 'web' | 'controls';
+export type PortfolioCategory = 'web' | 'controls' | 'product';
 export type PortfolioTreatment = 'flagship' | 'case-study' | 'project-card';
 
 export type PortfolioAsset = {
