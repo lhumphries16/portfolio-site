@@ -9,46 +9,35 @@ export function ContactPage() {
     <>
       <RouteMeta
         title="Contact | Tre Humphries"
-        description="Contact Tre Humphries for a project call or controls consultation."
+        description="Contact Tre Humphries about product development, controls, automation, test systems, engineering software, or another bounded technical problem."
       />
 
       <section className="hero-shell">
         <div className="page-wrap grid gap-6 xl:grid-cols-[minmax(0,0.42fr)_minmax(0,0.58fr)] xl:items-end">
           <div className="grid gap-4">
             <p className="eyebrow">Contact</p>
-            <h1 className="m-0 max-w-[9ch] text-[clamp(2.8rem,4.9vw,4.65rem)] font-semibold leading-[0.99] tracking-[-0.055em] text-carbon">
+            <h1 className="m-0 max-w-[10ch] text-[clamp(2.8rem,4.9vw,4.65rem)] font-semibold leading-[0.99] tracking-[-0.055em] text-carbon">
               {siteContent.contact.title}
             </h1>
           </div>
-          <p className="body-lead max-w-[40rem]">{siteContent.contact.intro}</p>
+          <p className="body-lead max-w-[42rem]">{siteContent.contact.intro}</p>
         </div>
       </section>
 
       <section className="section-shell section-block">
-        <div className="content-wrap grid gap-4 lg:grid-cols-2">
-          <article className="surface-card grid gap-4 p-5">
-            <div className="grid gap-2">
-              <p className="eyebrow">Web &amp; Digital</p>
-              <h2 className="m-0 text-[1.7rem] font-semibold leading-[1.02] tracking-[-0.04em] text-carbon">
-                {ctaLinks.web.label}
+        <div className="content-wrap">
+          <article className="surface-dark grid gap-5 p-6 text-white md:p-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
+            <div className="grid gap-3">
+              <p className="m-0 text-[0.8rem] font-semibold tracking-[0.08em] text-white/60">Project call</p>
+              <h2 className="m-0 max-w-[14ch] text-[clamp(2rem,4vw,3rem)] font-semibold leading-[1.02] tracking-[-0.05em] text-white">
+                Product development, controls, automation, test systems, or a weird technical problem.
               </h2>
-              <p className="body-copy">{ctaLinks.web.description}</p>
+              <p className="m-0 max-w-[44rem] text-[1rem] leading-relaxed text-white/76">
+                The best first conversation starts with the actual system, the current constraint, and what a useful finished state would look like.
+              </p>
             </div>
-            <ButtonLink external={ctaLinks.web.external} href={ctaLinks.web.href}>
-              {ctaLinks.web.label}
-            </ButtonLink>
-          </article>
-
-          <article className="surface-dark grid gap-4 p-5 text-white">
-            <div className="grid gap-2">
-              <p className="m-0 text-[0.8rem] font-semibold tracking-[0.08em] text-white/60">Controls Engineering</p>
-              <h2 className="m-0 text-[1.7rem] font-semibold leading-[1.02] tracking-[-0.04em] text-white">
-                {ctaLinks.controls.label}
-              </h2>
-              <p className="m-0 text-[1rem] leading-relaxed text-white/76">{ctaLinks.controls.description}</p>
-            </div>
-            <ButtonLink external={ctaLinks.controls.external} href={ctaLinks.controls.href} variant="secondary">
-              {ctaLinks.controls.label}
+            <ButtonLink external={ctaLinks.project.external} href={ctaLinks.project.href} variant="secondary">
+              {ctaLinks.project.label}
             </ButtonLink>
           </article>
         </div>
