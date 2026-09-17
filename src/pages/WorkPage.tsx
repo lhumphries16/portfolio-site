@@ -6,11 +6,16 @@ import { ctaLinks, portfolioBySlug } from '../data/siteContent';
 const engineeringProjects = [
   portfolioBySlug['gaf-roads-standard-industries'],
   portfolioBySlug['mainstream-hvac-controls'],
-  portfolioBySlug.innerspec,
   portfolioBySlug['mainstream-internal-tooling'],
+  portfolioBySlug.innerspec,
 ];
 
-const independentProjects = [
+const independentRAndD = [
+  portfolioBySlug['garage-horticulture'],
+  portfolioBySlug['wondersky-flying-creatures'],
+];
+
+const clientProjects = [
   portfolioBySlug.homeems,
   portfolioBySlug['brazilian-sweet-bites-order-system'],
   portfolioBySlug['mayara-miranda'],
@@ -22,7 +27,7 @@ export function WorkPage() {
     <>
       <RouteMeta
         title="Selected Work | Tre Humphries"
-        description="Selected product, controls, automation, engineering software, and independent client work from Tre Humphries."
+        description="Selected product development, controls, automation, engineering software, independent R&D, and client work from Tre Humphries."
       />
 
       <section className="hero-shell">
@@ -35,7 +40,7 @@ export function WorkPage() {
           </div>
 
           <p className="body-lead max-w-[42rem]">
-            Work across machines, controls, robotics, engineering software, field commissioning, and independent client systems. The common thread is technical ownership across disciplines.
+            Work across machines, controls, robotics, engineering software, independent physical R&amp;D, and shipped client systems. The common thread is technical ownership across disciplines.
           </p>
         </div>
       </section>
@@ -55,7 +60,6 @@ export function WorkPage() {
               <ProjectCard
                 key={item.slug}
                 item={item}
-                showAction={false}
                 variant={index === 0 ? 'feature' : 'standard'}
                 className={index === 0 ? 'md:col-span-2' : ''}
               />
@@ -67,15 +71,33 @@ export function WorkPage() {
       <section className="section-shell py-10 md:py-12 lg:py-14">
         <div className="content-wrap grid gap-6">
           <div className="grid gap-3">
-            <p className="eyebrow">Independent work</p>
-            <h2 className="section-heading max-w-[12ch]">Client systems and shipped digital work.</h2>
+            <p className="eyebrow">Independent R&amp;D</p>
+            <h2 className="section-heading max-w-[12ch]">Physical systems built because the problem was interesting enough to own.</h2>
             <p className="body-lead max-w-[44rem]">
-              Independent projects show another part of the same skill set: understand how the operation actually works, build the right system around it, and leave the owner with something usable.
+              These projects show the same systems approach without an employer or client defining the brief: build the thing, operate it, observe where reality disagrees with the design, and iterate.
+            </p>
+          </div>
+
+          <div className="grid gap-5 md:grid-cols-2">
+            {independentRAndD.map((item) => (
+              <ProjectCard key={item.slug} item={item} variant="standard" />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-shell py-10 md:py-12 lg:py-14">
+        <div className="content-wrap grid gap-6">
+          <div className="grid gap-3">
+            <p className="eyebrow">Independent client work</p>
+            <h2 className="section-heading max-w-[12ch]">Shipped systems with a real customer on the other side.</h2>
+            <p className="body-lead max-w-[44rem]">
+              Client projects add another kind of proof: scope the problem, communicate directly, deliver something useful, and leave the owner with a clean handoff.
             </p>
           </div>
 
           <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-            {independentProjects.map((item) => (
+            {clientProjects.map((item) => (
               <ProjectCard key={item.slug} item={item} variant="compact" />
             ))}
           </div>
