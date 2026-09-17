@@ -26,7 +26,7 @@ export function CaseStudyPage() {
   }
 
   const caseStudy = item.caseStudy;
-  const cta = item.category === 'controls' ? ctaLinks.controls : ctaLinks.web;
+  const cta = item.category === 'web' ? ctaLinks.web : ctaLinks.project;
   const galleryAssets = caseStudy.assets.slice(1);
   const leadGalleryAsset = galleryAssets[0];
   const supportingGalleryAssets = galleryAssets.slice(1);
@@ -62,18 +62,10 @@ export function CaseStudyPage() {
           </div>
 
           <article className="surface-card overflow-hidden p-4 md:p-5">
-            <div className="browser-shell">
-              <div className="browser-topbar">
-                <div className="browser-dots" aria-hidden="true">
-                  <span className="browser-dot" />
-                  <span className="browser-dot" />
-                  <span className="browser-dot" />
-                </div>
-                <p className="m-0 truncate text-[0.82rem] text-carbon/52">{item.title}</p>
-                <span className="h-2.5 w-2.5 rounded-full bg-cobalt/70" aria-hidden="true" />
-              </div>
+            <div className="overflow-hidden rounded-[1.45rem] border border-carbon/8 bg-paper">
               <img className="aspect-[16/10] w-full object-cover object-top" src={item.primaryAsset.src} alt={item.primaryAsset.alt} />
             </div>
+            {item.primaryAsset.caption ? <p className="body-copy px-1 pt-4">{item.primaryAsset.caption}</p> : null}
           </article>
         </div>
       </section>
@@ -163,10 +155,10 @@ export function CaseStudyPage() {
         <div className="page-wrap surface-card px-6 py-7 md:px-8 md:py-8">
           <div className="grid gap-5 lg:grid-cols-[minmax(0,0.9fr)_auto] lg:items-end">
             <div className="grid gap-3">
-              <p className="eyebrow">Schedule</p>
-              <h2 className="section-heading max-w-[10ch]">Want this level of clarity in your own project?</h2>
+              <p className="eyebrow">Project fit</p>
+              <h2 className="section-heading max-w-[10ch]">Have a technical problem that needs an owner?</h2>
               <p className="body-copy max-w-[38rem]">
-                The right starting point is still the actual business or technical context, not a vague wish list.
+                The strongest fit is a bounded project with a real system, a defined outcome, and enough ambiguity that hardware, controls, software, test, or field behavior overlap.
               </p>
             </div>
             <ButtonLink external={cta.external} href={cta.href}>
