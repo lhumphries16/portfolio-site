@@ -531,6 +531,7 @@ export const portfolioItems = [
       'A garage-scale physical system combining hydroponics, edge computer vision, structured operational data, and commercial validation.',
     whatItProves:
       'Tre can take an ambiguous real-world problem from hypothesis through physical build, software integration, operation, measurement, failure analysis, and a defensible technical and commercial decision.',
+    repoUrl: 'https://github.com/lhumphries16/garage-smart-farm-v1',
     primaryAsset: {
       src: hydroRackImage,
       alt: 'Garage-scale NFT growing rack built, instrumented, and operated as a six-month systems-engineering experiment.',
