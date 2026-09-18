@@ -38,6 +38,7 @@ export type PortfolioItem = {
   whatItProves: string;
   caution?: string;
   liveUrl?: string;
+  repoUrl?: string;
   primaryAsset: PortfolioAsset;
   supportingAssets?: readonly PortfolioAsset[];
   caseStudy?: CaseStudyData;
