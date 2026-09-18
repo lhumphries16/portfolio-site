@@ -532,6 +532,18 @@ export const portfolioItems = [
     whatItProves:
       'Tre can take an ambiguous real-world problem from hypothesis through physical build, software integration, operation, measurement, failure analysis, and a defensible technical and commercial decision.',
     repoUrl: 'https://github.com/lhumphries16/garage-smart-farm-v1',
+    reports: [
+      {
+        title: 'Commercial Feasibility Study',
+        description: 'Measured production, scale-up economics, scenario analysis, and the final commercial conclusion.',
+        href: 'https://raw.githubusercontent.com/lhumphries16/garage-smart-farm-v1/main/docs/Garage_Farm_Commercial_Case_Study.pdf',
+      },
+      {
+        title: 'Technical Case Study',
+        description: 'Physical-system architecture, computer vision, data model, operating lessons, and failure analysis.',
+        href: 'https://raw.githubusercontent.com/lhumphries16/garage-smart-farm-v1/main/docs/Garage_Vision_Technical_Case_Study.pdf',
+      },
+    ],
     primaryAsset: {
       src: hydroRackImage,
       alt: 'Garage-scale NFT growing rack built, instrumented, and operated as a six-month systems-engineering experiment.',
