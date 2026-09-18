@@ -11,7 +11,7 @@ const engineeringProjects = [
 ];
 
 const independentRAndD = [
-  portfolioBySlug['garage-horticulture'],
+  portfolioBySlug['garage-smart-farm'],
   portfolioBySlug['wondersky-flying-creatures'],
 ];
 

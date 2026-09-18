@@ -519,66 +519,106 @@ export const portfolioItems = [
     },
   },
   {
-    slug: 'garage-horticulture',
-    title: 'Garage Horticulture System',
-    shortTitle: 'Automated hydroponic rack',
-    year: '2023-2026',
+    slug: 'garage-smart-farm',
+    title: 'Garage Smart Farm',
+    shortTitle: 'Garage Smart Farm',
+    year: '2026',
     category: 'product',
     treatment: 'case-study',
     relationshipLabel: 'Independent R&D',
-    context: 'Controlled indoor horticulture system built as a physical-process testbed.',
+    context: 'Six-month systems-engineering experiment from physical prototype to measured commercial decision.',
     summary:
-      'A home-built hydroponic rack used to explore irrigation, sensing, lighting, environmental control, logging, repeatability, and the operating routines around a real biological process.',
+      'A garage-scale physical system combining hydroponics, edge computer vision, structured operational data, and commercial validation.',
     whatItProves:
-      'Tre can design, build, instrument, operate, and iterate a multidisciplinary physical system without waiting for a formal product brief.',
+      'Tre can take an ambiguous real-world problem from hypothesis through physical build, software integration, operation, measurement, failure analysis, and a defensible technical and commercial decision.',
+    repoUrl: 'https://github.com/lhumphries16/garage-smart-farm-v1',
     primaryAsset: {
       src: hydroRackImage,
-      alt: 'Indoor hydroponic horticulture rack built and operated in a garage.',
-      caption: 'Garage horticulture rack used as a long-running physical systems testbed.',
+      alt: 'Garage-scale NFT growing rack built, instrumented, and operated as a six-month systems-engineering experiment.',
+      caption: 'A physical production system used to test engineering, operating, and commercial assumptions with real data.',
     },
     caseStudy: {
-      eyebrow: 'Independent R&D case study',
+      eyebrow: 'Independent systems R&D',
       intro: [
-        'The hydroponic rack started as a growing project and became a useful systems-engineering testbed: water, nutrients, pumps, lighting, sensing, environmental behavior, operations, and data all had to work together over time.',
-        'Unlike a short bench prototype, the interesting part was operating it long enough to learn where repeatability breaks and what information is actually useful when a physical process drifts.',
+        'Could an unused one-car garage become a low-touch production system capable of generating meaningful income? I spent six months answering that with a physical build rather than a spreadsheet.',
+        'An aquaponics pilot led to a 76-site NFT rack. I instrumented it, added edge computer vision and structured farm-state logging, operated it through summer, measured harvests and failure modes, then used the evidence to evaluate the original business assumption.',
       ],
       facts: [
-        { label: 'Type', value: 'Independent physical-systems R&D' },
-        { label: 'Process', value: 'Indoor hydroponic horticulture' },
-        { label: 'Focus', value: 'Control, sensing, logging, and repeatability' },
-        { label: 'Lifecycle', value: 'Built, operated, iterated, and documented over multiple seasons' },
+        { label: 'Period', value: 'March–September 2026' },
+        { label: 'Physical pilot', value: '4 NFT channels · 76 nominal sites' },
+        { label: 'Production record', value: '24 harvest records · 3,472 g repo-recorded biomass' },
+        { label: 'Data record', value: '45 analyzed snapshots · 99,866 environmental readings · 61 farm events' },
+        { label: 'Mature Genovese rate', value: '0.568 g per productive site per day' },
+        { label: 'Commercial result', value: 'Commodity basil did not meet the $3k/month income target at measured performance' },
       ],
       highlights: [
-        'Irrigation and nutrient delivery',
-        'Lighting and environmental control',
-        'Sensors and operating data',
-        'Physical plumbing and rack design',
-        'Long-duration operation and teardown learning',
+        'Physical system designed, fabricated, commissioned, and operated end to end',
+        'Raspberry Pi, Python, and OpenCV layer for canopy trends and visual evidence',
+        'Structured site ledger separated canonical farm state from imperfect sensor inference',
+        'Root growth exposed a late mechanical and hydraulic failure mode',
+        'Measured results replaced an early 20 g/site/week planning assumption with observed production',
       ],
       assets: [
         {
           src: hydroRackImage,
-          alt: 'Indoor hydroponic horticulture rack built and operated in a garage.',
-          caption: 'A useful reminder that a control system is only as good as the physical process it is attached to.',
+          alt: 'Garage-scale NFT growing rack built, instrumented, and operated as a six-month systems-engineering experiment.',
+          caption: 'The rack became a testbed for physical systems, software, operations, and commercial validation.',
         },
       ],
       sections: [
         {
-          title: 'Why build it',
+          title: 'The question',
           paragraphs: [
-            'The rack was a chance to own an entire small physical process instead of one subsystem. The system had to move water reliably, support plants, deliver light, maintain useful operating conditions, and remain serviceable as the grow changed.',
+            'The original question was simple: could unused garage space become a low-touch, modular production system capable of producing enough basil or specialty crops to generate meaningful income?',
+            'A small aquaponics system came first. It worked, but separating crop production from the aquarium offered better control over nutrients, flow, spacing, and measurement, so the next iteration moved to hydroponic NFT.',
           ],
         },
         {
-          title: 'The systems lesson',
+          title: 'What I built',
           paragraphs: [
-            'Operating the rack exposed the difference between a prototype that works once and a system that works repeatedly. Biofilm, roots, plumbing, sensor usefulness, maintenance access, and operator routine mattered as much as the control logic.',
+            'The main pilot used four roughly six-foot NFT channels with 19 nominal sites each, a recirculating reservoir, lighting, airflow, and a propagation area. The physical system was then instrumented with environmental logging and a fixed-camera edge-compute layer.',
+            'The software pipeline captured and aligned images, measured green canopy, generated overlays, tracked farm events and harvests, and connected those observations to a structured site ledger.',
+          ],
+          bullets: [
+            '76-site physical pilot with a 190-site full-rack geometry defined for scale-up analysis',
+            'Raspberry Pi 3B edge compute with Python and OpenCV',
+            'Structured plant, site, event, harvest, and environment records',
+            'Six basil cultivars used for production and specialty-product learning',
+          ],
+        },
+        {
+          title: 'What held up',
+          paragraphs: [
+            'The system produced repeated harvests with a low routine operator burden and could be left alone for multi-day trips. Genovese basil continued producing through summer conditions that reached roughly 99°F in the garage and did not bolt.',
+            'The mature Genovese cohort produced about 1,681 g over 58 days across roughly 51 productive plants, or 0.568 g per productive site per day. That was biologically credible, but materially below the early planning assumption.',
+          ],
+        },
+        {
+          title: 'What broke',
+          paragraphs: [
+            'The most useful late-season failure was mechanical rather than biological. Root biomass formed a dense mat across the channel bottoms, restricted drainage, created standing water at the low end, and eventually exposed imperfect upper channel seams.',
+            'The plants had grown well enough to create a hydraulic constraint. That shifted the next design priorities toward root management, drainage geometry, service access, and sealing rather than simply adding more sensing.',
+          ],
+        },
+        {
+          title: 'What the software taught me',
+          paragraphs: [
+            'Computer vision was useful for whole-rack canopy trends, harvest impact, recovery, visual inspection, and evidence. It was not reliable enough to serve as the canonical source for exact occupancy, cultivar identity, or per-plant biomass.',
+            'The durable architecture was therefore simple: structured state is the source of truth; vision is a measurement and trend sensor. That distinction made the data more defensible and the software less fragile.',
+          ],
+        },
+        {
+          title: 'Commercial result',
+          paragraphs: [
+            'The strongest mature-production data did not support the original commodity-basil livelihood thesis. At the observed rate, a six-rack garage scenario extrapolated to roughly 10 lb/week, but normal restaurant basil pricing did not generate the target owner income from the available footprint.',
+            'That was the useful outcome of the experiment: the physical platform worked, while the original business assumption did not. The more interesting future question became whether a standardized living system creates more value at the point of use with specialty crops, rather than by competing on commodity pounds.',
           ],
         },
         {
           title: 'What this demonstrates',
           paragraphs: [
-            'This project shows the same engineering pattern as my professional work in a completely independent setting: define the system, build it, observe where reality disagrees with the model, and keep improving the design around real behavior.',
+            'The project is useful to me as an engineering case study because it crossed physical design, fabrication, controls-adjacent thinking, edge computing, computer vision, data modeling, commissioning, operating discipline, failure analysis, and commercial validation.',
+            'The transferable lesson is not indoor farming. It is the ability to take a messy physical idea from concept to operation, observe where reality disagrees with the model, and make a decision from evidence.',
           ],
         },
       ],

@@ -55,6 +55,11 @@ export function CaseStudyPage() {
                   View live site
                 </ButtonLink>
               ) : null}
+              {item.repoUrl ? (
+                <ButtonLink external href={item.repoUrl} variant={item.liveUrl ? 'secondary' : 'primary'}>
+                  View GitHub archive
+                </ButtonLink>
+              ) : null}
               <ButtonLink external={cta.external} href={cta.href} variant="secondary">
                 {cta.label}
               </ButtonLink>

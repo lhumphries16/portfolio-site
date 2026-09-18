@@ -25,6 +25,10 @@ function LegacyProjectRedirect() {
     return <Navigate replace to={{ pathname: '/work/homeems', search: location.search, hash: location.hash }} />;
   }
 
+  if (slug === 'garage-horticulture') {
+    return <Navigate replace to={{ pathname: '/work/garage-smart-farm', search: location.search, hash: location.hash }} />;
+  }
+
   if (slug === 'brazilian-sweet-bites-order-system') {
     return (
       <Navigate
