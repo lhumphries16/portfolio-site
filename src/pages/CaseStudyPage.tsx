@@ -104,6 +104,38 @@ export function CaseStudyPage() {
         </div>
       </section>
 
+      {item.reports?.length ? (
+        <section className="section-shell section-block">
+          <div className="content-wrap surface-card grid gap-5 p-6 md:p-8">
+            <div className="grid gap-3">
+              <p className="eyebrow">Project reports</p>
+              <h2 className="section-heading max-w-[10ch]">Read the full studies.</h2>
+              <p className="body-copy max-w-[44rem]">
+                The portfolio page tells the short version. These reports preserve the deeper technical and commercial analysis behind the final decision.
+              </p>
+            </div>
+
+            <div className="grid gap-4 md:grid-cols-2">
+              {item.reports.map((report) => (
+                <article key={report.href} className="surface-soft grid gap-4 p-5 md:p-6">
+                  <div className="grid gap-2">
+                    <h3 className="m-0 text-[1.25rem] font-semibold leading-tight tracking-[-0.025em] text-carbon">
+                      {report.title}
+                    </h3>
+                    <p className="detail-copy m-0">{report.description}</p>
+                  </div>
+                  <div>
+                    <ButtonLink external href={report.href}>
+                      View PDF
+                    </ButtonLink>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
+
       {leadGalleryAsset ? (
         <section className="section-shell section-block">
           <div className="content-wrap grid gap-4">
