@@ -13,6 +13,12 @@ export type CaseStudySection = {
   bullets?: readonly string[];
 };
 
+export type PortfolioReport = {
+  title: string;
+  description: string;
+  href: string;
+};
+
 export type CaseStudyData = {
   eyebrow: string;
   intro: readonly string[];
@@ -39,6 +45,7 @@ export type PortfolioItem = {
   caution?: string;
   liveUrl?: string;
   repoUrl?: string;
+  reports?: readonly PortfolioReport[];
   primaryAsset: PortfolioAsset;
   supportingAssets?: readonly PortfolioAsset[];
   caseStudy?: CaseStudyData;
