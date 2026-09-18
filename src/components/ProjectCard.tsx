@@ -22,11 +22,11 @@ const titleClassByVariant = {
 
 const articleClassByVariant = {
   feature:
-    'grid gap-5 rounded-[2rem] border border-carbon/8 bg-white p-4 shadow-[0_24px_80px_rgba(15,23,42,0.08)] md:p-5 lg:grid-cols-[minmax(0,1.14fr)_minmax(0,0.86fr)] lg:items-start',
+    'group relative grid gap-5 overflow-hidden rounded-[2rem] border border-carbon/10 bg-white p-4 shadow-[0_28px_86px_rgba(15,23,42,0.10)] transition-all duration-300 hover:-translate-y-1 hover:border-cobalt/24 hover:shadow-[0_34px_100px_rgba(15,23,42,0.14)] md:p-5 lg:grid-cols-[minmax(0,1.14fr)_minmax(0,0.86fr)] lg:items-start',
   standard:
-    'grid gap-4 rounded-[1.8rem] border border-carbon/8 bg-white p-4 shadow-[0_18px_56px_rgba(15,23,42,0.07)] md:p-5',
+    'group relative grid gap-4 overflow-hidden rounded-[1.8rem] border border-carbon/10 bg-white p-4 shadow-[0_18px_56px_rgba(15,23,42,0.08)] transition-all duration-300 hover:-translate-y-1 hover:border-cobalt/24 hover:shadow-[0_26px_70px_rgba(15,23,42,0.12)] md:p-5',
   compact:
-    'grid gap-3 rounded-[1.65rem] border border-carbon/8 bg-white p-3 shadow-[0_14px_40px_rgba(15,23,42,0.06)] md:p-4',
+    'group relative grid gap-3 overflow-hidden rounded-[1.65rem] border border-carbon/10 bg-white p-3 shadow-[0_14px_40px_rgba(15,23,42,0.07)] transition-all duration-300 hover:-translate-y-1 hover:border-cobalt/24 md:p-4',
 } as const;
 
 export function ProjectCard({
@@ -53,6 +53,7 @@ export function ProjectCard({
       </div>
 
       <div className="grid gap-4">
+        <span className="editorial-rule" aria-hidden="true" />
         <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[0.88rem] text-carbon/48">
           <span className="font-medium text-carbon/62">{item.relationshipLabel}</span>
           <span aria-hidden="true">&bull;</span>
