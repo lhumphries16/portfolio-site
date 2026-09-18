@@ -36,7 +36,7 @@ export function CaseStudyPage() {
       <RouteMeta title={`${item.title} | Tre Humphries`} description={item.summary} />
 
       <section className="hero-shell">
-        <div className="page-wrap grid gap-8 xl:grid-cols-[minmax(0,0.42fr)_minmax(0,0.58fr)] xl:items-start">
+        <div className="page-wrap hero-stage grid gap-8 p-5 md:p-7 lg:p-9 xl:grid-cols-[minmax(0,0.42fr)_minmax(0,0.58fr)] xl:items-start">
           <div className="grid gap-5 xl:sticky xl:top-28">
             <p className="eyebrow">{caseStudy.eyebrow}</p>
             <h1 className="m-0 max-w-[10ch] text-[clamp(2.8rem,5vw,4.7rem)] font-semibold leading-[0.99] tracking-[-0.055em] text-carbon">
@@ -77,14 +77,14 @@ export function CaseStudyPage() {
 
       <section className="section-shell section-block">
         <div className="content-wrap grid gap-4 xl:grid-cols-[minmax(0,0.88fr)_minmax(0,1.12fr)]">
-          <article className="surface-card grid gap-4 p-6 md:p-8">
-            <p className="eyebrow">Project facts</p>
-            <h2 className="section-heading max-w-[8ch]">Project facts</h2>
+          <article className="surface-dark grid gap-4 p-6 text-white md:p-8">
+            <p className="m-0 text-[0.78rem] font-semibold uppercase tracking-[0.13em] text-white/52">Project facts</p>
+            <h2 className="m-0 max-w-[8ch] text-[clamp(2.2rem,4.2vw,3.7rem)] font-semibold leading-[1.02] tracking-[-0.05em] text-white">Project facts</h2>
             <div className="grid gap-4 sm:grid-cols-2">
               {caseStudy.facts.map((fact) => (
                 <div key={fact.label} className="grid gap-1">
-                  <p className="m-0 text-[0.84rem] font-semibold tracking-[0.04em] text-carbon/48">{fact.label}</p>
-                  <p className="m-0 text-[0.98rem] leading-relaxed text-carbon/72">{fact.value}</p>
+                  <p className="m-0 text-[0.78rem] font-semibold uppercase tracking-[0.08em] text-white/44">{fact.label}</p>
+                  <p className="m-0 text-[0.98rem] leading-relaxed text-white/82">{fact.value}</p>
                 </div>
               ))}
             </div>
@@ -105,7 +105,7 @@ export function CaseStudyPage() {
       </section>
 
       {item.reports?.length ? (
-        <section className="section-shell section-block">
+        <section className="section-shell section-block section-band">
           <div className="content-wrap surface-card grid gap-5 p-6 md:p-8">
             <div className="grid gap-3">
               <p className="eyebrow">Project reports</p>
@@ -162,10 +162,16 @@ export function CaseStudyPage() {
         <div className="content-wrap grid gap-5">
           {caseStudy.sections.map((section, index) => (
             <article key={section.title} className={index % 2 === 0 ? 'surface-card grid gap-4 p-6 md:p-8' : 'surface-soft grid gap-4 p-6 md:p-8'}>
-              <div className="grid gap-3 lg:grid-cols-[minmax(0,0.34fr)_minmax(0,0.66fr)] lg:items-start">
-                <h2 className="m-0 text-[1.75rem] font-semibold leading-[1.02] tracking-[-0.04em] text-carbon">
-                  {section.title}
-                </h2>
+              <div className="grid gap-4 lg:grid-cols-[minmax(0,0.34fr)_minmax(0,0.66fr)] lg:items-start">
+                <div className="grid gap-3">
+                  <p className="m-0 font-mono text-[0.76rem] font-semibold tracking-[0.08em] text-cobalt/72">
+                    {String(index + 1).padStart(2, '0')}
+                  </p>
+                  <span className="editorial-rule" aria-hidden="true" />
+                  <h2 className="m-0 text-[1.75rem] font-semibold leading-[1.02] tracking-[-0.04em] text-carbon">
+                    {section.title}
+                  </h2>
+                </div>
                 <div className="grid gap-3">
                   {section.paragraphs.map((paragraph) => (
                     <p key={paragraph} className="m-0 text-[1rem] leading-relaxed text-carbon/72">
@@ -189,16 +195,16 @@ export function CaseStudyPage() {
       </section>
 
       <section className="section-shell pb-14 pt-2 md:pb-18">
-        <div className="page-wrap surface-card px-6 py-7 md:px-8 md:py-8">
+        <div className="page-wrap surface-dark px-6 py-7 text-white md:px-8 md:py-8">
           <div className="grid gap-5 lg:grid-cols-[minmax(0,0.9fr)_auto] lg:items-end">
             <div className="grid gap-3">
-              <p className="eyebrow">Project fit</p>
-              <h2 className="section-heading max-w-[10ch]">Have a technical problem that needs an owner?</h2>
-              <p className="body-copy max-w-[38rem]">
+              <p className="m-0 text-[0.78rem] font-semibold uppercase tracking-[0.13em] text-white/54">Project fit</p>
+              <h2 className="m-0 max-w-[10ch] text-[clamp(2.2rem,4.2vw,3.7rem)] font-semibold leading-[1.02] tracking-[-0.05em] text-white">Have a technical problem that needs an owner?</h2>
+              <p className="m-0 max-w-[38rem] text-[0.98rem] leading-[1.68] text-white/72">
                 The strongest fit is a bounded project with a real system, a defined outcome, and enough ambiguity that hardware, controls, software, test, or field behavior overlap.
               </p>
             </div>
-            <ButtonLink external={cta.external} href={cta.href}>
+            <ButtonLink external={cta.external} href={cta.href} variant="secondary">
               {cta.label}
             </ButtonLink>
           </div>
