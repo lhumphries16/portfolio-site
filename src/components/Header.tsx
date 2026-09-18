@@ -21,11 +21,12 @@ export function Header({ brand, navItems }: HeaderProps) {
   }, [location.pathname, location.hash]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-carbon/6 bg-white/92 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-carbon/8 bg-white/88 shadow-[0_10px_30px_rgba(15,23,42,0.035)] backdrop-blur-xl">
       <div className="page-wrap px-4 md:px-6 lg:px-8 xl:px-12">
         <div className="flex min-h-[5.1rem] items-center justify-between gap-6 py-3">
           <Link className="grid gap-1" to="/">
-            <span className="text-[1.04rem] font-semibold tracking-[-0.035em] text-carbon md:text-[1.12rem]">
+            <span className="flex items-center gap-2.5 text-[1.04rem] font-semibold tracking-[-0.035em] text-carbon md:text-[1.12rem]">
+              <span className="h-2.5 w-2.5 rounded-full bg-cobalt shadow-[0_0_0_5px_rgba(49,89,210,0.10)]" aria-hidden="true" />
               {brand.name}
             </span>
             <span className="hidden text-[0.84rem] leading-none tracking-[0.01em] text-carbon/54 sm:block">
@@ -52,7 +53,7 @@ export function Header({ brand, navItems }: HeaderProps) {
                 key={item.href}
                 className={({ isActive }) =>
                   `rounded-full px-3 py-2 text-[0.95rem] font-medium tracking-[-0.02em] transition-colors duration-200 ${
-                    isActive ? 'bg-paper text-carbon' : 'text-carbon/62 hover:bg-paper/80 hover:text-carbon'
+                    isActive ? 'bg-carbon text-white shadow-[0_10px_24px_rgba(15,23,42,0.12)]' : 'text-carbon/62 hover:bg-paper hover:text-carbon'
                   }`
                 }
                 to={item.href}

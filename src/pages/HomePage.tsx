@@ -21,7 +21,7 @@ export function HomePage() {
       />
 
       <section className="hero-shell">
-        <div className="page-wrap grid gap-8 xl:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] xl:items-start">
+        <div className="page-wrap hero-stage grid gap-8 p-5 md:p-7 lg:p-9 xl:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] xl:items-start">
           <div className="grid gap-7">
             <div className="grid gap-5">
               <p className="eyebrow">Product &amp; Systems Engineer</p>
@@ -46,7 +46,7 @@ export function HomePage() {
             </div>
           </div>
 
-          <article className="surface-card grid gap-5 overflow-hidden p-5 md:p-6">
+          <article className="surface-dark grid gap-5 overflow-hidden p-4 text-white md:p-5">
             <img
               className="aspect-[5/4] w-full rounded-[1.5rem] object-cover"
               style={{ objectPosition: profile.portrait.objectPosition }}
@@ -54,8 +54,8 @@ export function HomePage() {
               alt={profile.portrait.alt}
             />
             <div className="grid gap-3">
-              <p className="eyebrow">How I work</p>
-              <p className="body-lead max-w-[40rem]">
+              <p className="m-0 text-[0.78rem] font-semibold uppercase tracking-[0.13em] text-white/54">How I work</p>
+              <p className="m-0 max-w-[40rem] text-[1.03rem] leading-[1.72] text-white/82">
                 Give me a real problem, a budget, a deadline, and a definition of done. I am most useful when the path from requirement to working system is not obvious yet.
               </p>
             </div>
@@ -63,11 +63,11 @@ export function HomePage() {
         </div>
 
         <div className="page-wrap pt-6">
-          <div className="grid gap-3 sm:grid-cols-3">
-            {siteContent.home.reputationPoints.map((point) => (
-              <div key={point.label} className="stat-card grid gap-2">
-                <p className="m-0 text-[0.82rem] font-semibold tracking-[0.05em] text-carbon/46">{point.label}</p>
-                <p className="m-0 text-[0.98rem] leading-relaxed text-carbon/72">{point.value}</p>
+          <div className="stat-strip grid gap-0 overflow-hidden sm:grid-cols-3">
+            {siteContent.home.reputationPoints.map((point, index) => (
+              <div key={point.label} className={`grid gap-2 px-5 py-5 md:px-6 ${index > 0 ? 'border-t border-white/10 sm:border-l sm:border-t-0' : ''}`}>
+                <p className="m-0 text-[0.75rem] font-semibold uppercase tracking-[0.12em] text-white/46">{point.label}</p>
+                <p className="m-0 text-[1rem] leading-relaxed text-white/86">{point.value}</p>
               </div>
             ))}
           </div>
@@ -102,8 +102,8 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="section-shell section-block">
-        <div className="content-wrap grid gap-6 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)] lg:items-start">
+      <section className="section-shell section-block section-band">
+        <div className="content-wrap grid gap-7 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)] lg:items-start">
           <div className="grid gap-3">
             <p className="eyebrow">Capabilities</p>
             <h2 className="section-heading max-w-[10ch]">One technical owner across the messy middle.</h2>
@@ -113,7 +113,7 @@ export function HomePage() {
             {siteContent.home.capabilityPoints.map((point) => {
               const [title, body] = point.split(' — ');
               return (
-                <article key={point} className="surface-soft grid gap-2 p-5">
+                <article key={point} className="surface-card grid gap-3 p-5 transition-transform duration-300 hover:-translate-y-1">
                   <h3 className="m-0 text-[1.2rem] font-semibold tracking-[-0.03em] text-carbon">{title}</h3>
                   <p className="body-copy">{body}</p>
                 </article>

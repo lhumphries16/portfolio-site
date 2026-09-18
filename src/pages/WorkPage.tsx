@@ -31,7 +31,7 @@ export function WorkPage() {
       />
 
       <section className="hero-shell">
-        <div className="page-wrap grid gap-6 xl:grid-cols-[minmax(0,0.42fr)_minmax(0,0.58fr)] xl:items-end">
+        <div className="page-wrap hero-stage grid gap-6 p-5 md:p-7 lg:p-9 xl:grid-cols-[minmax(0,0.42fr)_minmax(0,0.58fr)] xl:items-end">
           <div className="grid gap-4">
             <p className="eyebrow">Selected work</p>
             <h1 className="m-0 max-w-[10ch] text-[clamp(2.8rem,4.9vw,4.6rem)] font-semibold leading-[0.99] tracking-[-0.055em] text-carbon">
@@ -68,7 +68,7 @@ export function WorkPage() {
         </div>
       </section>
 
-      <section className="section-shell py-10 md:py-12 lg:py-14">
+      <section className="section-shell section-band py-12 md:py-14 lg:py-16">
         <div className="content-wrap grid gap-6">
           <div className="grid gap-3">
             <p className="eyebrow">Independent R&amp;D</p>
@@ -105,16 +105,16 @@ export function WorkPage() {
       </section>
 
       <section className="section-shell pb-14 pt-2 md:pb-18">
-        <div className="page-wrap surface-card px-6 py-7 md:px-8 md:py-8">
+        <div className="page-wrap surface-dark px-6 py-7 text-white md:px-8 md:py-8">
           <div className="grid gap-5 lg:grid-cols-[minmax(0,0.9fr)_auto] lg:items-end">
             <div className="grid gap-3">
-              <p className="eyebrow">Project fit</p>
-              <h2 className="section-heading max-w-[12ch]">Need someone to own a difficult technical problem?</h2>
-              <p className="body-copy max-w-[40rem]">
+              <p className="m-0 text-[0.78rem] font-semibold uppercase tracking-[0.13em] text-white/54">Project fit</p>
+              <h2 className="m-0 max-w-[12ch] text-[clamp(2.2rem,4.2vw,3.7rem)] font-semibold leading-[1.02] tracking-[-0.05em] text-white">Need someone to own a difficult technical problem?</h2>
+              <p className="m-0 max-w-[40rem] text-[0.98rem] leading-[1.68] text-white/72">
                 The strongest fit is a bounded project where hardware, controls, software, test, or field operations overlap and the path to a finished result is not obvious yet.
               </p>
             </div>
-            <ButtonLink external={ctaLinks.project.external} href={ctaLinks.project.href}>
+            <ButtonLink external={ctaLinks.project.external} href={ctaLinks.project.href} variant="secondary">
               {ctaLinks.project.label}
             </ButtonLink>
           </div>
